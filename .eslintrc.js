@@ -34,7 +34,7 @@ module.exports = {
     'import/prefer-default-export': 0,
     indent: [
       2,
-      2,
+      4,
       {
         SwitchCase: 1,
       },

@@ -1,9 +1,23 @@
-.idea/
-build/
-node_modules/
-internals/generators/
-internals/scripts/
-package-lock.json
-yarn.lock
-package.json
-cbuildci-ui.iml
+/.git/
+/.idea/
+
+# Don't check auto-generated stuff
+/coverage/
+/build/
+/node_modules/
+/stats.json
+
+# Don't check some internals
+/internals/generators/
+/internals/scripts/
+
+# Other files to skip
+/package-lock.json
+/yarn.lock
+/package.json
+/*.iml
+*.md
+
+# Cruft
+.DS_Store
+npm-debug.log

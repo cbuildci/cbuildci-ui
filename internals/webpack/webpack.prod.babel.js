@@ -6,6 +6,7 @@ const WebpackPwaManifest = require('webpack-pwa-manifest');
 const { HashedModuleIdsPlugin } = require('webpack');
 
 module.exports = require('./webpack.base.babel')({
+    devtool: 'source-map',
     mode: 'production',
 
     // In production, we skip all hot-reloading stuff

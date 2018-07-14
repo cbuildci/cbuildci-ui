@@ -2,6 +2,10 @@
 
 /**
  * Front-end middleware
+ *
+ * @param {*} app
+ * @param {object} options
+ * @returns {*}
  */
 module.exports = (app, options) => {
     const isProd = process.env.NODE_ENV === 'production';
@@ -9,7 +13,8 @@ module.exports = (app, options) => {
     if (isProd) {
         const addProdMiddlewares = require('./addProdMiddlewares');
         addProdMiddlewares(app, options);
-    } else {
+    }
+    else {
         const webpackConfig = require('../../internals/webpack/webpack.dev.babel');
         const addDevMiddlewares = require('./addDevMiddlewares');
         addDevMiddlewares(app, webpackConfig);

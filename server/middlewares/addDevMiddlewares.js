@@ -32,7 +32,8 @@ module.exports = function addDevMiddlewares(app, webpackConfig) {
             (err, file) => {
                 if (err) {
                     res.sendStatus(404);
-                } else {
+                }
+                else {
                     res.send(file.toString());
                 }
             },

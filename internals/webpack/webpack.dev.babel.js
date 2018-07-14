@@ -26,7 +26,7 @@ const plugins = [
 ];
 
 if (dllPlugin) {
-    glob.sync(`${dllPlugin.path}/*.dll.js`).forEach(dllPath => {
+    glob.sync(`${dllPlugin.path}/*.dll.js`).forEach((dllPath) => {
         plugins.push(
             new AddAssetHtmlPlugin({
                 filepath: dllPath,
@@ -75,6 +75,7 @@ module.exports = require('./webpack.base.babel')({
  * If there is a dllPlugin key on the project's package.json, the
  * Webpack DLL Plugin will be used.
  *
+ * @returns {*}
  */
 function dependencyHandlers() {
     // Don't do anything during the DLL Build step
@@ -116,11 +117,10 @@ function dependencyHandlers() {
     }
 
     // If DLLs are explicitly defined, we automatically create a DLLReferencePlugin for each of them.
-    const dllManifests = Object.keys(dllPlugin.dlls).map(name =>
-        path.join(dllPath, `/${name}.json`),
-    );
+    const dllManifests = Object.keys(dllPlugin.dlls)
+        .map((name) => path.join(dllPath, `/${name}.json`));
 
-    return dllManifests.map(manifestPath => {
+    return dllManifests.map((manifestPath) => {
         if (!fs.existsSync(path)) {
             if (!fs.existsSync(manifestPath)) {
                 logger.error(

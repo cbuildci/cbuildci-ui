@@ -8,7 +8,8 @@ function languageIsSupported(language) {
     try {
         fs.accessSync(`app/translations/${language}.json`, fs.F_OK);
         return true;
-    } catch (e) {
+    }
+    catch (e) {
         return false;
     }
 }
@@ -22,7 +23,7 @@ module.exports = {
             message:
                 'What is the language you want to add i18n support for (e.g. "fr", "de")?',
             default: 'fr',
-            validate: value => {
+            validate: (value) => {
                 if (/.+/.test(value) && value.length === 2) {
                     return languageIsSupported(value)
                         ? `The language "${value}" is already supported.`
@@ -81,7 +82,9 @@ module.exports = {
         actions.push(() => {
             const cmd = 'npm run extract-intl';
             exec(cmd, (err, result) => {
-                if (err) throw err;
+                if (err) {
+                    throw err;
+                }
                 process.stdout.write(result);
             });
             return 'modify translation messages';

@@ -9,12 +9,13 @@ import { IntlProvider } from 'react-intl';
 import ListItem from 'components/ListItem';
 import { RepoListItem } from '../index';
 
-const renderComponent = (props = {}) =>
+const renderComponent = (props = {}) => (
     render(
         <IntlProvider locale="en">
             <RepoListItem {...props} />
         </IntlProvider>,
-    );
+    )
+);
 
 describe('<RepoListItem />', () => {
     let item;

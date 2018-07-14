@@ -45,9 +45,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "prettify": "prettier --write",
-    "prettify:check": "prettier -l '**/*.json' '**/*.css' '**/*.scss' '**/*.js'",
-    "prettify:fix": "prettier --write '**/*.json' '**/*.css' '**/*.scss' '**/*.js'"
+    "prettify:check": "prettier -l '**/*.json' '**/*.css' '**/*.scss'",
+    "prettify:fix": "prettier --write '**/*.json' '**/*.css' '**/*.scss'"
   },
   "lint-staged": {
     "*.js": [

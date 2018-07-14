@@ -9,12 +9,13 @@ import A from '../index';
 
 const href = 'http://mxstbr.com/';
 const children = <h1>Test</h1>;
-const renderComponent = (props = {}) =>
+const renderComponent = (props = {}) => (
     shallow(
         <A href={href} {...props}>
             {children}
         </A>,
-    );
+    )
+);
 
 describe('<A />', () => {
     it('should render an <a> tag', () => {

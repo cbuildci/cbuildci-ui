@@ -21,7 +21,8 @@ export function* getRepos() {
         // Call our request helper (see 'utils/request')
         const repos = yield call(request, requestURL);
         yield put(reposLoaded(repos, username));
-    } catch (err) {
+    }
+    catch (err) {
         yield put(repoLoadingError(err));
     }
 }

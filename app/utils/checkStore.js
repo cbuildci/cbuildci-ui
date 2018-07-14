@@ -5,6 +5,7 @@ import invariant from 'invariant';
 
 /**
  * Validate the shape of redux store
+ * @param {object} store
  */
 export default function checkStore(store) {
     const shape = {

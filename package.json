@@ -10,7 +10,7 @@
     "npm": ">=5",
     "node": ">=8"
   },
-  "author": "Max Stoiber",
+  "author": "André Mekkawi <github@andremekkawi.com>",
   "license": "MIT",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
@@ -61,7 +61,8 @@
   "pre-commit": "lint:staged",
   "babel": {
     "plugins": [
-      "styled-components"
+      "styled-components",
+      "add-react-displayname"
     ],
     "presets": [
       [
@@ -101,7 +102,12 @@
       "express",
       "ip",
       "minimist",
-      "sanitize.css"
+      "sanitize.css",
+      "bootstrap",
+      "sass-loader",
+      "node-sass",
+      "postcss-loader",
+      "precss"
     ],
     "include": [
       "core-js",
@@ -145,7 +151,10 @@
     ]
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.1.0",
+    "babel-plugin-add-react-displayname": "0.0.5",
     "babel-polyfill": "6.26.0",
+    "bootstrap": "^4.1.2",
     "chalk": "^2.4.1",
     "compression": "1.7.2",
     "cross-env": "5.2.0",
@@ -159,6 +168,9 @@
     "ip": "1.1.5",
     "lodash": "4.17.10",
     "minimist": "1.2.0",
+    "node-sass": "^4.9.2",
+    "postcss-loader": "^2.1.6",
+    "precss": "^3.1.2",
     "prop-types": "15.6.1",
     "react": "16.4.1",
     "react-dom": "16.4.1",
@@ -173,6 +185,7 @@
     "redux-saga": "0.16.0",
     "reselect": "3.0.1",
     "sanitize.css": "4.1.0",
+    "sass-loader": "^7.0.3",
     "styled-components": "3.3.2",
     "warning": "4.0.1",
     "whatwg-fetch": "2.0.4"

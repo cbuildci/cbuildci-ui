@@ -3,11 +3,11 @@ import { fromJS } from 'immutable';
 import { selectLanguage } from '../selectors';
 
 describe('selectLanguage', () => {
-    it('should select the global state', () => {
-        const globalState = fromJS({});
+    it('should select the app state', () => {
+        const appState = fromJS({});
         const mockedState = fromJS({
-            language: globalState,
+            language: appState,
         });
-        expect(selectLanguage(mockedState)).toEqual(globalState);
+        expect(selectLanguage(mockedState)).toEqual(appState);
     });
 });

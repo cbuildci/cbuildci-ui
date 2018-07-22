@@ -18,7 +18,7 @@ module.exports = (options) => ({
         {
             // Compile into js/build.js
             path: path.resolve(process.cwd(), 'build'),
-            publicPath: '/',
+            publicPath: '/static/',
         },
         options.output,
     ), // Merge with env dependent settings
@@ -32,6 +32,32 @@ module.exports = (options) => ({
                     loader: 'babel-loader',
                     options: options.babelQuery,
                 },
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            // modules: true,
+                            // localIdentName: '[local]'
+                            // localIdentName: '[name]---[local]---[hash:base64:5]'
+                        },
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins() {
+                                return [
+                                    require('precss'),
+                                    require('autoprefixer'),
+                                ];
+                            },
+                        },
+                    },
+                    'sass-loader',
+                ],
             },
             {
                 // Preprocess our own .css files

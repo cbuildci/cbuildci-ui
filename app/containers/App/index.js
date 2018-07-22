@@ -11,40 +11,32 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'components/Header';
-import Footer from 'components/Footer';
 
-const AppWrapper = styled.div`
-    max-width: calc(768px + 16px * 2);
-    margin: 0 auto;
-    display: flex;
-    min-height: 100%;
-    padding: 0 16px;
-    flex-direction: column;
+const Container = styled.div`
+    width: 100%;
+    padding-right: calc(15px / 2);
+    padding-left: calc(15px / 2);
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px;
 `;
 
 export default function App() {
     return (
-        <AppWrapper>
+        <Container>
             <Helmet
                 titleTemplate="%s - CBuildCI"
                 defaultTitle="CBuildCI"
             >
-                {/* <meta
+                {false && <meta
                     name="description"
-                    content="A React.js Boilerplate application"
-                /> */}
+                    content="TODO"
+                />}
             </Helmet>
-            <Header />
             <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/features" component={FeaturePage} />
                 <Route path="" component={NotFoundPage} />
             </Switch>
-            <Footer />
-        </AppWrapper>
+        </Container>
     );
 }

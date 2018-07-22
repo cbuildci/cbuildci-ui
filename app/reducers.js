@@ -6,7 +6,7 @@ import { fromJS } from 'immutable';
 import { combineReducers } from 'redux-immutable';
 import { LOCATION_CHANGE } from 'react-router-redux';
 
-import globalReducer from 'containers/App/reducer';
+import appReducer from 'containers/App/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
 /*
@@ -23,7 +23,8 @@ const routeInitialState = fromJS({
 });
 
 /**
- * Merge route into the global application state
+ * Merge route into the application state.
+ *
  * @param {object} state
  * @param {object} action
  * @returns {object}
@@ -41,14 +42,15 @@ export function routeReducer(state = routeInitialState, action) {
 }
 
 /**
- * Creates the main reducer with the dynamically injected ones
+ * Creates the main reducer with the dynamically injected ones.
+ *
  * @param {object} injectedReducers
  * @returns {function}
  */
 export default function createReducer(injectedReducers) {
     return combineReducers({
         route: routeReducer,
-        global: globalReducer,
+        app: appReducer,
         language: languageProviderReducer,
         ...injectedReducers,
     });

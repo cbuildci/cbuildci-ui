@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary (inner) should catch errors and show nothing by default 1`] = `null`;
+
+exports[`ErrorBoundary (inner) should catch errors and show the error message (as component) 1`] = `
+<div>
+  Error
+</div>
+`;
+
+exports[`ErrorBoundary (inner) should catch errors and show the error message (as function) 1`] = `
+<div>
+  Error
+</div>
+`;
+
+exports[`ErrorBoundary (inner) should render children if no error 1`] = `
+<h1>
+  Test
+</h1>
+`;
+
+exports[`ErrorContextProvider (default export) with ErrorContextProvider should call error callback provided to context provider 1`] = `null`;

@@ -1,0 +1,503 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BuildStatus /> should render expected JSX for statuses 1`] = `
+<span
+  style={
+    Object {
+      "color": "#17a2b8",
+    }
+  }
+>
+  <i
+    className="fas fa-hourglass-start fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "IN_PROGRESS",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 2`] = `
+<span
+  style={
+    Object {
+      "color": "#6c757d",
+    }
+  }
+>
+  <i
+    className="far fa-clock fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "WAITING_FOR_DEPENDENCY",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 3`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "BUILD_NOTFOUND",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 4`] = `
+<span
+  style={
+    Object {
+      "color": "#28a745",
+    }
+  }
+>
+  <i
+    className="fas fa-check fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "SUCCEEDED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 5`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "DEPENDENCY_FAILED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 6`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "START_CODEBUILD_FAILED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 7`] = `
+<span
+  style={
+    Object {
+      "color": "#17a2b8",
+    }
+  }
+>
+  <i
+    className="fas fa-hourglass-start fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "STARTING",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 8`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "FAILED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 9`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "FAULT",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 10`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-stop-circle fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "STOPPED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 11`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="far fa-clock fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "TIMED_OUT",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for statuses 12`] = `
+<span
+  style={
+    Object {
+      "color": "#6c757d",
+    }
+  }
+>
+  <i
+    className="fas fa-share fa-fw"
+  />
+   
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "SKIPPED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for unknown status 1`] = `
+<span
+  style={
+    Object {
+      "color": undefined,
+    }
+  }
+>
+  <FormattedMessage
+    defaultMessage="{status, select,
+            IN_PROGRESS {In Progress}
+            WAITING_FOR_DEPENDENCY {Waiting for Dependency}
+            BUILD_NOTFOUND {Build Not Found}
+            SUCCEEDED {Succeeded}
+            DEPENDENCY_FAILED {Dependency Failed}
+            START_CODEBUILD_FAILED {Failed to Start CodeBuild}
+            STARTING {Starting CodeBuild}
+            FAILED {Failed}
+            FAULT {Fault}
+            STOPPED {Stopped}
+            TIMED_OUT {Timed Out}
+            SKIPPED {Skipped}
+            other {{status}}
+        }"
+    id="app.components.BuildStatus.buildStatus"
+    values={
+      Object {
+        "status": "foobar",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<BuildStatus /> should render expected JSX for unknown status 2`] = `
+<span
+  style={
+    Object {
+      "color": undefined,
+    }
+  }
+>
+  -
+</span>
+`;

@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StopLine/> should render expected JSX when has concluded 1`] = `
+<FormattedMessage
+  defaultMessage="{hasStop, select, 
+            yes {Stop requested after {stopDurationHtml} by {stopUserHtml} {hasConcluded, select,
+                yes {and took {conclusionDurationHtml} to stop}
+                no {}
+            }}
+            no {Concluded after {conclusionDurationHtml}}
+        }"
+  id="app.components.ExecutionSummary.conclusionMessage"
+  values={
+    Object {
+      "conclusionDurationHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000200}
+        >
+          <TimeDuration
+            seconds={200}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "hasConcluded": "yes",
+      "hasStop": "no",
+    }
+  }
+/>
+`;
+
+exports[`<StopLine/> should render expected JSX when has concluded 2`] = `
+<span>
+  Concluded after 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="1970-01-18T08:40:00.200Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        3.3 minutes
+      </span>
+    </time>
+  </strong>
+</span>
+`;
+
+exports[`<StopLine/> should render expected JSX when user requests stop 1`] = `
+<FormattedMessage
+  defaultMessage="{hasStop, select, 
+            yes {Stop requested after {stopDurationHtml} by {stopUserHtml} {hasConcluded, select,
+                yes {and took {conclusionDurationHtml} to stop}
+                no {}
+            }}
+            no {Concluded after {conclusionDurationHtml}}
+        }"
+  id="app.components.ExecutionSummary.conclusionMessage"
+  values={
+    Object {
+      "hasConcluded": "no",
+      "hasStop": "yes",
+      "stopDurationHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000100}
+        >
+          <TimeDuration
+            seconds={100}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "stopUserHtml": <a
+        href="https://git.com/foo"
+      >
+        @
+        foo
+      </a>,
+    }
+  }
+/>
+`;
+
+exports[`<StopLine/> should render expected JSX when user requests stop 2`] = `
+<span>
+  Stop requested after 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="1970-01-18T08:40:00.100Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        1.7 minutes
+      </span>
+    </time>
+  </strong>
+   by 
+  <a
+    href="https://git.com/foo"
+  >
+    @foo
+  </a>
+   
+</span>
+`;
+
+exports[`<StopLine/> should render expected JSX when user requests stop and has concluded 1`] = `
+<FormattedMessage
+  defaultMessage="{hasStop, select, 
+            yes {Stop requested after {stopDurationHtml} by {stopUserHtml} {hasConcluded, select,
+                yes {and took {conclusionDurationHtml} to stop}
+                no {}
+            }}
+            no {Concluded after {conclusionDurationHtml}}
+        }"
+  id="app.components.ExecutionSummary.conclusionMessage"
+  values={
+    Object {
+      "conclusionDurationHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000200}
+        >
+          <TimeDuration
+            seconds={100}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "hasConcluded": "yes",
+      "hasStop": "yes",
+      "stopDurationHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000100}
+        >
+          <TimeDuration
+            seconds={100}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "stopUserHtml": <a
+        href="https://git.com/foo"
+      >
+        @
+        foo
+      </a>,
+    }
+  }
+/>
+`;
+
+exports[`<StopLine/> should render expected JSX when user requests stop and has concluded 2`] = `
+<span>
+  Stop requested after 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="1970-01-18T08:40:00.100Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        1.7 minutes
+      </span>
+    </time>
+  </strong>
+   by 
+  <a
+    href="https://git.com/foo"
+  >
+    @foo
+  </a>
+   and took 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="1970-01-18T08:40:00.200Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        1.7 minutes
+      </span>
+    </time>
+  </strong>
+   to stop
+</span>
+`;

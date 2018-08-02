@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
 import { IntlProvider } from 'react-intl';
-import BuildStatus, { statusDisplay } from '../index';
+import ExecutionStatus, { statusDisplay } from '../index';
 
 const snapshots = (jsx) => {
     expect(shallow(jsx)).toMatchSnapshot();
@@ -10,42 +10,38 @@ const snapshots = (jsx) => {
     )).toMatchSnapshot();
 };
 
-describe('<BuildStatus />', () => {
+describe('<ExecutionStatus />', () => {
 
     it('should have expected statuses for statusDisplay', () => {
         expect(Object.keys(statusDisplay).sort())
             .toEqual([
                 '',
-                'IN_PROGRESS',
-                'WAITING_FOR_DEPENDENCY',
-                'BUILD_NOTFOUND',
                 'SUCCEEDED',
-                'DEPENDENCY_FAILED',
-                'START_CODEBUILD_FAILED',
-                'STARTING',
+                'QUEUED',
+                'IN_PROGRESS',
+                'ERROR',
                 'FAILED',
-                'FAULT',
-                'STOPPED',
                 'TIMED_OUT',
-                'SKIPPED',
+                'STOPPED',
+                'NEUTRAL',
             ].sort());
     });
 
     for (const status of Object.keys(statusDisplay)) {
         it(`should render expected JSX for status ${JSON.stringify(status)}`, () => {
             snapshots(
-                <BuildStatus status={status}/>,
+                <ExecutionStatus status={status}/>,
             );
         });
     }
 
     it('should render expected JSX for unknown status', () => {
         snapshots(
-            <BuildStatus status="foobar"/>,
+            <ExecutionStatus status="foobar"/>,
         );
 
         snapshots(
-            <BuildStatus/>,
+            <ExecutionStatus/>,
         );
     });
 

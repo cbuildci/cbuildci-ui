@@ -21,19 +21,19 @@ export const statusDisplay = {
     STOPPED: { icon: 'fas fa-stop-circle', color: '#dc3545' },
     TIMED_OUT: { icon: 'far fa-clock', color: '#dc3545' },
     SKIPPED: { icon: 'fas fa-share', color: '#6c757d' },
+    '': { icon: 'fas fa-question-circle', color: '#333333' },
 };
 
 export function getStatusColor(status) {
-    return (statusDisplay[status] || {}).color || null;
+    return (statusDisplay[status] || statusDisplay['']).color || null;
 }
 
 function BuildStatus({ status }) {
-    const { color, icon } = statusDisplay[status] || {};
+    const { color, icon } = statusDisplay[status] || statusDisplay[''];
 
     return (
         <span style={{ color: color }}>
-            {icon && <i className={`${icon} fa-fw`}/>}
-            {icon && ' '}
+            {icon && <i className={`${icon} fa-fw mr-1`}/>}
             {status ? <FormattedMessage
                 {...messages.buildStatus}
                 values={{ status: status }}

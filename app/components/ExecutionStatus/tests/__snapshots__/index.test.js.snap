@@ -1,0 +1,467 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExecutionStatus /> should render expected JSX for status "" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#333333",
+    }
+  }
+>
+  <i
+    className="fas fa-question-circle fa-fw mr-1"
+  />
+  -
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "" 2`] = `
+<span
+  style="color:#333333"
+>
+  <i
+    class="fas fa-question-circle fa-fw mr-1"
+  />
+  -
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "ERROR" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-exclamation-triangle fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "ERROR",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "ERROR" 2`] = `
+<span
+  style="color:#dc3545"
+>
+  <i
+    class="fas fa-exclamation-triangle fa-fw mr-1"
+  />
+  <span>
+    Internal System Error
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "FAILED" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-times fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "FAILED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "FAILED" 2`] = `
+<span
+  style="color:#dc3545"
+>
+  <i
+    class="fas fa-times fa-fw mr-1"
+  />
+  <span>
+    Failed
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "IN_PROGRESS" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#17a2b8",
+    }
+  }
+>
+  <i
+    className="fas fa-hourglass-start fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "IN_PROGRESS",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "IN_PROGRESS" 2`] = `
+<span
+  style="color:#17a2b8"
+>
+  <i
+    class="fas fa-hourglass-start fa-fw mr-1"
+  />
+  <span>
+    In Progress
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "NEUTRAL" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#6c757d",
+    }
+  }
+>
+  <i
+    className="fas fa-share fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "NEUTRAL",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "NEUTRAL" 2`] = `
+<span
+  style="color:#6c757d"
+>
+  <i
+    class="fas fa-share fa-fw mr-1"
+  />
+  <span>
+    Neutral
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "QUEUED" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#6c757d",
+    }
+  }
+>
+  <i
+    className="far fa-clock fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "QUEUED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "QUEUED" 2`] = `
+<span
+  style="color:#6c757d"
+>
+  <i
+    class="far fa-clock fa-fw mr-1"
+  />
+  <span>
+    Queued
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "STOPPED" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-stop-circle fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "STOPPED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "STOPPED" 2`] = `
+<span
+  style="color:#dc3545"
+>
+  <i
+    class="fas fa-stop-circle fa-fw mr-1"
+  />
+  <span>
+    Stopped by User
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "SUCCEEDED" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#28a745",
+    }
+  }
+>
+  <i
+    className="fas fa-check fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "SUCCEEDED",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "SUCCEEDED" 2`] = `
+<span
+  style="color:#28a745"
+>
+  <i
+    class="fas fa-check fa-fw mr-1"
+  />
+  <span>
+    Succeeded
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "TIMED_OUT" 1`] = `
+<span
+  style={
+    Object {
+      "color": "#dc3545",
+    }
+  }
+>
+  <i
+    className="fas fa-stopwatch fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "TIMED_OUT",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for status "TIMED_OUT" 2`] = `
+<span
+  style="color:#dc3545"
+>
+  <i
+    class="fas fa-stopwatch fa-fw mr-1"
+  />
+  <span>
+    Timed Out
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for unknown status 1`] = `
+<span
+  style={
+    Object {
+      "color": "#333333",
+    }
+  }
+>
+  <i
+    className="fas fa-question-circle fa-fw mr-1"
+  />
+  <FormattedMessage
+    defaultMessage="{status, select,
+            QUEUED {Queued}
+            IN_PROGRESS {In Progress}
+            SUCCEEDED {Succeeded}
+            ERROR {Internal System Error}
+            FAILED {Failed}
+            STOPPED {Stopped by User}
+            TIMED_OUT {Timed Out}
+            NEUTRAL {Neutral}
+            other {{status}}
+        }"
+    id="app.components.ExecutionStatus.executionStatus"
+    values={
+      Object {
+        "status": "foobar",
+      }
+    }
+  />
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for unknown status 2`] = `
+<span
+  style="color:#333333"
+>
+  <i
+    class="fas fa-question-circle fa-fw mr-1"
+  />
+  <span>
+    foobar
+  </span>
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for unknown status 3`] = `
+<span
+  style={
+    Object {
+      "color": "#333333",
+    }
+  }
+>
+  <i
+    className="fas fa-question-circle fa-fw mr-1"
+  />
+  -
+</span>
+`;
+
+exports[`<ExecutionStatus /> should render expected JSX for unknown status 4`] = `
+<span
+  style="color:#333333"
+>
+  <i
+    class="fas fa-question-circle fa-fw mr-1"
+  />
+  -
+</span>
+`;

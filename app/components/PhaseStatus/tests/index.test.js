@@ -1,6 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, render } from 'enzyme';
+import { IntlProvider } from 'react-intl';
 import PhaseStatus, { statusDisplay } from '../index';
+
+const snapshots = (jsx) => {
+    expect(shallow(jsx)).toMatchSnapshot();
+    expect(render(
+        <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
+    )).toMatchSnapshot();
+};
 
 describe('<PhaseStatus />', () => {
     it('should have expected statuses for statusDisplay', () => {
@@ -15,22 +23,22 @@ describe('<PhaseStatus />', () => {
             ].sort());
     });
 
-    it('should render expected JSX for statuses', () => {
-        for (const status of Object.keys(statusDisplay)) {
-            expect(shallow(
+    for (const status of Object.keys(statusDisplay)) {
+        it(`should render expected JSX for status ${JSON.stringify(status)}`, () => {
+            snapshots(
                 <PhaseStatus status={status}/>,
-            )).toMatchSnapshot();
-        }
-    });
+            );
+        });
+    }
 
     it('should render expected JSX for unknown status', () => {
-        expect(shallow(
+        snapshots(
             <PhaseStatus status="foobar"/>,
-        )).toMatchSnapshot();
+        );
 
-        expect(shallow(
+        snapshots(
             <PhaseStatus/>,
-        )).toMatchSnapshot();
+        );
     });
 
 });

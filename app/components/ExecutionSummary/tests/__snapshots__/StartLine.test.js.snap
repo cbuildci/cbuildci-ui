@@ -1,0 +1,218 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<StartLine/> should render expected JSX for "opened" pull request event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} after {action, select,
+            opened {{actionHtml}}
+            synchronize {{actionHtml} to}
+            other {{actionHtml}}
+        }
+        {pullRequestLinkHtml}"
+  id="app.components.ExecutionSummary.startedForPullRequest"
+  values={
+    Object {
+      "action": "opened",
+      "actionHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{action, select,
+            opened {opening}
+            synchronize {push}
+            other {action}
+        }"
+          id="app.components.ExecutionSummary.startedForPullRequest_action"
+          values={
+            Object {
+              "action": "opened",
+            }
+          }
+        />
+      </strong>,
+      "event": "pull_request",
+      "pullRequestLinkHtml": <a
+        href="https://git.com/foo/bar/pull/5"
+      >
+        <FormattedMessage
+          defaultMessage="pull request #{pullRequestNumber}"
+          id="app.components.ExecutionSummary.startedForPullRequest_link"
+          values={
+            Object {
+              "pullRequestNumber": 5,
+            }
+          }
+        />
+      </a>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<StartLine/> should render expected JSX for "opened" pull request event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        2 minutes ago
+      </span>
+    </time>
+  </strong>
+   after 
+  <strong>
+    <span>
+      opening
+    </span>
+  </strong>
+  
+        
+  <a
+    href="https://git.com/foo/bar/pull/5"
+  >
+    <span>
+      pull request #5
+    </span>
+  </a>
+</span>
+`;
+
+exports[`<StartLine/> should render expected JSX for "synchronize" pull request event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} after {action, select,
+            opened {{actionHtml}}
+            synchronize {{actionHtml} to}
+            other {{actionHtml}}
+        }
+        {pullRequestLinkHtml}"
+  id="app.components.ExecutionSummary.startedForPullRequest"
+  values={
+    Object {
+      "action": "synchronize",
+      "actionHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{action, select,
+            opened {opening}
+            synchronize {push}
+            other {action}
+        }"
+          id="app.components.ExecutionSummary.startedForPullRequest_action"
+          values={
+            Object {
+              "action": "synchronize",
+            }
+          }
+        />
+      </strong>,
+      "event": "pull_request",
+      "pullRequestLinkHtml": <a
+        href="https://git.com/foo/bar/pull/5"
+      >
+        <FormattedMessage
+          defaultMessage="pull request #{pullRequestNumber}"
+          id="app.components.ExecutionSummary.startedForPullRequest_link"
+          values={
+            Object {
+              "pullRequestNumber": 5,
+            }
+          }
+        />
+      </a>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<StartLine/> should render expected JSX for "synchronize" pull request event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        2 minutes ago
+      </span>
+    </time>
+  </strong>
+   after 
+  <strong>
+    <span>
+      push
+    </span>
+  </strong>
+   to
+        
+  <a
+    href="https://git.com/foo/bar/pull/5"
+  >
+    <span>
+      pull request #5
+    </span>
+  </a>
+</span>
+`;
+
+exports[`<StartLine/> should render expected JSX with just the create time 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml}"
+  id="app.components.ExecutionSummary.startedWithoutEvent"
+  values={
+    Object {
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<StartLine/> should render expected JSX with just the create time 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        2 minutes ago
+      </span>
+    </time>
+  </strong>
+</span>
+`;

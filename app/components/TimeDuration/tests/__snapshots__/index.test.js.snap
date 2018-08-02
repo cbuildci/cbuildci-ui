@@ -1,0 +1,406 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TimeDuration /> Should render expected JSX 1`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "seconds",
+      "value": 0,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 2`] = `
+<span>
+  0 seconds
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 3`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "seconds",
+      "value": 59,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 4`] = `
+<span>
+  59 seconds
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 5`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "minutes",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 6`] = `
+<span>
+  1 minute
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 7`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "minutes",
+      "value": 60,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 8`] = `
+<span>
+  60 minutes
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 9`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "hours",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 10`] = `
+<span>
+  1 hour
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 11`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "hours",
+      "value": 24,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 12`] = `
+<span>
+  24 hours
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 13`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "days",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 14`] = `
+<span>
+  1 day
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 15`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "days",
+      "value": 7,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 16`] = `
+<span>
+  7 days
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 17`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "weeks",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 18`] = `
+<span>
+  1 week
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 19`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "weeks",
+      "value": 6.5,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 20`] = `
+<span>
+  6.5 weeks
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 21`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "months",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 22`] = `
+<span>
+  1 month
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 23`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "months",
+      "value": 5,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 24`] = `
+<span>
+  5 months
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 25`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "months",
+      "value": 8,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 26`] = `
+<span>
+  8 months
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 27`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "years",
+      "value": 1,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 28`] = `
+<span>
+  1 year
+</span>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 29`] = `
+<FormattedMessage
+  defaultMessage="{value, number} {unit, select,
+                seconds {{value, plural, one {second} other {seconds} }}
+                minutes {{value, plural, one {minute} other {minutes} }}
+                hours {{value, plural, one {hour} other {hours} }}
+                days {{value, plural, one {day} other {days} }}
+                weeks {{value, plural, one {week} other {weeks} }}
+                months {{value, plural, one {month} other {months} }}
+                years {{value, plural, one {year} other {years} }}
+            }"
+  id="app.components.TimeDuration.duration"
+  values={
+    Object {
+      "unit": "years",
+      "value": 10,
+    }
+  }
+/>
+`;
+
+exports[`<TimeDuration /> Should render expected JSX 30`] = `
+<span>
+  10 years
+</span>
+`;

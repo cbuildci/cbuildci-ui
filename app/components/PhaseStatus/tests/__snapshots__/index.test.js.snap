@@ -254,170 +254,17 @@ exports[`<PhaseStatus /> should render expected JSX for status "TIMED_OUT" 2`] =
 </span>
 `;
 
-exports[`<PhaseStatus /> should render expected JSX for statuses 1`] = `
-<span
-  style={
-    Object {
-      "color": "#28a745",
-    }
-  }
->
-  <i
-    className="fas fa-check fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "SUCCEEDED",
-      }
-    }
-  />
-</span>
-`;
-
-exports[`<PhaseStatus /> should render expected JSX for statuses 2`] = `
-<span
-  style={
-    Object {
-      "color": "#dc3545",
-    }
-  }
->
-  <i
-    className="fas fa-times fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "FAILED",
-      }
-    }
-  />
-</span>
-`;
-
-exports[`<PhaseStatus /> should render expected JSX for statuses 3`] = `
-<span
-  style={
-    Object {
-      "color": "#dc3545",
-    }
-  }
->
-  <i
-    className="fas fa-times fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "FAULT",
-      }
-    }
-  />
-</span>
-`;
-
-exports[`<PhaseStatus /> should render expected JSX for statuses 4`] = `
-<span
-  style={
-    Object {
-      "color": "#dc3545",
-    }
-  }
->
-  <i
-    className="far fa-clock fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "TIMED_OUT",
-      }
-    }
-  />
-</span>
-`;
-
-exports[`<PhaseStatus /> should render expected JSX for statuses 5`] = `
-<span
-  style={
-    Object {
-      "color": "#17a2b8",
-    }
-  }
->
-  <i
-    className="fas fa-hourglass-start fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "IN_PROGRESS",
-      }
-    }
-  />
-</span>
-`;
-
-exports[`<PhaseStatus /> should render expected JSX for statuses 6`] = `
-<span
-  style={
-    Object {
-      "color": "#dc3545",
-    }
-  }
->
-  <i
-    className="fas fa-stop-circle fa-fw"
-  />
-   
-  <FormattedMessage
-    defaultMessage="{status, select,
-            other {{status}}
-        }"
-    id="app.components.PhaseStatus.phaseStatus"
-    values={
-      Object {
-        "status": "STOPPED",
-      }
-    }
-  />
-</span>
-`;
-
 exports[`<PhaseStatus /> should render expected JSX for unknown status 1`] = `
 <span
   style={
     Object {
-      "color": undefined,
+      "color": "#333333",
     }
   }
 >
+  <i
+    className="fas fa-question-circle fa-fw mr-1"
+  />
   <FormattedMessage
     defaultMessage="{status, select,
             other {{status}}
@@ -434,13 +281,14 @@ exports[`<PhaseStatus /> should render expected JSX for unknown status 1`] = `
 
 exports[`<PhaseStatus /> should render expected JSX for unknown status 2`] = `
 <span
-  style={
-    Object {
-      "color": undefined,
-    }
-  }
+  style="color:#333333"
 >
-  -
+  <i
+    class="fas fa-question-circle fa-fw mr-1"
+  />
+  <span>
+    foobar
+  </span>
 </span>
 `;
 

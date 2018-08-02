@@ -14,6 +14,7 @@ describe('<PhaseStatus />', () => {
     it('should have expected statuses for statusDisplay', () => {
         expect(Object.keys(statusDisplay).sort())
             .toEqual([
+                '',
                 'SUCCEEDED',
                 'FAILED',
                 'FAULT',

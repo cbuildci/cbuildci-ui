@@ -3,25 +3,27 @@ import { shallow, render } from 'enzyme';
 import { IntlProvider } from 'react-intl';
 import StartLine from '../StartLine';
 
+const snapshots = (jsx) => {
+    expect(shallow(jsx)).toMatchSnapshot();
+    expect(render(
+        <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
+    )).toMatchSnapshot();
+};
+
 describe('<StartLine/>', () => {
     it('should render expected JSX with just the create time', () => {
-        const jsx = (
+        snapshots(
             <StartLine
                 githubHost="git.com"
                 owner="foo"
                 repo="bar"
                 createTime={1500000000000}
-            />
+            />,
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 
     it('should render expected JSX for "opened" pull request event', () => {
-        const jsx = (
+        snapshots(
             <StartLine
                 githubHost="git.com"
                 owner="foo"
@@ -34,17 +36,12 @@ describe('<StartLine/>', () => {
                         number: 5,
                     },
                 }}
-            />
+            />,
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 
     it('should render expected JSX for "synchronize" pull request event', () => {
-        const jsx = (
+        snapshots(
             <StartLine
                 githubHost="git.com"
                 owner="foo"
@@ -57,12 +54,7 @@ describe('<StartLine/>', () => {
                         number: 5,
                     },
                 }}
-            />
+            />,
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 });

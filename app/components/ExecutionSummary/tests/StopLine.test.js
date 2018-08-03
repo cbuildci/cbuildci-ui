@@ -1,26 +1,28 @@
 import React from 'react';
 import { shallow, render } from 'enzyme';
-import StopLine from '../StopLine';
 import { IntlProvider } from 'react-intl';
+import StopLine from '../StopLine';
+
+const snapshots = (jsx) => {
+    expect(shallow(jsx)).toMatchSnapshot();
+    expect(render(
+        <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
+    )).toMatchSnapshot();
+};
 
 describe('<StopLine/>', () => {
     it('should render expected JSX when has concluded', () => {
-        const jsx = (
+        snapshots(
             <StopLine
                 githubHost="git.com"
                 createTime={1500000000000}
                 conclusionTime={1500000200000}
             />
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 
     it('should render expected JSX when user requests stop', () => {
-        const jsx = (
+        snapshots(
             <StopLine
                 githubHost="git.com"
                 createTime={1500000000000}
@@ -28,15 +30,10 @@ describe('<StopLine/>', () => {
                 stopRequestTime={1500000100000}
             />
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 
     it('should render expected JSX when user requests stop and has concluded', () => {
-        const jsx = (
+        snapshots(
             <StopLine
                 githubHost="git.com"
                 createTime={1500000000000}
@@ -45,10 +42,5 @@ describe('<StopLine/>', () => {
                 conclusionTime={1500000200000}
             />
         );
-
-        expect(shallow(jsx)).toMatchSnapshot();
-        expect(render(
-            <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-        )).toMatchSnapshot();
     });
 });

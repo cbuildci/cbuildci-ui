@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoadPageError /> should render expected JSX 1`] = `
+<React.Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <InjectIntl(FormattedTitle)
+      defaultMessage="Failed to Load Page"
+      id="app.components.LoadPageError.title"
+    />
+  </HelmetWrapper>
+  <PageHeader>
+    <FormattedMessage
+      defaultMessage="Failed to Load Page"
+      id="app.components.LoadPageError.header"
+      values={Object {}}
+    />
+  </PageHeader>
+  <p>
+    <FormattedMessage
+      defaultMessage="An problem was encountered while loading this page."
+      id="app.components.LoadPageError.bodyMessage"
+      values={Object {}}
+    />
+  </p>
+</React.Fragment>
+`;
+
+exports[`<LoadPageError /> should render expected JSX 2`] = `
+Array [
+  <h1
+    class="mt-3 pb-2"
+    style="padding-bottom:8px;border-bottom:1px solid #CCC"
+  >
+    <span>
+      Failed to Load Page
+    </span>
+  </h1>,
+  <p>
+    <span>
+      An problem was encountered while loading this page.
+    </span>
+  </p>,
+]
+`;

@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> should render the expected JSX 1`] = `
+<React.Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <InjectIntl(FormattedTitle)
+      defaultMessage="Page Not Found"
+      id="cbuildci.containers.NotFoundPage.title"
+    />
+  </HelmetWrapper>
+  <PageHeader>
+    <FormattedMessage
+      defaultMessage="Page Not Found"
+      id="cbuildci.containers.NotFoundPage.header"
+      values={Object {}}
+    />
+  </PageHeader>
+  <p>
+    <FormattedMessage
+      defaultMessage="The requested page does not exist."
+      id="cbuildci.containers.NotFoundPage.bodyMessage"
+      values={Object {}}
+    />
+  </p>
+</React.Fragment>
+`;
+
+exports[`<NotFound /> should render the expected JSX 2`] = `
+Array [
+  <h1
+    class="mt-3 pb-2"
+    style="padding-bottom:8px;border-bottom:1px solid #CCC"
+  >
+    <span>
+      Page Not Found
+    </span>
+  </h1>,
+  <p>
+    <span>
+      The requested page does not exist.
+    </span>
+  </p>,
+]
+`;

@@ -1,9 +1,13 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import {{ properCase name }} from '../index';
+import React from 'react';
+import { shallow, render } from 'enzyme';
+import { IntlProvider } from 'react-intl';
+import { snapshots } from '../../../../internals/testing/snapshot-util';
+import {{ properCase name }} from '../index';
 
 describe('<{{ properCase name }} />', () => {
-    it.skip('Expect to have unit tests specified', () => {
-        expect(true).toEqual(false);
+    it.skip('should render expected JSX', () => {
+        snapshots(
+            <{{ properCase name }}/>,
+        );
     });
 });

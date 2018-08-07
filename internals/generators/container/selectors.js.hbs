@@ -1,18 +1,26 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-// Direct selector to the {{ camelCase name }} state domain
-const select{{ properCase name }}Domain = (state) => state.get('{{ camelCase name }}', initialState);
+// Direct selector to the {{ camelCase name }} state domain.
+const selectDomain =
+    (globalState) => globalState.get('{{ camelCase name }}', initialState);
+
+// Default selector used by {{ properCase name }}
+export default createSelector(
+    selectDomain,
+    (domainState) => domainState.toJS(),
+);
 
 /*
  * Other specific selectors
  */
 
-// Default selector used by {{ properCase name }}
-const select{{ camelCase name }} = createSelector(
-    select{{ properCase name }}Domain,
-    substate => substate.toJS(),
-);
+// export const selectIsLoading = createSelector(
+//     selectDomain,
+//     (domainState) => domainState.get('isLoading'),
+// );
 
-export default makeSelect{{ properCase name }};
-export { select{{ properCase name }}Domain };
+// export const selectLoadError = createSelector(
+//     selectDomain,
+//     (domainState) => domainState.get('loadError'),
+// );

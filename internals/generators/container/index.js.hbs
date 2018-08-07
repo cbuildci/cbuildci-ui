@@ -13,7 +13,7 @@ import { FormattedMessage } from 'react-intl';
 {{/if}}
 {{#if wantActionsAndReducer}}
 import { createStructuredSelector } from 'reselect';
-import makeSelect{{properCase name}} from './selectors';
+import select{{properCase name}} from './selectors';
 {{/if}}
 {{#if wantMessages}}
 import messages from './messages';
@@ -47,7 +47,7 @@ export class {{ properCase name }} extends React.{{{ component }}} {
 
 {{#if wantActionsAndReducer}}
 const mapStateToProps = createStructuredSelector({
-    {{name}}: makeSelect{{properCase name}}(),
+    {{name}}: select{{properCase name}},
 });
 {{/if}}
 

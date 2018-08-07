@@ -3,24 +3,21 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { compose, bindActionCreators } from 'redux';
 {{#if wantHeaders}}
 import { Helmet } from 'react-helmet';
 {{/if}}
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl';
 {{/if}}
-{{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
-{{/if}}
-import { compose } from 'redux';
 {{#if wantSaga}}
 import injectSaga from 'utils/injectSaga';
 {{/if}}
 {{#if wantActionsAndReducer}}
 import injectReducer from 'utils/injectReducer';
-import makeSelect{{properCase name}} from './selectors';
+import select{{properCase name}} from './selectors';
 import reducer from './reducer';
 {{/if}}
 {{#if wantSaga}}
@@ -49,19 +46,35 @@ export class {{ properCase name }} extends {{{ type }}} {
     }
 }
 
-{{ properCase name }}.propTypes = {
-    dispatch: PropTypes.func.isRequired,
-};
+{{ properCase name }}.propTypes = {};
+{{ properCase name }}.defaultProps = {};
 
 {{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-    {{ lowerCase name }}: makeSelect{{properCase name}}(),
-});
+function mapStateToProps(state, ownProps) {
+    return {
+        // Route params
+        // myparam: ownProps.match.params.myparam,
+
+        // Store values
+        {{ lowerCase name }}: select{{properCase name}},
+    };
+}
 {{/if}}
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
+    // Example using route params.
+    // onMyEvent: () => myActionCreator(
+    //     ownProps.match.params.owner,
+    // ),
+}, dispatch);
+
+function mergeProps(stateProps, dispatchProps) {
     return {
-        dispatch,
+        ...stateProps,
+        ...dispatchProps,
+
+        // Pass through props by adding "ownProps" as third argument to mergeProps.
+        // myProp: ownProps.myProp,
     };
 }
 
@@ -69,6 +82,7 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(
     mapStateToProps,
     mapDispatchToProps,
+    mergeProps,
 );
 
 const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });

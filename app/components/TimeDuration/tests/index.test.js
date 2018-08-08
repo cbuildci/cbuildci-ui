@@ -1,14 +1,6 @@
 import React from 'react';
-import { shallow, render } from 'enzyme';
-import { IntlProvider } from 'react-intl';
+import { snapshots } from '../../../../internals/testing/snapshot-util';
 import TimeDuration from '../index';
-
-const snapshots = (jsx) => {
-    expect(shallow(jsx)).toMatchSnapshot();
-    expect(render(
-        <IntlProvider locale="en" initialNow={1500000100000}>{jsx}</IntlProvider>
-    )).toMatchSnapshot();
-};
 
 describe('<TimeDuration />', () => {
     it('Should render expected JSX', () => {

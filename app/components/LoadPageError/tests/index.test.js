@@ -1,6 +1,6 @@
 import React from 'react';
-import LoadPageError from '../index';
 import { snapshots } from '../../../../internals/testing/snapshot-util';
+import LoadPageError from '../index';
 
 describe('<LoadPageError />', () => {
     it('should render expected JSX', () => {

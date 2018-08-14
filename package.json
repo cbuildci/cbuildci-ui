@@ -24,7 +24,7 @@
         "build:clean": "rimraf ./build",
         "start": "cross-env NODE_ENV=development webpack-serve --port 3000 --hmr",
         "start:production": "npm run test && npm run build && npm run start:prod",
-        "start:prod": "cross-env NODE_ENV=production webpack-serve --port 3000 --hmr",
+        "start:prod": "cross-env NODE_ENV=production webpack-serve --port 3000",
         "presetup": "npm i chalk shelljs",
         "setup": "node ./internals/scripts/setup.js",
         "clean": "shjs ./internals/scripts/clean.js",

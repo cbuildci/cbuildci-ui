@@ -1,0 +1,413 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull request event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} after {action, select,
+            opened {{actionHtml}}
+            synchronize {{actionHtml} to}
+            other {{actionHtml}}
+        }
+        {pullRequestLinkHtml}"
+  id="app.components.ExecutionStartMessage.startedForPullRequest"
+  values={
+    Object {
+      "action": "opened",
+      "actionHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{action, select,
+            opened {opening}
+            synchronize {push}
+            other {action}
+        }"
+          id="app.components.ExecutionStartMessage.startedForPullRequest_action"
+          values={
+            Object {
+              "action": "opened",
+            }
+          }
+        />
+      </strong>,
+      "event": "pull_request",
+      "pullRequestLinkHtml": <a
+        href="https://git.com/foo/bar/pull/5"
+      >
+        <FormattedMessage
+          defaultMessage="pull request #{pullRequestNumber}"
+          id="app.components.ExecutionStartMessage.startedForPullRequest_link"
+          values={
+            Object {
+              "pullRequestNumber": 5,
+            }
+          }
+        />
+      </a>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull request event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+   after 
+  <strong>
+    <span>
+      opening
+    </span>
+  </strong>
+  
+        
+  <a
+    href="https://git.com/foo/bar/pull/5"
+  >
+    <span>
+      pull request #5
+    </span>
+  </a>
+</span>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "rerun" user event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} {identifier, select,
+            rerun {as {identifierHtml}}
+            other {for action {identifierHtml}}
+        } initiated by {usernameHtml}"
+  id="app.components.ExecutionStartMessage.startedByUserAction"
+  values={
+    Object {
+      "event": "check_run",
+      "identifier": "rerun",
+      "identifierHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{identifier, select,
+            rerun {re-run}
+            other {{identifier}}
+        }"
+          id="app.components.ExecutionStartMessage.startedByUserAction_identifier"
+          values={
+            Object {
+              "identifier": "rerun",
+            }
+          }
+        />
+      </strong>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "username": "amekkawi-office",
+      "usernameHtml": <a
+        href="https://git.com/amekkawi-office"
+      >
+        @
+        amekkawi-office
+      </a>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "rerun" user event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+   as 
+  <strong>
+    <span>
+      re-run
+    </span>
+  </strong>
+   initiated by 
+  <a
+    href="https://git.com/amekkawi-office"
+  >
+    @amekkawi-office
+  </a>
+</span>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" pull request event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} after {action, select,
+            opened {{actionHtml}}
+            synchronize {{actionHtml} to}
+            other {{actionHtml}}
+        }
+        {pullRequestLinkHtml}"
+  id="app.components.ExecutionStartMessage.startedForPullRequest"
+  values={
+    Object {
+      "action": "synchronize",
+      "actionHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{action, select,
+            opened {opening}
+            synchronize {push}
+            other {action}
+        }"
+          id="app.components.ExecutionStartMessage.startedForPullRequest_action"
+          values={
+            Object {
+              "action": "synchronize",
+            }
+          }
+        />
+      </strong>,
+      "event": "pull_request",
+      "pullRequestLinkHtml": <a
+        href="https://git.com/foo/bar/pull/5"
+      >
+        <FormattedMessage
+          defaultMessage="pull request #{pullRequestNumber}"
+          id="app.components.ExecutionStartMessage.startedForPullRequest_link"
+          values={
+            Object {
+              "pullRequestNumber": 5,
+            }
+          }
+        />
+      </a>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" pull request event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+   after 
+  <strong>
+    <span>
+      push
+    </span>
+  </strong>
+   to
+        
+  <a
+    href="https://git.com/foo/bar/pull/5"
+  >
+    <span>
+      pull request #5
+    </span>
+  </a>
+</span>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for unknown event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} after event \\"{event}\\""
+  id="app.components.ExecutionStartMessage.startedWithUnknownEvent"
+  values={
+    Object {
+      "event": "foobar",
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for unknown event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+   after event "foobar"
+</span>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for unknown user event 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml} {identifier, select,
+            rerun {as {identifierHtml}}
+            other {for action {identifierHtml}}
+        } initiated by {usernameHtml}"
+  id="app.components.ExecutionStartMessage.startedByUserAction"
+  values={
+    Object {
+      "event": "check_run",
+      "identifier": "foobar",
+      "identifierHtml": <strong>
+        <FormattedMessage
+          defaultMessage="{identifier, select,
+            rerun {re-run}
+            other {{identifier}}
+        }"
+          id="app.components.ExecutionStartMessage.startedByUserAction_identifier"
+          values={
+            Object {
+              "identifier": "foobar",
+            }
+          }
+        />
+      </strong>,
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+      "username": "amekkawi-office",
+      "usernameHtml": <a
+        href="https://git.com/amekkawi-office"
+      >
+        @
+        amekkawi-office
+      </a>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX for unknown user event 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+   for action 
+  <strong>
+    <span>
+      foobar
+    </span>
+  </strong>
+   initiated by 
+  <a
+    href="https://git.com/amekkawi-office"
+  >
+    @amekkawi-office
+  </a>
+</span>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX with just the create time 1`] = `
+<FormattedMessage
+  defaultMessage="Started {relativeCreateTimeHtml}"
+  id="app.components.ExecutionStartMessage.startedWithoutEvent"
+  values={
+    Object {
+      "relativeCreateTimeHtml": <strong>
+        <InjectIntl(Time)
+          date={1500000000000}
+        >
+          <FormattedRelative
+            updateInterval={5000}
+            value={1500000000000}
+          />
+        </InjectIntl(Time)>
+      </strong>,
+    }
+  }
+/>
+`;
+
+exports[`<ExecutionStartMessage/> should render expected JSX with just the create time 2`] = `
+<span>
+  Started 
+  <strong>
+    <time
+      class="position-relative"
+      datetime="2017-07-14T02:40:00.000Z"
+      id="foobar"
+      tabindex="0"
+    >
+      <span>
+        now
+      </span>
+    </time>
+  </strong>
+</span>
+`;

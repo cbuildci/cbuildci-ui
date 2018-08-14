@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const isServe = !!process.env.WEBPACK_SERVE;
 
 module.exports = {
     mode: isProduction
@@ -22,7 +23,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build'),
         publicPath: '/static/',
-        ...(isProduction ? {
+        ...(isProduction && !isServe ? {
             filename: '[name].[chunkhash].js',
             chunkFilename: '[name].[chunkhash].chunk.js',
         } : {

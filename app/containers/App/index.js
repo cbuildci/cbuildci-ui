@@ -8,35 +8,56 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import styled from 'styled-components';
+import { hot } from 'react-hot-loader';
 import { Switch, Route } from 'react-router-dom';
 
+import { ErrorContextProvider } from 'components/ErrorBoundary';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import TopNav from 'containers/TopNav';
 
-const Container = styled.div`
-    width: 100%;
-    padding-right: calc(15px / 2);
-    padding-left: calc(15px / 2);
-    margin-right: auto;
-    margin-left: auto;
-    max-width: 900px;
-`;
+// Pages
+import ExecutionDetailPage from 'containers/ExecutionDetailPage/Loadable';
 
-export default function App() {
+import LoginModal from './LoginModal';
+
+const onError = (err, info) => {
+    // TODO: How to better handle this?
+    // eslint-disable-next-line no-console
+    console.log('onError', err, info);
+};
+
+export function App() {
     return (
-        <Container>
-            <Helmet
-                titleTemplate="%s - CBuildCI"
-                defaultTitle="CBuildCI"
-            >
-                {false && <meta
-                    name="description"
-                    content="TODO"
-                />}
-            </Helmet>
-            <Switch>
-                <Route path="" component={NotFoundPage} />
-            </Switch>
-        </Container>
+        <ErrorContextProvider value={onError}>
+            <div className="container-flex">
+                <Helmet
+                    titleTemplate="%s - CBuildCI"
+                    defaultTitle="CBuildCI"
+                />
+
+                <TopNav/>
+
+                <div className="ml-3 mr-3">
+                    <Switch>
+                        <Route
+                            path="/repo/:owner/:repo/commit/:commit/exec/:executionNum"
+                            component={ExecutionDetailPage}
+                            exact={false}
+                        />
+
+                        {/* <Route
+                            path="/repo/:owner/:repo/commit/:commit/exec/:executionNum/build/:buildKey"
+                            component={BuildDetailPage}
+                            exact={true}
+                        /> */}
+
+                        <Route path="" component={NotFoundPage} />
+                    </Switch>
+                </div>
+                <LoginModal/>
+            </div>
+        </ErrorContextProvider>
     );
 }
+
+export default hot(module)(App);

@@ -2,6 +2,7 @@
  * Panel
  */
 
+import React from 'react';
 import styled, { css } from 'styled-components';
 
 export const Panel = styled.div`
@@ -55,6 +56,82 @@ export const Tab = styled.button`
             background-color: white;
         }
     `}
+`;
+
+export class TabButtonComponent extends React.PureComponent {
+
+    state = {
+        clickFocused: false,
+    };
+
+    constructor(props) {
+        super(props);
+        this.handleMouseDown = this.handleMouseDown.bind(this);
+        this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    handleMouseDown() {
+        this.setState({
+            clickFocused: true,
+        });
+    }
+
+    handleBlur() {
+        if (this.state.clickFocused) {
+            this.setState({
+                clickFocused: false,
+            });
+        }
+    }
+
+    render() {
+        const {
+            children,
+            active, // eslint-disable-line no-unused-vars
+            ...props
+        } = this.props;
+        const { clickFocused } = this.state;
+
+        return (
+            <button
+                {...props}
+                onMouseDown={this.handleMouseDown}
+                onTouchStart={this.handleMouseDown}
+                onBlur={this.handleBlur}
+                style={clickFocused ? { outline: 'none' } : {}}
+            >
+                {children}
+            </button>
+        );
+    }
+}
+
+export const TabButton = styled(TabButtonComponent)`
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #666;
+    background-color: transparent;
+    border-width: 0;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+    
+    ${({ active }) => active && css`
+        color: #333;
+        background-color: white;
+        cursor: text;
+        
+        &:hover {
+            background-color: white;
+        }
+    `}
+`;
+
+export const TabLabel = styled.label`
+    ${Tab} {
+        pointer-events: none;
+    }
 `;
 
 export default Panel;

@@ -22,6 +22,10 @@ export function getStatusColor(status) {
     return (statusDisplay[status] || statusDisplay['']).color || null;
 }
 
+export function getStatusIcon(status) {
+    return (statusDisplay[status] || statusDisplay['']).icon || null;
+}
+
 function PhaseStatus({ status }) {
     const { icon, color } = statusDisplay[status] || statusDisplay[''];
 

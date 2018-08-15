@@ -1,0 +1,1459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BuildCard /> should render expected JSX when completed 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="SUCCEEDED"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      <FormattedMessage
+        defaultMessage="Started after {durationHtml}"
+        id="app.components.BuildCard.started"
+        values={
+          Object {
+            "durationHtml": <strong>
+              <TimeDuration
+                seconds={300}
+              />
+            </strong>,
+          }
+        }
+      />
+    </div>
+    <div>
+      <FormattedMessage
+        defaultMessage="Completed after {durationHtml}"
+        id="app.components.BuildCard.completed"
+        values={
+          Object {
+            "durationHtml": <strong>
+              <TimeDuration
+                seconds={600}
+              />
+            </strong>,
+          }
+        }
+      />
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX when completed 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#28a745"
+    >
+      <i
+        class="fas fa-check fa-fw mr-1"
+      />
+      <span>
+        Succeeded
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      <span>
+        Started after 
+        <strong>
+          <span>
+            5 minutes
+          </span>
+        </strong>
+      </span>
+    </div>
+    <div>
+      <span>
+        Completed after 
+        <strong>
+          <span>
+            10 minutes
+          </span>
+        </strong>
+      </span>
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;
+
+exports[`<BuildCard /> should render expected JSX when running 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="IN_PROGRESS"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      <FormattedMessage
+        defaultMessage="Started after {durationHtml}"
+        id="app.components.BuildCard.started"
+        values={
+          Object {
+            "durationHtml": <strong>
+              <TimeDuration
+                seconds={300}
+              />
+            </strong>,
+          }
+        }
+      />
+    </div>
+    <div>
+      <FormattedMessage
+        defaultMessage="Running for {durationHtml}"
+        id="app.components.BuildCard.running"
+        values={
+          Object {
+            "durationHtml": <strong>
+              <TimeDuration
+                seconds={600}
+              />
+            </strong>,
+          }
+        }
+      />
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX when running 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#17a2b8"
+    >
+      <i
+        class="fas fa-hourglass-start fa-fw mr-1"
+      />
+      <span>
+        In Progress
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      <span>
+        Started after 
+        <strong>
+          <span>
+            5 minutes
+          </span>
+        </strong>
+      </span>
+    </div>
+    <div>
+      <span>
+        Running for 
+        <strong>
+          <span>
+            10 minutes
+          </span>
+        </strong>
+      </span>
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 1 dependency 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="WAITING_FOR_DEPENDENCY"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      first
+    </div>
+    <div>
+      <span>
+         
+      </span>
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 1 dependency 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#6c757d"
+    >
+      <i
+        class="far fa-clock fa-fw mr-1"
+      />
+      <span>
+        Waiting for Dependency
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      first
+    </div>
+    <div>
+      <span>
+         
+      </span>
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 2 dependencies 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="WAITING_FOR_DEPENDENCY"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      first
+    </div>
+    <div>
+      second
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 2 dependencies 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#6c757d"
+    >
+      <i
+        class="far fa-clock fa-fw mr-1"
+      />
+      <span>
+        Waiting for Dependency
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      first
+    </div>
+    <div>
+      second
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 3 dependencies 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="WAITING_FOR_DEPENDENCY"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      first
+    </div>
+    <div>
+      <em>
+        <FormattedMessage
+          defaultMessage="(+{count} more)"
+          id="app.components.BuildCard.extraDeps"
+          values={
+            Object {
+              "count": 2,
+            }
+          }
+        />
+      </em>
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX when waiting on 3 dependencies 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#6c757d"
+    >
+      <i
+        class="far fa-clock fa-fw mr-1"
+      />
+      <span>
+        Waiting for Dependency
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      first
+    </div>
+    <div>
+      <em>
+        <span>
+          (+2 more)
+        </span>
+      </em>
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;
+
+exports[`<BuildCard /> should render expected JSX with minimal props 1`] = `
+<BuildCard__Card
+  to="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <BuildCard__CardTitle>
+    mybuild
+  </BuildCard__CardTitle>
+  <BuildCard__CardStatus>
+    <BuildStatus
+      status="STARTING"
+    />
+  </BuildCard__CardStatus>
+  <BuildCard__CardBody>
+    <div>
+      <span>
+         
+      </span>
+    </div>
+    <div>
+      <span>
+         
+      </span>
+    </div>
+  </BuildCard__CardBody>
+  <BuildCard__CardProgress>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="SUBMITTED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PROVISIONING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="DOWNLOAD_SOURCE"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="INSTALL"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="PRE_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="POST_BUILD"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="UPLOAD_ARTIFACTS"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="FINALIZING"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+    <BuildCard__CardProgressBar
+      color="#EEE"
+      key="COMPLETED"
+    >
+      <i
+        className="fas fa-none"
+      />
+    </BuildCard__CardProgressBar>
+  </BuildCard__CardProgress>
+</BuildCard__Card>
+`;
+
+exports[`<BuildCard /> should render expected JSX with minimal props 2`] = `
+<a
+  class="BuildCard__Card-kqiEdT dKUzpZ"
+  href="/repo/foo/bar/commit/33bf84a4563dcd16e027c0c6cf2a08984740d3f5/exec/2/build/mybuild"
+>
+  <div
+    class="BuildCard__CardTitle-cIVKTM gzKiPi"
+  >
+    mybuild
+  </div>
+  <div
+    class="BuildCard__CardStatus-cejjLq jxuKRn"
+  >
+    <span
+      style="color:#17a2b8"
+    >
+      <i
+        class="fas fa-hourglass-start fa-fw mr-1"
+      />
+      <span>
+        Starting CodeBuild
+      </span>
+    </span>
+  </div>
+  <div
+    class="BuildCard__CardBody-cHdpxK hThGij"
+  >
+    <div>
+      <span>
+         
+      </span>
+    </div>
+    <div>
+      <span>
+         
+      </span>
+    </div>
+  </div>
+  <div
+    class="BuildCard__CardProgress-biSMuA bXOiQN"
+  >
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+    <div
+      class="BuildCard__CardProgressBar-jnopZE hWlCBR"
+      color="#EEE"
+    >
+      <i
+        class="fas fa-none"
+      />
+    </div>
+  </div>
+</a>
+`;

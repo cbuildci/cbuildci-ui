@@ -24,4 +24,4 @@ const createSagaInjector = createInjectorFactory(onModuleUpdate, {
 
 export default function(sourceModule) {
     return createSagaInjector(sourceModule);
-};
+}

@@ -2,9 +2,6 @@ import { createInjectorFactory } from './injectUtils';
 
 function injectSaga(store, key, saga) {
 
-    // checkKey(key);
-    // checkDescriptor(newDescriptor);
-
     const existingSaga = store.injectedSagas[key];
     if (existingSaga) {
         if (existingSaga.saga === saga) {
@@ -32,4 +29,4 @@ const createSagaInjector = createInjectorFactory(onModuleUpdate, {
 
 export default function(sourceModule) {
     return createSagaInjector(sourceModule);
-};
+}

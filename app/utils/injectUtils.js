@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
 import hoistNonReactStatics from 'hoist-non-react-statics';
 
@@ -52,8 +52,8 @@ function makeHotExport(getHotModule, sourceModule, onModuleUpdate, args) {
 
         hotModule.updateTimeout = setTimeout(() => {
             try {
-                const defaultExport = requireIndirect(sourceModule.id).default;
-                onModuleUpdate(hotModule, defaultExport, ...args);
+                const moduleExport = requireIndirect(sourceModule.id);
+                onModuleUpdate(hotModule, moduleExport.default, ...args);
             }
             catch (e) {
                 throw e; // TODO: ignore errors?
@@ -105,7 +105,7 @@ export function createInjectorFactory(onModuleUpdate, {
         const hotModule = getHotModule(moduleId);
         makeHotExport(getHotModule, sourceModule, onModuleUpdate, args);
 
-        return (key) => (WrappedComponent) => {
+        return (key, moduleExport) => (WrappedComponent) => {
             return createHoc(
                 componentPrefix,
                 WrappedComponent,
@@ -115,7 +115,7 @@ export function createInjectorFactory(onModuleUpdate, {
                         store: PropTypes.object.isRequired,
                     };
 
-                    componentWillMount() {
+                    UNSAFE_componentWillMount() {
                         const store = this.context.store;
 
                         // Skip if already loaded.
@@ -128,8 +128,7 @@ export function createInjectorFactory(onModuleUpdate, {
                             key,
                         }));
 
-                        const defaultExport = requireIndirect(sourceModule.id).default;
-                        onModuleUpdate(hotModule, defaultExport, ...args);
+                        onModuleUpdate(hotModule, moduleExport, ...args);
                     }
 
                     render() {
@@ -138,7 +137,7 @@ export function createInjectorFactory(onModuleUpdate, {
                         );
                     }
                 },
-            )
+            );
         };
-    }
+    };
 }

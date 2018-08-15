@@ -6,7 +6,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { Panel, PanelTabs, Tab } from 'components/Panel';
+import { Panel, PanelTabs, TabButton } from 'components/Panel';
+import PhasesTable from 'components/PhasesTable';
+import BuildParamsTable from './BuildParamsTable';
 
 const logs = [
     { text: '[Container] 2018/07/08 19:13:46 Waiting for agent ping' },
@@ -62,36 +64,6 @@ const Logs = styled.pre`
     margin: 0;
 `;
 
-const ParamsTable = styled.table`
-    max-width: 100%;
-    background-color: transparent;
-    border-collapse: collapse;
-    
-    td, th {
-        padding: 0.3rem;
-        vertical-align: top;
-    }
-    
-    th {
-        text-align: right;
-        white-space: nowrap;
-    }
-`;
-
-const EnvVars = styled.div`
-    & > div {
-        border-top: 1px solid #CCC;
-        padding-top: 6px;
-        margin-top: 6px;
-    }
-
-    & > div:first-child {
-        border-top-width: 0;
-        padding-top: 0;
-        margin-top: 0;
-    }
-`;
-
 const TAB_LOGS = 'LOGS';
 const TAB_PHASES = 'PHASES';
 const TAB_ARTIFACTS = 'ARTIFACTS';
@@ -124,22 +96,22 @@ class BuildDetailPanel extends React.Component {
         return (
             <Panel>
                 <PanelTabs>
-                    <Tab active={tab === TAB_LOGS} data-tab={TAB_LOGS} onClick={this.handleChangeTab}>
+                    <TabButton active={tab === TAB_LOGS} data-tab={TAB_LOGS} onClick={this.handleChangeTab}>
                         <i className="fas fa-desktop mr-2 text-muted"/>
                         Console
-                    </Tab>
-                    <Tab active={tab === TAB_PHASES} data-tab={TAB_PHASES} onClick={this.handleChangeTab}>
+                    </TabButton>
+                    <TabButton active={tab === TAB_PHASES} data-tab={TAB_PHASES} onClick={this.handleChangeTab}>
                         <i className="fas fa-tasks mr-2 text-muted"/>
                         Phases
-                    </Tab>
-                    <Tab active={tab === TAB_ARTIFACTS} data-tab={TAB_ARTIFACTS} onClick={this.handleChangeTab}>
+                    </TabButton>
+                    <TabButton active={tab === TAB_ARTIFACTS} data-tab={TAB_ARTIFACTS} onClick={this.handleChangeTab}>
                         <i className="fas fa-archive mr-2 text-muted"/>
                         Artifacts
-                    </Tab>
-                    <Tab active={tab === TAB_PARAMETERS} data-tab={TAB_PARAMETERS} onClick={this.handleChangeTab}>
+                    </TabButton>
+                    <TabButton active={tab === TAB_PARAMETERS} data-tab={TAB_PARAMETERS} onClick={this.handleChangeTab}>
                         <i className="fas fa-wrench mr-2 text-muted"/>
                         Parameters
-                    </Tab>
+                    </TabButton>
                 </PanelTabs>
 
                 {tab === TAB_LOGS && (
@@ -157,120 +129,20 @@ class BuildDetailPanel extends React.Component {
                     </React.Fragment>
                 )}
 
+                {tab === TAB_PHASES && (
+                    <PhasesTable
+                        phases={buildState.codeBuild && buildState.codeBuild.phases}
+                    />
+                )}
+
+                {tab === TAB_ARTIFACTS && (
+                    <div>Artifacts</div>
+                )}
+
                 {tab === TAB_PARAMETERS && (
-                    <React.Fragment>
-                        <ParamsTable>
-                            <tbody>
-                                <tr>
-                                    <th>Commit Status</th>
-                                    <td>{buildState.buildParams.commitStatus || ''}</td>
-                                </tr>
-                                <tr>
-                                    <th>CodeBuild Project</th>
-                                    <td>{buildState.buildParams.codeBuildProjectArn}</td>
-                                </tr>
-                                <tr>
-                                    <th>Environment Type</th>
-                                    <td>{buildState.buildParams.environmentType}</td>
-                                </tr>
-                                <tr>
-                                    <th>Compute Type</th>
-                                    <td>
-                                        {buildState.buildParams.computeType}
-                                        <a
-                                            className="ml-2"
-                                            href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html"
-                                            target="_blank"
-                                        >
-                                            <i className="fas fa-external-link-alt"/>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Docker Image</th>
-                                    <td>
-                                        {buildState.buildParams.image}
-                                        {buildState.buildParams.image.startsWith('aws/') && (
-                                            <a
-                                                className="ml-2"
-                                                href="https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html"
-                                                target="_blank"
-                                            >
-                                                <i className="fas fa-external-link-alt"/>
-                                            </a>
-                                        )}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Buildspec</th>
-                                    <td>{buildState.buildParams.buildspec}</td>
-                                </tr>
-                                <tr>
-                                    <th>Privileged Mode</th>
-                                    <td>{buildState.buildParams.privilegedMode ? 'true' : 'false'}</td>
-                                </tr>
-                                <tr>
-                                    <th>Timeout</th>
-                                    <td>{buildState.buildParams.timeoutInMinutes}</td>
-                                </tr>
-                                {/* <tr>
-                                    <th>Stop If</th>
-                                    <td>
-                                        <ul className="mb-0 pl-4">
-                                            <li>Not Branch Head</li>
-                                        </ul>
-                                    </td>
-                                </tr> */}
-                                <tr>
-                                    <th>Depends On</th>
-                                    <td>
-                                        {buildState.buildParams.dependsOn.length === 0 && (
-                                            <em className="text-muted">None</em>
-                                        )}
-                                        {buildState.buildParams.dependsOn.length > 0 && (
-                                            <ul className="mb-0 pl-4">
-                                                {buildState.buildParams.dependsOn.map((v, i) => (
-                                                    <li key={i}>{v}</li>
-                                                ))}
-                                            </ul>
-                                        )}
-                                    </td>
-                                </tr>
-                                {/* <tr>
-                                    <th>Branches</th>
-                                    <td><em className="text-muted">N/A</em></td>
-                                </tr> */}
-                                <tr>
-                                    <th>Source S3 Bucket</th>
-                                    <td>{buildState.buildParams.sourceS3Bucket}</td>
-                                </tr>
-                                <tr>
-                                    <th>Source S3 Key Prefix</th>
-                                    <td>{buildState.buildParams.sourceS3KeyPrefix}</td>
-                                </tr>
-                                <tr>
-                                    <th>Artifact S3 Bucket</th>
-                                    <td>{buildState.buildParams.artifactS3Bucket}</td>
-                                </tr>
-                                <tr>
-                                    <th>Artifact S3 Key Prefix</th>
-                                    <td>{buildState.buildParams.artifactS3KeyPrefix}</td>
-                                </tr>
-                                <tr>
-                                    <th>Environment variables</th>
-                                    <td>
-                                        <EnvVars>
-                                            {buildState.buildParams.environmentVariables.map(({ name, value }, i) => {
-                                                return (
-                                                    <div key={i}><code style={{ wordBreak: 'break-all' }}>{name}={value}</code></div>
-                                                );
-                                            })}
-                                        </EnvVars>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </ParamsTable>
-                    </React.Fragment>
+                    <BuildParamsTable
+                        buildParams={buildState.buildParams}
+                    />
                 )}
             </Panel>
         );

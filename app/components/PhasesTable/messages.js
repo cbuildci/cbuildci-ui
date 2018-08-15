@@ -6,8 +6,8 @@ import { defineMessages } from 'react-intl';
 
 export default defineMessages({
     headerPhase: {
-        id: 'app.components.PhasesTable.headerBuild',
-        defaultMessage: 'Build',
+        id: 'app.components.PhasesTable.headerPhase',
+        defaultMessage: 'Phase',
     },
     headerStatus: {
         id: 'app.components.PhasesTable.headerStatus',

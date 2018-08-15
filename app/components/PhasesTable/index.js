@@ -22,11 +22,22 @@ function PhasesTable({ phases }) {
             <tbody>
                 {phases.map((phase) => {
                     return (
-                        <tr key={phase.phaseType}>
-                            <th>{phase.phaseType}</th>
-                            <td><PhaseStatus status={phase.phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus}/></td>
-                            <td>{typeof phase.durationInSeconds === 'number' && <TimeDuration seconds={phase.durationInSeconds}/>}</td>
-                        </tr>
+                        <React.Fragment key={phase.phaseType}>
+                            <tr>
+                                <th>{phase.phaseType}</th>
+                                <td><PhaseStatus status={phase.phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus}/></td>
+                                <td>{typeof phase.durationInSeconds === 'number' && <TimeDuration seconds={phase.durationInSeconds}/>}</td>
+                            </tr>
+                            {phase.contexts && phase.contexts.length > 0 && (
+                                <React.Fragment>
+                                    {phase.contexts.map((context, i) => (
+                                        <tr key={i}>
+                                            <td colSpan="3">{context.message}</td>
+                                        </tr>
+                                    ))}
+                                </React.Fragment>
+                            )}
+                        </React.Fragment>
                     );
                 })}
             </tbody>

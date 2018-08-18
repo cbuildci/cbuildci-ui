@@ -8,8 +8,17 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 import TimeDuration from 'components/TimeDuration';
 import PhaseStatus from '../PhaseStatus';
+import { PHASE_TYPES } from '../../utils/constants';
 
 function PhasesTable({ phases }) {
+    const phaseMap = {};
+
+    if (phases) {
+        for (const phase of phases) {
+            phaseMap[phase.phaseType] = phase;
+        }
+    }
+
     return (
         <table className="table table-md w-auto">
             <thead className="thead-light">
@@ -20,15 +29,16 @@ function PhasesTable({ phases }) {
                 </tr>
             </thead>
             <tbody>
-                {phases.map((phase) => {
+                {PHASE_TYPES.map((phaseType) => {
+                    const phase = phaseMap[phaseType];
                     return (
-                        <React.Fragment key={phase.phaseType}>
+                        <React.Fragment key={phaseType}>
                             <tr>
-                                <th>{phase.phaseType}</th>
-                                <td><PhaseStatus status={phase.phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus}/></td>
-                                <td>{typeof phase.durationInSeconds === 'number' && <TimeDuration seconds={phase.durationInSeconds}/>}</td>
+                                <th>{phaseType}</th>
+                                <td>{phase ? <PhaseStatus status={phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus}/> : '-'}</td>
+                                <td>{phase && typeof phase.durationInSeconds === 'number' ? <TimeDuration seconds={phase.durationInSeconds}/> : '-'}</td>
                             </tr>
-                            {phase.contexts && phase.contexts.length > 0 && (
+                            {phase && phase.contexts && phase.contexts.length > 0 && (
                                 <React.Fragment>
                                     {phase.contexts.map((context, i) => (
                                         <tr key={i}>
@@ -46,7 +56,11 @@ function PhasesTable({ phases }) {
 }
 
 PhasesTable.propTypes = {
-    phases: PropTypes.arrayOf(PropTypes.object).isRequired,
+    phases: PropTypes.arrayOf(PropTypes.object),
+};
+
+PhasesTable.defaultProps = {
+    phases: null,
 };
 
 export default PhasesTable;

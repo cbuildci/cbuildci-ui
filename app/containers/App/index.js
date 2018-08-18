@@ -41,8 +41,20 @@ export function App() {
                     <Switch>
                         <Route
                             path="/repo/:owner/:repo/commit/:commit/exec/:executionNum"
-                            component={ExecutionDetailPage}
-                            exact={false}
+                            render={({ location, match }) => {
+                                const { owner, repo, commit, executionNum } = match.params;
+                                return (
+                                    <ExecutionDetailPage
+                                        key={`${owner}/${repo}/${commit}/${executionNum}`}
+                                        pathname={location.pathname}
+                                        url={match.url}
+                                        owner={owner}
+                                        repo={repo}
+                                        commit={commit}
+                                        executionNum={parseInt(executionNum)}
+                                    />
+                                );
+                            }}
                         />
 
                         {/* <Route

@@ -56,8 +56,11 @@ const CardProgressBar = styled.div`
     }
 `;
 
-function BuildSummaryPanel({ execution, buildKey }) {
-    const buildState = execution.state.builds[buildKey];
+function BuildSummaryPanel({
+    executionCreateTime,
+    executionUpdateTime,
+    buildState,
+}) {
     const phaseStatusesMap = {};
     const currentPhase = buildState.codeBuild && buildState.codeBuild.currentPhase;
 
@@ -74,12 +77,12 @@ function BuildSummaryPanel({ execution, buildKey }) {
                 BUILD DETAIL
             </PanelHeaderMini>
 
-            <BuildTitle>{buildKey}</BuildTitle>
+            <BuildTitle>{buildState.buildKey}</BuildTitle>
 
             <ErrorBoundary errorMessage={lineRenderError}>
                 <BuildSummary
-                    executionCreateTime={execution.createTime}
-                    executionUpdateTime={execution.updateTime}
+                    executionCreateTime={executionCreateTime}
+                    executionUpdateTime={executionUpdateTime}
                     buildState={buildState}
                 />
             </ErrorBoundary>
@@ -107,8 +110,17 @@ function BuildSummaryPanel({ execution, buildKey }) {
 }
 
 BuildSummaryPanel.propTypes = {
-    buildKey: PropTypes.string.isRequired,
-    execution: PropTypes.object.isRequired,
+    executionCreateTime: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+        PropTypes.instanceOf(Date),
+    ]).isRequired,
+    executionUpdateTime: PropTypes.oneOfType([
+        PropTypes.number,
+        PropTypes.string,
+        PropTypes.instanceOf(Date),
+    ]).isRequired,
+    buildState: PropTypes.object.isRequired,
 };
 
 export default BuildSummaryPanel;

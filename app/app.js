@@ -12,15 +12,16 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router/immutable'
+import { ConnectedRouter } from 'connected-react-router/immutable';
 import createHistory from 'history/createBrowserHistory';
 // import 'sanitize.css/sanitize.css';
 
 // Import root app
 import App from 'containers/App';
 
-// Import Language Provider
+// Import providers
 import LanguageProvider from 'containers/LanguageProvider';
+import { WindowHeightProvider } from 'contexts/WindowHeight';
 
 // Load the favicon and the .htaccess file
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
@@ -47,7 +48,9 @@ const render = (messages) => {
         <Provider store={store}>
             <LanguageProvider messages={messages}>
                 <ConnectedRouter history={history}>
-                    <App />
+                    <WindowHeightProvider>
+                        <App />
+                    </WindowHeightProvider>
                 </ConnectedRouter>
             </LanguageProvider>
         </Provider>,

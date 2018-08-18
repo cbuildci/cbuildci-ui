@@ -9,6 +9,8 @@ import { Helmet } from 'react-helmet';
 import { compose, bindActionCreators } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
+import { WindowHeightConsumer } from 'contexts/WindowHeight';
+import { Panel, PanelHeaderMini } from 'components/Panel';
 import LoadingIndicator from 'components/LoadingIndicator';
 import ExecutionSummaryPanel from './ExecutionSummaryPanel';
 import BuildsPanel from './BuildsPanel';
@@ -27,22 +29,44 @@ import {
 import reducer, { injectReducer } from './reducer';
 import saga, { injectSaga } from './saga';
 import {
-    containerClosed,
-    fetchExecution,
+    executionOpened,
+    executionClosed,
 } from './actions';
 
 function BuildDetail({ execution, buildKey }) {
+    const buildState = execution.state.builds[buildKey];
+
+    if (!buildState) {
+        return (
+            <Panel>
+                <PanelHeaderMini>
+                    BUILD DETAIL
+                </PanelHeaderMini>
+
+                <div>Build <strong>{buildKey}</strong> does not exist.</div>
+            </Panel>
+        );
+    }
+
     return (
         <React.Fragment>
             <BuildSummaryPanel
-                buildKey={buildKey}
-                execution={execution}
+                buildState={buildState}
+                executionCreateTime={execution.createTime}
+                executionUpdateTime={execution.updateTime}
             />
 
-            <BuildDetailPanel
-                execution={execution}
-                buildKey={buildKey}
-            />
+            <WindowHeightConsumer>
+                {(height) => (
+                    <div style={{ minHeight: `${Math.max(height - 30, 0)}px` }}>
+                        <BuildDetailPanel
+                            key={buildKey}
+                            execution={execution}
+                            buildKey={buildKey}
+                        />
+                    </div>
+                )}
+            </WindowHeightConsumer>
         </React.Fragment>
     );
 }
@@ -52,45 +76,14 @@ BuildDetail.propTypes = {
     buildKey: PropTypes.string.isRequired,
 };
 
-export class ExecutionDetailPage extends React.PureComponent {
+export class ExecutionDetailPage extends React.Component {
 
     componentDidMount() {
-        const {
-            isLoading,
-            loadError,
-            execution,
-            onRequestExecution,
-        } = this.props;
-
-        if (!isLoading && !loadError && !execution) {
-            onRequestExecution();
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        const {
-            owner,
-            repo,
-            commit,
-            executionNum,
-            isLoading,
-            loadError,
-            execution,
-            onRequestExecution,
-        } = this.props;
-
-        if (!isLoading && !loadError && !execution
-            || prevProps.owner !== owner
-            || prevProps.repo !== repo
-            || prevProps.commit !== commit
-            || prevProps.executionNum !== executionNum) {
-
-            onRequestExecution();
-        }
+        this.props.onOpen();
     }
 
     componentWillUnmount() {
-        // this.props.onClose();
+        this.props.onClose();
     }
 
     render() {
@@ -202,7 +195,7 @@ ExecutionDetailPage.propTypes = {
     execution: PropTypes.object,
     loadError: PropTypes.object,
 
-    onRequestExecution: PropTypes.func.isRequired,
+    onOpen: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
 };
 
@@ -212,15 +205,8 @@ ExecutionDetailPage.defaultProps = {
     loadError: null,
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
-        // Route params
-        url: ownProps.match.url,
-        owner: ownProps.match.params.owner,
-        repo: ownProps.match.params.repo,
-        commit: ownProps.match.params.commit,
-        executionNum: parseInt(ownProps.match.params.executionNum),
-
         // Store values
         isLoading: selectIsLoading(state),
         execution: selectExecution(state),
@@ -230,26 +216,18 @@ function mapStateToProps(state, ownProps) {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
-    onRequestExecution: () => fetchExecution(
-        ownProps.match.params.owner,
-        ownProps.match.params.repo,
-        ownProps.match.params.commit,
-        parseInt(ownProps.match.params.executionNum),
+    onOpen: () => executionOpened(
+        ownProps.owner,
+        ownProps.repo,
+        ownProps.commit,
+        ownProps.executionNum,
     ),
-    onClose: containerClosed,
+    onClose: executionClosed,
 }, dispatch);
-
-function mergeProps(stateProps, dispatchProps) {
-    return {
-        ...stateProps,
-        ...dispatchProps,
-    };
-}
 
 const withConnect = connect(
     mapStateToProps,
     mapDispatchToProps,
-    mergeProps,
 );
 
 const withReducer = injectReducer('executionDetail', reducer);

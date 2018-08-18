@@ -29,3 +29,23 @@ export const selectExecution = createSelector(
     selectDomain,
     (domainState) => domainState.get('execution'),
 );
+
+export const selectBuildKey = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('buildKey'),
+);
+
+export const selectIsLoadingLogs = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('isLoadingLogs'),
+);
+
+export const selectLoadLogsError = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('loadLogsError'),
+);
+
+export const selectExecutionLogs = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('executionLogs'),
+);

@@ -4,57 +4,43 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { Panel, PanelTabs, TabButton } from 'components/Panel';
 import PhasesTable from 'components/PhasesTable';
 import BuildParamsTable from './BuildParamsTable';
 
-const logs = [
-    { text: '[Container] 2018/07/08 19:13:46 Waiting for agent ping' },
-    { text: '[Container] 2018/07/08 19:13:50 Waiting for DOWNLOAD_SOURCE' },
-    { text: '[Container] 2018/07/08 19:13:50 Phase is DOWNLOAD_SOURCE' },
-    { text: '[Container] 2018/07/08 19:13:50 CODEBUILD_SRC_DIR=/codebuild/output/src090371394/src' },
-    { text: '[Container] 2018/07/08 19:13:50 YAML location is /codebuild/output/src090371394/src/buildspec.yml' },
-    { text: '[Container] 2018/07/08 19:13:50 Processing environment variables' },
-    { text: '[Container] 2018/07/08 19:13:50 Moving to directory /codebuild/output/src090371394/src' },
-    { text: '[Container] 2018/07/08 19:13:50 Registering with agent' },
-    { text: '[Container] 2018/07/08 19:13:50 Phases found in YAML: 4' },
-    { text: '[Container] 2018/07/08 19:13:50 INSTALL: 2 commands' },
-    { text: '[Container] 2018/07/08 19:13:50 PRE_BUILD: 1 commands' },
-    { text: '[Container] 2018/07/08 19:13:50 BUILD: 2 commands' },
-    { text: '[Container] 2018/07/08 19:13:50 POST_BUILD: 1 commands' },
-    { text: '[Container] 2018/07/08 19:13:50 Phase complete: DOWNLOAD_SOURCE Success: true', color: '#859900' },
-    { text: '[Container] 2018/07/08 19:13:50 Phase context status code: Message:' },
-    { text: '[Container] 2018/07/08 19:13:50 Entering phase INSTALL', color: '#268bd2' },
-    { text: '[Container] 2018/07/08 19:13:50 Running command echo install', color: '#6c71c4' },
-    { text: 'install' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:50 Running command sleep $SLEEP_TIME', color: '#6c71c4' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase complete: INSTALL Success: true', color: '#859900' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase context status code: Message:' },
-    { text: '[Container] 2018/07/08 19:13:55 Entering phase PRE_BUILD', color: '#268bd2' },
-    { text: '[Container] 2018/07/08 19:13:55 Running command echo pre_build', color: '#6c71c4' },
-    { text: 'pre_build' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase complete: PRE_BUILD Success: true', color: '#859900' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase context status code: Message:' },
-    { text: '[Container] 2018/07/08 19:13:55 Entering phase BUILD', color: '#268bd2' },
-    { text: '[Container] 2018/07/08 19:13:55 Running command echo build', color: '#6c71c4' },
-    { text: 'build' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:55 Running command bash -c \'[ "$FAIL" == "" ]\'', color: '#6c71c4' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase complete: BUILD Success: true', color: '#859900' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase context status code: Message:' },
-    { text: '[Container] 2018/07/08 19:13:55 Entering phase POST_BUILD', color: '#268bd2' },
-    { text: '[Container] 2018/07/08 19:13:55 Running command echo post_build', color: '#6c71c4' },
-    { text: 'post_build' },
-    { text: '' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase complete: POST_BUILD Success: true', color: '#859900' },
-    { text: '[Container] 2018/07/08 19:13:55 Phase context status code: Message:' },
-];
+import {
+    selectIsLoadingLogs,
+    selectExecutionLogs,
+    selectLoadLogsError,
+} from './selectors';
+import {
+    selectGithubHost,
+} from '../App/selectors';
+import {
+    buildOpened,
+    buildClosed,
+} from './actions';
+
+function getLineColor(message) {
+    const match = message.match(/^\[Container] \d{4}\/\d{2}\/\d{2} \d{2}:\d{2}:\d{2} (Phase complete: |Entering phase |Running command )/);
+    if (!match) {
+        return null;
+    }
+
+    if (match[1] === 'Phase complete: ') {
+        return '#859900';
+    }
+    else if (match[1] === 'Entering phase ') {
+        return '#268bd2';
+    }
+    else if (match[1] === 'Running command ') {
+        return '#6c71c4';
+    }
+}
 
 const Logs = styled.pre`
     font-size: 0.85rem;
@@ -64,12 +50,28 @@ const Logs = styled.pre`
     margin: 0;
 `;
 
+const LogLine = styled.div`
+    min-height: 1.25rem;
+
+    ${({ color }) => color && css`
+        color: ${color};
+    `}
+`;
+
 const TAB_LOGS = 'LOGS';
 const TAB_PHASES = 'PHASES';
 const TAB_ARTIFACTS = 'ARTIFACTS';
 const TAB_PARAMETERS = 'PARAMETERS';
 
-class BuildDetailPanel extends React.Component {
+export class BuildDetailPanel extends React.Component {
+
+    componentDidMount() {
+        this.props.onOpen();
+    }
+
+    componentWillUnmount() {
+        this.props.onClose();
+    }
 
     constructor(props) {
         super(props);
@@ -88,10 +90,31 @@ class BuildDetailPanel extends React.Component {
     }
 
     render() {
-        const { execution, buildKey } = this.props;
+        const {
+            execution,
+            buildKey,
+            executionLogs,
+        } = this.props;
         const { tab } = this.state;
 
         const buildState = execution.state.builds[buildKey];
+        const logLines = [];
+
+        if (tab === TAB_LOGS) {
+            for (let i = 0; i < 50; i++) {
+                const message = executionLogs && executionLogs[i]
+                    ? executionLogs[i].message.replace(/\n$/, '')
+                    : '';
+
+                const color = getLineColor(message);
+
+                logLines.push(
+                    <LogLine key={i} color={color}>
+                        {message}
+                    </LogLine>
+                );
+            }
+        }
 
         return (
             <Panel>
@@ -114,17 +137,13 @@ class BuildDetailPanel extends React.Component {
                     </TabButton>
                 </PanelTabs>
 
-                {tab === TAB_LOGS && (
+                {tab === TAB_LOGS && !!buildState.codeBuild && (
                     <React.Fragment>
                         <div className="mb-2">
-                            Showing last 20 lines - <a href="#">View All</a>
+                            Showing last 50 lines - <a href="#">View All</a>
                         </div>
                         <Logs>
-                            {logs.slice(-20).map((v, i) => {
-                                return (
-                                    <span key={i} style={{ color: v.color }}>{`${v.text}\n`}</span>
-                                );
-                            })}
+                            {logLines}
                         </Logs>
                     </React.Fragment>
                 )}
@@ -152,6 +171,39 @@ class BuildDetailPanel extends React.Component {
 BuildDetailPanel.propTypes = {
     execution: PropTypes.object.isRequired,
     buildKey: PropTypes.string.isRequired,
+
+    isLoadingLogs: PropTypes.bool,
+    executionLogs: PropTypes.arrayOf(PropTypes.object),
+    loadLogsError: PropTypes.object,
+
+    onOpen: PropTypes.func.isRequired,
+    onClose: PropTypes.func.isRequired,
 };
 
-export default BuildDetailPanel;
+BuildDetailPanel.defaultProps = {
+    isLoadingLogs: false,
+    executionLogs: null,
+    loadLogsError: null,
+};
+
+function mapStateToProps(state) {
+    return {
+        // Store values
+        isLoadingLogs: selectIsLoadingLogs(state),
+        executionLogs: selectExecutionLogs(state),
+        loadLogsError: selectLoadLogsError(state),
+        githubHost: selectGithubHost(state),
+    };
+}
+
+const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
+    onOpen: () => buildOpened(
+        ownProps.buildKey,
+    ),
+    onClose: buildClosed,
+}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps,
+)(BuildDetailPanel);

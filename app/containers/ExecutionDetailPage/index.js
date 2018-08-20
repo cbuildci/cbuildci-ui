@@ -10,12 +10,12 @@ import { compose, bindActionCreators } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
 import { WindowHeightConsumer } from 'contexts/WindowHeight';
-import { Panel, PanelHeaderMini } from 'components/Panel';
+import { Panel, PanelHeader, PanelHeaderMini } from 'components/Panel';
 import LoadingIndicator from 'components/LoadingIndicator';
+import ExecutionsBreadcrumb from 'components/ExecutionsBreadcrumb';
 import ExecutionSummaryPanel from './ExecutionSummaryPanel';
 import BuildsPanel from './BuildsPanel';
 import BuildSummaryPanel from './BuildSummaryPanel';
-import Breadcrumb from './Breadcrumb';
 import BuildDetailPanel from './BuildDetailPanel';
 
 import {
@@ -110,7 +110,7 @@ export class ExecutionDetailPage extends React.Component {
                     <Route
                         path={`${url}/build/:buildKey`}
                         render={({ match }) => (
-                            <Breadcrumb
+                            <ExecutionsBreadcrumb
                                 owner={owner}
                                 repo={repo}
                                 commit={commit}
@@ -123,7 +123,7 @@ export class ExecutionDetailPage extends React.Component {
                     <Route
                         path=""
                         render={() => (
-                            <Breadcrumb
+                            <ExecutionsBreadcrumb
                                 owner={owner}
                                 repo={repo}
                                 commit={commit}
@@ -138,7 +138,10 @@ export class ExecutionDetailPage extends React.Component {
                 )}
 
                 {loadError && (
-                    <div><strong>Error:</strong> {loadError.message}</div>
+                    <Panel>
+                        <PanelHeader>Error</PanelHeader>
+                        <div>{loadError.message}</div>
+                    </Panel>
                 )}
 
                 {execution && (
@@ -230,8 +233,8 @@ const withConnect = connect(
     mapDispatchToProps,
 );
 
-const withReducer = injectReducer('executionDetail', reducer);
-const withSaga = injectSaga('executionDetail', saga);
+const withReducer = injectReducer('executionDetailPage', reducer);
+const withSaga = injectSaga('executionDetailPage', saga);
 
 export default compose(
     withReducer,

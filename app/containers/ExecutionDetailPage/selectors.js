@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-// Direct selector to the executionDetail state domain.
+// Direct selector to the executionDetailPage state domain.
 const selectDomain =
-    (globalState) => globalState.get('executionDetail', initialState);
+    (globalState) => globalState.get('executionDetailPage', initialState);
 
 // Default selector used by ExecutionDetailPage
 export default createSelector(

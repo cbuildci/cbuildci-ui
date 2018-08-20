@@ -43,7 +43,7 @@ const initial = {
 
 export const initialState = fromJS(initial);
 
-function executionDetailReducer(state = initialState, action) {
+function executionDetailPageReducer(state = initialState, action) {
     switch (action.type) {
         case EXECUTION_CLOSED:
             return initialState;
@@ -101,4 +101,4 @@ function executionDetailReducer(state = initialState, action) {
 }
 
 export const injectReducer = createInjector(module);
-export default executionDetailReducer;
+export default executionDetailPageReducer;

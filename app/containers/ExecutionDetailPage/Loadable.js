@@ -10,7 +10,6 @@ import { pageErrorMessage } from 'components/LoadPageError';
 
 export default Loadable({
     loader: () => import(/* webpackChunkName: "ExecutionDetailPage" */ './index'),
-    // .then((v) => new Promise((resolve) => {setTimeout(() => resolve(v), 500)})), // TODO: Remove timeout
     loading: LoadingIndicator.ForImport,
     render(loaded, props) {
         return (

@@ -51,5 +51,5 @@ export class WindowHeightProvider extends React.Component {
 }
 
 WindowHeightProvider.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
 };

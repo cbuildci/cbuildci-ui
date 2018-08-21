@@ -85,7 +85,7 @@ export class BuildDetailPanel extends React.Component {
 
     handleChangeTab(evt) {
         this.setState({
-            tab: evt.target.getAttribute('data-tab'),
+            tab: evt.currentTarget.getAttribute('data-tab'),
         });
     }
 

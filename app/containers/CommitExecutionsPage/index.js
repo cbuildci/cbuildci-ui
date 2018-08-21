@@ -95,7 +95,7 @@ export class CommitExecutionsPage extends React.Component {
                                         createTime={execution.createTime}
                                         owner={execution.owner}
                                         repo={execution.repo}
-                                        event={execution.meta.initiator}
+                                        event={execution.meta.event}
                                     />
                                 </div>
                                 <div className="d-flex align-items-baseline">

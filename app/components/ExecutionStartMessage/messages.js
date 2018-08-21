@@ -13,7 +13,7 @@ export default defineMessages({
     },
     startedWithUnknownEvent: {
         id: 'app.components.ExecutionStartMessage.startedWithUnknownEvent',
-        defaultMessage: `${baseStarted} after event "{event}"`,
+        defaultMessage: `${baseStarted} after event "{eventType}"`,
     },
     startedForPullRequest: {
         id: 'app.components.ExecutionStartMessage.startedForPullRequest',

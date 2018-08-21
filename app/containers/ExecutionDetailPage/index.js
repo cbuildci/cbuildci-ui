@@ -151,7 +151,7 @@ export class ExecutionDetailPage extends React.Component {
                         repo={repo}
                         status={execution.status}
                         createTime={execution.createTime}
-                        executionEvent={execution.meta.initiator}
+                        executionEvent={execution.meta.event}
                         conclusion={execution.conclusion}
                         conclusionTime={execution.conclusionTime}
                         stopUser={execution.meta.stop && execution.meta.stop.user}

@@ -32,9 +32,9 @@ function ExecutionStartMessage({
 
     if (event) {
         message = messages.startedWithUnknownEvent;
-        values.event = event.event;
+        values.eventType = event.type;
 
-        if (event.event === 'pull_request') {
+        if (event.type === 'pull_request') {
             message = messages.startedForPullRequest;
 
             values.action = event.action;
@@ -56,7 +56,7 @@ function ExecutionStartMessage({
                 </a>
             );
         }
-        else if (event.event === 'check_run'
+        else if (event.type === 'check_run'
             && event.action === 'requested_action'
             && typeof event.requested_action.identifier === 'string') {
 

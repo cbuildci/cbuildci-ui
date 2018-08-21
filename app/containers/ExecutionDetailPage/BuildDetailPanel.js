@@ -121,19 +121,19 @@ export class BuildDetailPanel extends React.Component {
                 <PanelTabs>
                     <TabButton active={tab === TAB_LOGS} data-tab={TAB_LOGS} onClick={this.handleChangeTab}>
                         <i className="fas fa-desktop mr-2 text-muted"/>
-                        Console
+                        <span className={tab === TAB_LOGS ? '' : 'd-none d-sm-inline'}>Console</span>
                     </TabButton>
                     <TabButton active={tab === TAB_PHASES} data-tab={TAB_PHASES} onClick={this.handleChangeTab}>
                         <i className="fas fa-tasks mr-2 text-muted"/>
-                        Phases
+                        <span className={tab === TAB_PHASES ? '' : 'd-none d-sm-inline'}>Phases</span>
                     </TabButton>
                     <TabButton active={tab === TAB_ARTIFACTS} data-tab={TAB_ARTIFACTS} onClick={this.handleChangeTab}>
                         <i className="fas fa-archive mr-2 text-muted"/>
-                        Artifacts
+                        <span className={tab === TAB_ARTIFACTS ? '' : 'd-none d-sm-inline'}>Artifacts</span>
                     </TabButton>
                     <TabButton active={tab === TAB_PARAMETERS} data-tab={TAB_PARAMETERS} onClick={this.handleChangeTab}>
                         <i className="fas fa-wrench mr-2 text-muted"/>
-                        Parameters
+                        <span className={tab === TAB_PARAMETERS ? '' : 'd-none d-sm-inline'}>Parameters</span>
                     </TabButton>
                 </PanelTabs>
 
@@ -149,9 +149,11 @@ export class BuildDetailPanel extends React.Component {
                 )}
 
                 {tab === TAB_PHASES && (
-                    <PhasesTable
-                        phases={buildState.codeBuild && buildState.codeBuild.phases}
-                    />
+                    <div className="table-responsive-md">
+                        <PhasesTable
+                            phases={buildState.codeBuild && buildState.codeBuild.phases}
+                        />
+                    </div>
                 )}
 
                 {tab === TAB_ARTIFACTS && (
@@ -159,9 +161,11 @@ export class BuildDetailPanel extends React.Component {
                 )}
 
                 {tab === TAB_PARAMETERS && (
-                    <BuildParamsTable
-                        buildParams={buildState.buildParams}
-                    />
+                    <div className="table-responsive-md">
+                        <BuildParamsTable
+                            buildParams={buildState.buildParams}
+                        />
+                    </div>
                 )}
             </Panel>
         );

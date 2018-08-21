@@ -40,6 +40,15 @@ import './global-styles';
 // Create redux store with history
 const initialState = {};
 const history = createHistory({ basename: '/app' });
+
+history.listen((location, action) => {
+    if (action === 'PUSH') {
+        window.scrollTo(0, 0);
+    }
+    // console.log(`The current URL is ${location.pathname}${location.search}${location.hash}`);
+    // console.log(`The last navigation action was ${action}`);
+});
+
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
 

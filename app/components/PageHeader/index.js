@@ -4,17 +4,29 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const H1 = styled.h1`
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #555;
+`;
+
+//  className="mt-3 pb-2" style={{ paddingBottom: '8px' }}
 
 function PageHeader({ children }) {
     return (
-        <h1 className="mt-3 pb-2" style={{ paddingBottom: '8px', borderBottom: '1px solid #CCC' }}>
+        <H1>
             {children}
-        </h1>
+        </H1>
     );
 }
 
 PageHeader.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.node.isRequired,
 };
 
 export default PageHeader;

@@ -68,3 +68,9 @@ body {
     font-size: 1.3rem;
     margin-left: -.15rem;
 }
+
+@include media-breakpoint-between(xs, sm) {
+    .flex-column-sm {
+        flex-direction: column !important;
+    }
+}

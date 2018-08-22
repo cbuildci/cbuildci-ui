@@ -8,9 +8,11 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { compose, bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
+import { FormattedMessage } from 'react-intl';
+
 import ExecutionsBreadcrumb from 'components/ExecutionsBreadcrumb';
 import { Panel, PanelHeader } from 'components/Panel';
-
+import PageHeader from 'components/PageHeader';
 import LoadingIndicator from 'components/LoadingIndicator';
 import ExecutionStatus, { getStatusColor } from 'components/ExecutionStatus';
 import ExecutionStartMessage from 'components/ExecutionStartMessage';
@@ -18,7 +20,7 @@ import ExecutionStopMessage from 'components/ExecutionStopMessage';
 
 import reducer, { injectReducer } from './reducer';
 import saga, { injectSaga } from './saga';
-// import messages from './messages';
+import messages from './messages';
 
 import {
     selectIsLoading,
@@ -65,6 +67,13 @@ export class CommitExecutionsPage extends React.Component {
                     commit={commit}
                 />
 
+                <PageHeader>
+                    <FormattedMessage
+                        {...messages.header}
+                        values={{ commit: commit.substr(0, 10) }}
+                    />
+                </PageHeader>
+
                 {isLoading && !executions && (
                     <LoadingIndicator/>
                 )}
@@ -78,10 +87,10 @@ export class CommitExecutionsPage extends React.Component {
 
                 {executions && executions.map((execution) => (
                     <Panel bandColor={getStatusColor(execution.conclusion || execution.status)} key={execution.executionNum}>
-                        <div className="d-flex">
+                        <div className="d-flex flex-column-sm">
                             <div className="flex-shrink-0" style={{ fontSize: '2rem', marginRight: '12px' }}>
                                 <Link to={`/repo/${execution.owner}/${execution.repo}/commit/${execution.commit}/exec/${execution.executionNum}`}>
-                                    #{execution.executionNum}
+                                    <i className="fas fa-shipping-fast fa-fw mr-2"/>#{execution.executionNum}
                                 </Link>
                             </div>
                             <div>

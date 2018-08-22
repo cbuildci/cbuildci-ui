@@ -167,7 +167,6 @@ const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
         ownProps.owner,
         ownProps.repo,
         ownProps.commit,
-        ownProps.executionNum,
     ),
     onClose: pageClosed,
 }, dispatch);

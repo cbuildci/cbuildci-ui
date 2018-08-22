@@ -25,7 +25,7 @@ import {
 } from './selectors';
 import {
     selectGithubHost,
-} from '../App/selectors';
+} from 'containers/App/selectors';
 import reducer, { injectReducer } from './reducer';
 import saga, { injectSaga } from './saga';
 import {

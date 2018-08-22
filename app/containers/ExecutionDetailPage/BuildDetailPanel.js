@@ -19,7 +19,7 @@ import {
 } from './selectors';
 import {
     selectGithubHost,
-} from '../App/selectors';
+} from 'containers/App/selectors';
 import {
     buildOpened,
     buildClosed,

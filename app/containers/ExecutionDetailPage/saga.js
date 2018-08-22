@@ -14,15 +14,15 @@ import {
 
 import {
     LOGIN_SUCCESS,
-} from '../App/constants';
+} from 'containers/App/constants';
 
 import {
     loginRequest,
-} from '../App/actions';
+} from 'containers/App/actions';
 
 import {
     selectLoggingIn,
-} from '../App/selectors';
+} from 'containers/App/selectors';
 
 import selectDomain, {
     selectExecution,

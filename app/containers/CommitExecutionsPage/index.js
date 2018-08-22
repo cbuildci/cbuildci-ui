@@ -23,6 +23,10 @@ import saga, { injectSaga } from './saga';
 import messages from './messages';
 
 import {
+    selectGithubHost,
+} from 'containers/App/selectors';
+
+import {
     selectIsLoading,
     selectExecutions,
     selectLoadError,
@@ -46,6 +50,7 @@ export class CommitExecutionsPage extends React.Component {
 
     render() {
         const {
+            githubHost,
             owner,
             repo,
             commit,
@@ -100,7 +105,7 @@ export class CommitExecutionsPage extends React.Component {
                                 <div className="d-flex align-items-baseline">
                                     <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/>
                                     <ExecutionStartMessage
-                                        githubHost={'foobar'}
+                                        githubHost={githubHost}
                                         createTime={execution.createTime}
                                         owner={execution.owner}
                                         repo={execution.repo}
@@ -110,7 +115,7 @@ export class CommitExecutionsPage extends React.Component {
                                 <div className="d-flex align-items-baseline">
                                     <i className="fas fa-stop-circle fa-fw text-muted mr-1 flex-shrink-0"/>
                                     <ExecutionStopMessage
-                                        githubHost={'foobar'}
+                                        githubHost={githubHost}
                                         createTime={execution.createTime}
                                         conclusionTime={execution.conclusionTime}
                                         stopUser={execution.meta.stop && execution.meta.stop.user}
@@ -128,6 +133,7 @@ export class CommitExecutionsPage extends React.Component {
 }
 
 CommitExecutionsPage.propTypes = {
+    githubHost: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     repo: PropTypes.string.isRequired,
     commit: PropTypes.string.isRequired,
@@ -149,6 +155,7 @@ CommitExecutionsPage.defaultProps = {
 function mapStateToProps(state) {
     return {
         // Store values
+        githubHost: selectGithubHost(state),
         isLoading: selectIsLoading(state),
         executions: selectExecutions(state),
         loadError: selectLoadError(state),

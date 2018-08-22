@@ -19,6 +19,7 @@ function ExecutionSummaryPanel({
     githubHost,
     owner,
     repo,
+    commit,
     status,
     createTime,
     executionEvent,
@@ -38,6 +39,22 @@ function ExecutionSummaryPanel({
                     <ErrorBoundary errorMessage={lineRenderError}>
                         <ExecutionStatus status={conclusion || status}/>
                     </ErrorBoundary>
+                </div>
+
+                <div className="d-inline-flex flex-wrap">
+                    <span className="mr-2">
+                        <a href={`${githubHost}/${owner}/${repo}`} target="_blank">
+                            <i className="fab fa-github fa-fw text-muted mr-1"/>
+                            {owner}/{repo}
+                        </a>
+                    </span>
+
+                    <span className="mr-2">
+                        <a href={`${githubHost}/${owner}/${repo}/commit/${commit}`} target="_blank">
+                            <i className="fas fa-code-branch fa-fw text-muted mr-1"/>
+                            {commit.substr(0, 10)}
+                        </a>
+                    </span>
                 </div>
 
                 <div className="d-flex align-items-baseline mt-1 mb-1">
@@ -90,6 +107,7 @@ ExecutionSummaryPanel.propTypes = {
     githubHost: PropTypes.string.isRequired,
     owner: PropTypes.string.isRequired,
     repo: PropTypes.string.isRequired,
+    commit: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     createTime: PropTypes.oneOfType([
         PropTypes.number,

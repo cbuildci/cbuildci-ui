@@ -149,6 +149,7 @@ export class ExecutionDetailPage extends React.Component {
                         githubHost={githubHost}
                         owner={owner}
                         repo={repo}
+                        commit={commit}
                         status={execution.status}
                         createTime={execution.createTime}
                         executionEvent={execution.meta.event}

@@ -16,6 +16,7 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import TopNav from 'containers/TopNav';
 
 // Pages
+import RepoExecutionsPage from 'containers/RepoExecutionsPage/Loadable';
 import CommitExecutionsPage from 'containers/CommitExecutionsPage/Loadable';
 import ExecutionDetailPage from 'containers/ExecutionDetailPage/Loadable';
 
@@ -40,6 +41,23 @@ export function App() {
 
                 <div className="ml-3 mr-3">
                     <Switch>
+                        <Route
+                            path="/repo/:owner/:repo"
+                            exact={true}
+                            render={({ location, match }) => {
+                                const { owner, repo } = match.params;
+                                return (
+                                    <RepoExecutionsPage
+                                        key={`${owner}/${repo}`}
+                                        pathname={location.pathname}
+                                        url={match.url}
+                                        owner={owner}
+                                        repo={repo}
+                                    />
+                                );
+                            }}
+                        />
+
                         <Route
                             path="/repo/:owner/:repo/commit/:commit"
                             exact={true}

@@ -2,7 +2,8 @@
  * Test the request function
  */
 
-import request from '../request';
+import 'whatwg-fetch';
+import { request } from '../request';
 
 describe('request', () => {
     // Before each test, stub the fetch function
@@ -57,7 +58,7 @@ describe('request', () => {
     describe('stubbing error response', () => {
         // Before each test, pretend we got an unsuccessful response
         beforeEach(() => {
-            const res = new Response('', {
+            const res = new Response('{}', {
                 status: 404,
                 statusText: 'Not Found',
                 headers: {
@@ -70,8 +71,11 @@ describe('request', () => {
 
         it('should catch errors', (done) => {
             request('/thisdoesntexist').catch((err) => {
-                expect(err.response.status).toBe(404);
-                expect(err.response.statusText).toBe('Not Found');
+                expect(err.message).toBe('Not Found');
+                expect(err.status).toBe(404);
+                expect(err.getResponse).toBeInstanceOf(Function);
+                expect(err.getResponse().status).toBe(404);
+                expect(err.getResponse().statusText).toBe('Not Found');
                 done();
             });
         });

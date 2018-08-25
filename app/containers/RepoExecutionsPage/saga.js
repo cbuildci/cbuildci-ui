@@ -61,7 +61,7 @@ export function* fetchingExecution() {
     }
     catch (err) {
         if (err.isJson && err.body) {
-            if (err.statusCode === 403 && err.body.authRedirectUrl) {
+            if (err.status === 403 && err.body.authRedirectUrl) {
                 // Start a login request.
                 yield put(loginRequest(err.body.authRedirectUrl));
 

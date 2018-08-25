@@ -1,5 +1,3 @@
-import 'whatwg-fetch';
-
 export function isJsonContent(response) {
     const contentType = response.headers.get('content-type');
     return typeof contentType === 'string'
@@ -13,6 +11,10 @@ export function isJsonContent(response) {
  * @returns {string|object} The parsed body from the request
  */
 export async function getBody(response) {
+    if (response.status === 204) {
+        return null;
+    }
+
     return isJsonContent(response)
         ? response.json()
         : response.text();
@@ -33,7 +35,7 @@ export async function requestJson(url, options = {}) {
 
     if (!isJsonContent(response)) {
         const error = new Error(`Expected JSON response (${response.status} ${response.statusText}): ${response.headers.get('content-type')}`);
-        error.statusCode = response.status;
+        error.status = response.status;
         error.isJson = false;
         error.contentType = response.headers.get('content-type');
 
@@ -50,7 +52,7 @@ export async function requestJson(url, options = {}) {
     }
 
     const error = new Error(response.statusText);
-    error.statusCode = response.status;
+    error.status = response.status;
     error.isJson = true;
     error.body = await response.json();
 
@@ -80,7 +82,7 @@ export async function request(url, options = {}) {
     }
 
     const error = new Error(response.statusText);
-    error.statusCode = response.status;
+    error.status = response.status;
     error.isJson = isJsonContent(response);
 
     if (error.isJson) {

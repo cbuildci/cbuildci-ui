@@ -4,7 +4,7 @@
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import Immutable, { fromJS } from 'immutable';
-import { routerMiddleware, connectRouter } from 'connected-react-router/immutable'
+import { routerMiddleware, connectRouter } from 'connected-react-router/immutable';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 

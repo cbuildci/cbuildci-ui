@@ -111,16 +111,18 @@ export class RepoExecutionsPage extends React.Component {
                                         event={execution.meta.event}
                                     />
                                 </div>
-                                <div className="d-flex align-items-baseline">
-                                    <i className="fas fa-stop-circle fa-fw text-muted mr-1 flex-shrink-0"/>
-                                    <ExecutionStopMessage
-                                        githubHost={githubHost}
-                                        createTime={execution.createTime}
-                                        conclusionTime={execution.conclusionTime}
-                                        stopUser={execution.meta.stop && execution.meta.stop.user}
-                                        stopRequestTime={execution.meta.stop && execution.meta.stop.requestTime}
-                                    />
-                                </div>
+                                {(execution.conclusionTime != null || execution.meta.stop) && (
+                                    <div className="d-flex align-items-baseline">
+                                        <i className="fas fa-stop-circle fa-fw text-muted mr-1 flex-shrink-0"/>
+                                        <ExecutionStopMessage
+                                            githubHost={githubHost}
+                                            createTime={execution.createTime}
+                                            conclusionTime={execution.conclusionTime}
+                                            stopUser={execution.meta.stop && execution.meta.stop.user}
+                                            stopRequestTime={execution.meta.stop && execution.meta.stop.requestTime}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </Panel>

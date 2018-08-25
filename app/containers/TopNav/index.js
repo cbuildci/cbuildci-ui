@@ -49,7 +49,7 @@ export class TopNav extends React.PureComponent {
 
     handleLogOut(evt) {
         evt.preventDefault();
-        window.location = `/api/v1/logout?redirect=${encodeURIComponent(`${window.location.origin}/app`)}`;
+        window.location = `/api/v1/auth/logout?redirect=${encodeURIComponent(`${window.location.origin}/app`)}`;
     }
 
     render() {

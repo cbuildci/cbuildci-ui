@@ -411,6 +411,11 @@ module.exports = {
         'jsx-a11y/role-supports-aria-props': 2,
     },
     settings: {
+        react: {
+            createClass: 'createReactClass',
+            pragma: 'React',
+            version: '16.4'
+        },
         'import/resolver': {
             webpack: {
                 config: './webpack.config.js',

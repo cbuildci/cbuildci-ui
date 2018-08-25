@@ -43,14 +43,14 @@ function ExecutionSummaryPanel({
 
                 <div className="d-inline-flex flex-wrap">
                     <span className="mr-2">
-                        <a href={`${githubHost}/${owner}/${repo}`} target="_blank">
+                        <a href={`https://${githubHost}/${owner}/${repo}`}>
                             <i className="fab fa-github fa-fw text-muted mr-1"/>
                             {owner}/{repo}
                         </a>
                     </span>
 
                     <span className="mr-2">
-                        <a href={`${githubHost}/${owner}/${repo}/commit/${commit}`} target="_blank">
+                        <a href={`https://${githubHost}/${owner}/${repo}/commit/${commit}`}>
                             <i className="fas fa-code-branch fa-fw text-muted mr-1"/>
                             {commit.substr(0, 10)}
                         </a>

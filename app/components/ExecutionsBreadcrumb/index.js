@@ -23,7 +23,7 @@ function ExecutionsBreadcrumb({
     if (repo != null) {
         if (commit == null) {
             repoHtml = (
-                <li className="breadcrumb-item">
+                <li className="breadcrumb-item active">
                     <i className="fab fa-github fa-fw mr-1"/>
                     {owner}/{repo}
                 </li>
@@ -46,7 +46,7 @@ function ExecutionsBreadcrumb({
             commitHtml = (
                 <li className="breadcrumb-item active">
                     <i className="fas fa-code-branch fa-fw mr-1"/>
-                    {commit.substr(0, 10)}
+                    <code>{commit.substr(0, 10)}</code>
                 </li>
             );
         }
@@ -55,7 +55,7 @@ function ExecutionsBreadcrumb({
                 <li className="breadcrumb-item">
                     <Link to={`/repo/${owner}/${repo}/commit/${commit}`}>
                         <i className="fas fa-code-branch fa-fw mr-1"/>
-                        {commit.substr(0, 10)}
+                        <code>{commit.substr(0, 10)}</code>
                     </Link>
                 </li>
             );

@@ -4,3 +4,4 @@ builds:
   build:
     timeoutInMinutes: 5
     image: 'aws/codebuild/nodejs:8.11.0'
+    useCache: true

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { FormattedMessage, defineMessages } from 'react-intl';
 import { Provider } from 'react-redux';
-import { browserHistory } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
 
 import ConnectedLanguageProvider, { LanguageProvider } from '../index';
 import configureStore from '../../../configureStore';
@@ -33,7 +33,7 @@ describe('<ConnectedLanguageProvider />', () => {
     let store;
 
     beforeAll(() => {
-        store = configureStore({}, browserHistory);
+        store = configureStore({}, createHistory());
     });
 
     it('should render the default language messages', () => {

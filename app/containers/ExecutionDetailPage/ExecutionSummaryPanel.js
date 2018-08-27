@@ -53,10 +53,6 @@ function ExecutionSummaryPanel({
                                 author={author}
                             />
                         </div>
-
-                        <div className="mr-2 text-nowrap text-muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            – {commitMessage.substr(0, 100)}{commitMessage.length > 100 ? '…' : ''}
-                        </div>
                     </div>
                 </div>
 

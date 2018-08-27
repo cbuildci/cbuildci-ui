@@ -67,19 +67,30 @@ describe('ErrorBoundary (inner)', () => {
     });
 
     it('should catch errors and show the error message (as function)', () => {
+        const err = new Error('foobar');
+
         function FailingComponent() {
-            throw new Error('foobar');
+            throw err;
         }
+
+        const mockErrorMessage = jest.fn(() => <div>Error</div>);
 
         const renderedComponent = renderer
             .create((
-                <ErrorBoundary errorMessage={() => <div>Error</div>}>
+                <ErrorBoundary errorMessage={mockErrorMessage}>
                     <FailingComponent/>
                 </ErrorBoundary>
             ))
             .toJSON();
 
         expect(renderedComponent).toMatchSnapshot();
+        expect(mockErrorMessage.mock.calls.length).toBe(1);
+        expect(mockErrorMessage.mock.calls[0].length).toBe(2);
+        expect(mockErrorMessage.mock.calls[0][1]).toEqual(
+            expect.objectContaining({
+                componentStack: expect.any(String),
+            }),
+        );
     });
 });
 

@@ -31,11 +31,19 @@ export class ErrorBoundary extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { hasError: false };
+        this.state = {
+            hasError: false,
+            error: null,
+            info: null,
+        };
     }
 
     componentDidCatch(error, info) {
-        this.setState({ hasError: true });
+        this.setState({
+            hasError: true,
+            error,
+            info,
+        });
 
         const { onError } = this.props;
 
@@ -53,10 +61,16 @@ export class ErrorBoundary extends React.Component {
             errorMessage,
         } = this.props;
 
-        if (this.state.hasError) {
+        const {
+            hasError,
+            error,
+            info,
+        } = this.state;
+
+        if (hasError) {
             return (
                 typeof errorMessage === 'function'
-                    ? errorMessage()
+                    ? errorMessage(error, info)
                     : errorMessage || null
             );
         }

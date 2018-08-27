@@ -1,0 +1,275 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommitMeta /> should render expected JSX 1`] = `
+<div>
+  <span
+    className="mr-1"
+    style={
+      Object {
+        "lineHeight": "22px",
+      }
+    }
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style={
+        Object {
+          "borderRadius": "4px",
+          "marginTop": "-2px",
+        }
+      }
+      width="20"
+    />
+  </span>
+  <span
+    className="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    className="mr-2 text-nowrap text-muted"
+    style={
+      Object {
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+      }
+    }
+  >
+    – 
+    abc123
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX 2`] = `
+<div>
+  <span
+    class="mr-1"
+    style="line-height:22px"
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style="margin-top:-2px;border-radius:4px"
+      width="20"
+    />
+  </span>
+  <span
+    class="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    class="mr-2 text-nowrap text-muted"
+    style="overflow:hidden;text-overflow:ellipsis"
+  >
+    – abc123
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if author is missing login 1`] = `
+<div>
+  <span
+    className="mr-2 flex-shrink-0"
+  >
+    <span>
+      foo
+    </span>
+  </span>
+  <span
+    className="mr-2 text-nowrap text-muted"
+    style={
+      Object {
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+      }
+    }
+  >
+    – 
+    abc123
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if author is missing login 2`] = `
+<div>
+  <span
+    class="mr-2 flex-shrink-0"
+  >
+    <span>
+      foo
+    </span>
+  </span>
+  <span
+    class="mr-2 text-nowrap text-muted"
+    style="overflow:hidden;text-overflow:ellipsis"
+  >
+    – abc123
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if message is exactly 100 characters 1`] = `
+<div>
+  <span
+    className="mr-1"
+    style={
+      Object {
+        "lineHeight": "22px",
+      }
+    }
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style={
+        Object {
+          "borderRadius": "4px",
+          "marginTop": "-2px",
+        }
+      }
+      width="20"
+    />
+  </span>
+  <span
+    className="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    className="mr-2 text-nowrap text-muted"
+    style={
+      Object {
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+      }
+    }
+  >
+    – 
+    1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if message is exactly 100 characters 2`] = `
+<div>
+  <span
+    class="mr-1"
+    style="line-height:22px"
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style="margin-top:-2px;border-radius:4px"
+      width="20"
+    />
+  </span>
+  <span
+    class="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    class="mr-2 text-nowrap text-muted"
+    style="overflow:hidden;text-overflow:ellipsis"
+  >
+    – 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if message is over 100 characters 1`] = `
+<div>
+  <span
+    className="mr-1"
+    style={
+      Object {
+        "lineHeight": "22px",
+      }
+    }
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style={
+        Object {
+          "borderRadius": "4px",
+          "marginTop": "-2px",
+        }
+      }
+      width="20"
+    />
+  </span>
+  <span
+    className="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    className="mr-2 text-nowrap text-muted"
+    style={
+      Object {
+        "overflow": "hidden",
+        "textOverflow": "ellipsis",
+      }
+    }
+  >
+    – 
+    1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
+    …
+  </span>
+</div>
+`;
+
+exports[`<CommitMeta /> should render expected JSX if message is over 100 characters 2`] = `
+<div>
+  <span
+    class="mr-1"
+    style="line-height:22px"
+  >
+    <img
+      height="20"
+      src="https://github.com/foobar.png"
+      style="margin-top:-2px;border-radius:4px"
+      width="20"
+    />
+  </span>
+  <span
+    class="mr-2 flex-shrink-0"
+  >
+    <a
+      href="https://foohub.com/foobar"
+    >
+      foobar
+    </a>
+  </span>
+  <span
+    class="mr-2 text-nowrap text-muted"
+    style="overflow:hidden;text-overflow:ellipsis"
+  >
+    – 1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890…
+  </span>
+</div>
+`;

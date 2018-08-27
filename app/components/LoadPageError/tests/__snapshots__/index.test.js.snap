@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoadPageError /> should render expected JSX 1`] = `
-<React.Fragment>
+<Fragment>
   <HelmetWrapper
     defer={true}
     encodeSpecialCharacters={true}
@@ -11,37 +11,113 @@ exports[`<LoadPageError /> should render expected JSX 1`] = `
       id="app.components.LoadPageError.title"
     />
   </HelmetWrapper>
-  <PageHeader>
-    <FormattedMessage
-      defaultMessage="Failed to Load Page"
-      id="app.components.LoadPageError.header"
-      values={Object {}}
-    />
-  </PageHeader>
-  <p>
-    <FormattedMessage
-      defaultMessage="An problem was encountered while loading this page."
-      id="app.components.LoadPageError.bodyMessage"
-      values={Object {}}
-    />
-  </p>
-</React.Fragment>
+  <Panel>
+    <Panel__PanelHeader>
+      <FormattedMessage
+        defaultMessage="Failed to Load Page"
+        id="app.components.LoadPageError.header"
+        values={Object {}}
+      />
+    </Panel__PanelHeader>
+    <div>
+      <FormattedMessage
+        defaultMessage="An problem was encountered while loading this page."
+        id="app.components.LoadPageError.bodyMessage"
+        values={Object {}}
+      />
+    </div>
+  </Panel>
+  <Panel
+    bandColor="red"
+  />
+</Fragment>
 `;
 
 exports[`<LoadPageError /> should render expected JSX 2`] = `
 Array [
-  <h1
-    class="mt-3 pb-2"
-    style="padding-bottom:8px;border-bottom:1px solid #CCC"
+  <div
+    class="Panel-fVAoGK kwqJRB"
   >
-    <span>
-      Failed to Load Page
-    </span>
-  </h1>,
-  <p>
-    <span>
-      An problem was encountered while loading this page.
-    </span>
-  </p>,
+    <div
+      class="Panel__PanelHeader-cCNZct dLoaXn"
+    >
+      <span>
+        Failed to Load Page
+      </span>
+    </div>
+    <div>
+      <span>
+        An problem was encountered while loading this page.
+      </span>
+    </div>
+  </div>,
+  <div
+    class="Panel-fVAoGK KQrbw"
+  />,
+]
+`;
+
+exports[`<LoadPageError /> should render expected JSX with debug error message 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <InjectIntl(FormattedTitle)
+      defaultMessage="Failed to Load Page"
+      id="app.components.LoadPageError.title"
+    />
+  </HelmetWrapper>
+  <Panel>
+    <Panel__PanelHeader>
+      <FormattedMessage
+        defaultMessage="Failed to Load Page"
+        id="app.components.LoadPageError.header"
+        values={Object {}}
+      />
+    </Panel__PanelHeader>
+    <div>
+      <FormattedMessage
+        defaultMessage="An problem was encountered while loading this page."
+        id="app.components.LoadPageError.bodyMessage"
+        values={Object {}}
+      />
+    </div>
+  </Panel>
+  <Panel
+    bandColor="red"
+  >
+    <pre>
+      foo\\nbar
+    </pre>
+  </Panel>
+</Fragment>
+`;
+
+exports[`<LoadPageError /> should render expected JSX with debug error message 2`] = `
+Array [
+  <div
+    class="Panel-fVAoGK kwqJRB"
+  >
+    <div
+      class="Panel__PanelHeader-cCNZct dLoaXn"
+    >
+      <span>
+        Failed to Load Page
+      </span>
+    </div>
+    <div>
+      <span>
+        An problem was encountered while loading this page.
+      </span>
+    </div>
+  </div>,
+  <div
+    class="Panel-fVAoGK KQrbw"
+  >
+    <pre>
+      foo\\nbar
+    </pre>
+  </div>,
 ]
 `;

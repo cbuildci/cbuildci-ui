@@ -8,4 +8,12 @@ describe('<LoadPageError />', () => {
             <LoadPageError/>
         );
     });
+
+    it('should render expected JSX with debug error message', () => {
+        snapshots(
+            <LoadPageError
+                debugMessage="foo\nbar"
+            />
+        );
+    });
 });

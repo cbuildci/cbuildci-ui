@@ -130,12 +130,28 @@ function BuildParamsTable({
                     <td>{buildParams.sourceS3KeyPrefix}</td>
                 </tr>
                 <tr>
+                    <th>No Artifacts</th>
+                    <td>{buildParams.noArtifacts ? 'true' : 'false'}</td>
+                </tr>
+                <tr>
                     <th>Artifact S3 Bucket</th>
                     <td>{buildParams.artifactS3Bucket}</td>
                 </tr>
                 <tr>
                     <th>Artifact S3 Key Prefix</th>
                     <td>{buildParams.artifactS3KeyPrefix}</td>
+                </tr>
+                <tr>
+                    <th>Use Cache</th>
+                    <td>{buildParams.useCache ? 'true' : 'false'}</td>
+                </tr>
+                <tr>
+                    <th>Cache S3 Key Prefix</th>
+                    <td>{buildParams.cacheS3KeyPrefix}</td>
+                </tr>
+                <tr>
+                    <th>Cache S3 Bucket</th>
+                    <td>{buildParams.cacheS3Bucket}</td>
                 </tr>
                 <tr>
                     <th>Environment variables</th>

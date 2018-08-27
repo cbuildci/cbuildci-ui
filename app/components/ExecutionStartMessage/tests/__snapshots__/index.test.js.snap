@@ -7,7 +7,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull r
             synchronize {{actionHtml} to}
             other {{actionHtml}}
         }
-        {pullRequestLinkHtml}"
+        {pullRequestLinkHtml} by {usernameHtml}"
   id="app.components.ExecutionStartMessage.startedForPullRequest"
   values={
     Object {
@@ -27,7 +27,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull r
           }
         />
       </strong>,
-      "event": "pull_request",
+      "eventType": "pull_request",
       "pullRequestLinkHtml": <a
         href="https://git.com/foo/bar/pull/5"
       >
@@ -51,6 +51,12 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull r
           />
         </InjectIntl(Time)>
       </strong>,
+      "username": "bsmith",
+      "usernameHtml": <a
+        href="https://git.com/bsmith"
+      >
+        bsmith
+      </a>,
     }
   }
 />
@@ -86,6 +92,12 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "opened" pull r
       pull request #5
     </span>
   </a>
+   by 
+  <a
+    href="https://git.com/bsmith"
+  >
+    bsmith
+  </a>
 </span>
 `;
 
@@ -98,7 +110,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "rerun" user ev
   id="app.components.ExecutionStartMessage.startedByUserAction"
   values={
     Object {
-      "event": "check_run",
+      "eventType": "check_run",
       "identifier": "rerun",
       "identifierHtml": <strong>
         <FormattedMessage
@@ -124,12 +136,11 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "rerun" user ev
           />
         </InjectIntl(Time)>
       </strong>,
-      "username": "amekkawi-office",
+      "username": "bsmith",
       "usernameHtml": <a
-        href="https://git.com/amekkawi-office"
+        href="https://git.com/bsmith"
       >
-        @
-        amekkawi-office
+        bsmith
       </a>,
     }
   }
@@ -159,9 +170,9 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "rerun" user ev
   </strong>
    initiated by 
   <a
-    href="https://git.com/amekkawi-office"
+    href="https://git.com/bsmith"
   >
-    @amekkawi-office
+    bsmith
   </a>
 </span>
 `;
@@ -173,7 +184,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" p
             synchronize {{actionHtml} to}
             other {{actionHtml}}
         }
-        {pullRequestLinkHtml}"
+        {pullRequestLinkHtml} by {usernameHtml}"
   id="app.components.ExecutionStartMessage.startedForPullRequest"
   values={
     Object {
@@ -193,7 +204,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" p
           }
         />
       </strong>,
-      "event": "pull_request",
+      "eventType": "pull_request",
       "pullRequestLinkHtml": <a
         href="https://git.com/foo/bar/pull/5"
       >
@@ -217,6 +228,12 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" p
           />
         </InjectIntl(Time)>
       </strong>,
+      "username": "bsmith",
+      "usernameHtml": <a
+        href="https://git.com/bsmith"
+      >
+        bsmith
+      </a>,
     }
   }
 />
@@ -252,16 +269,22 @@ exports[`<ExecutionStartMessage/> should render expected JSX for "synchronize" p
       pull request #5
     </span>
   </a>
+   by 
+  <a
+    href="https://git.com/bsmith"
+  >
+    bsmith
+  </a>
 </span>
 `;
 
 exports[`<ExecutionStartMessage/> should render expected JSX for unknown event 1`] = `
 <FormattedMessage
-  defaultMessage="Started {relativeCreateTimeHtml} after event \\"{event}\\""
+  defaultMessage="Started {relativeCreateTimeHtml} after event \\"{eventType}\\""
   id="app.components.ExecutionStartMessage.startedWithUnknownEvent"
   values={
     Object {
-      "event": "foobar",
+      "eventType": "foobar",
       "relativeCreateTimeHtml": <strong>
         <InjectIntl(Time)
           date={1500000000000}
@@ -305,7 +328,7 @@ exports[`<ExecutionStartMessage/> should render expected JSX for unknown user ev
   id="app.components.ExecutionStartMessage.startedByUserAction"
   values={
     Object {
-      "event": "check_run",
+      "eventType": "check_run",
       "identifier": "foobar",
       "identifierHtml": <strong>
         <FormattedMessage
@@ -331,12 +354,11 @@ exports[`<ExecutionStartMessage/> should render expected JSX for unknown user ev
           />
         </InjectIntl(Time)>
       </strong>,
-      "username": "amekkawi-office",
+      "username": "bsmith",
       "usernameHtml": <a
-        href="https://git.com/amekkawi-office"
+        href="https://git.com/bsmith"
       >
-        @
-        amekkawi-office
+        bsmith
       </a>,
     }
   }
@@ -366,9 +388,9 @@ exports[`<ExecutionStartMessage/> should render expected JSX for unknown user ev
   </strong>
    initiated by 
   <a
-    href="https://git.com/amekkawi-office"
+    href="https://git.com/bsmith"
   >
-    @amekkawi-office
+    bsmith
   </a>
 </span>
 `;

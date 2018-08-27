@@ -22,7 +22,7 @@ describe('<ExecutionStartMessage/>', () => {
                 repo="bar"
                 createTime={1500000000000}
                 event={{
-                    event: 'foobar',
+                    type: 'foobar',
                 }}
             />,
         );
@@ -36,10 +36,15 @@ describe('<ExecutionStartMessage/>', () => {
                 repo="bar"
                 createTime={1500000000000}
                 event={{
-                    event: 'pull_request',
+                    type: 'pull_request',
                     action: 'opened',
                     pull_request: {
                         number: 5,
+                    },
+                    sender: {
+                        login: 'bsmith',
+                        type: 'User',
+                        id: 13106037,
                     },
                 }}
             />,
@@ -54,10 +59,15 @@ describe('<ExecutionStartMessage/>', () => {
                 repo="bar"
                 createTime={1500000000000}
                 event={{
-                    event: 'pull_request',
+                    type: 'pull_request',
                     action: 'synchronize',
                     pull_request: {
                         number: 5,
+                    },
+                    sender: {
+                        login: 'bsmith',
+                        type: 'User',
+                        id: 13106037,
                     },
                 }}
             />,
@@ -72,13 +82,13 @@ describe('<ExecutionStartMessage/>', () => {
                 repo="bar"
                 createTime={1500000000000}
                 event={{
-                    event: 'check_run',
+                    type: 'check_run',
                     action: 'requested_action',
                     requested_action: {
                         identifier: 'rerun',
                     },
                     sender: {
-                        login: 'amekkawi-office',
+                        login: 'bsmith',
                         type: 'User',
                         id: 13106037,
                     },
@@ -95,13 +105,13 @@ describe('<ExecutionStartMessage/>', () => {
                 repo="bar"
                 createTime={1500000000000}
                 event={{
-                    event: 'check_run',
+                    type: 'check_run',
                     action: 'requested_action',
                     requested_action: {
                         identifier: 'foobar',
                     },
                     sender: {
-                        login: 'amekkawi-office',
+                        login: 'bsmith',
                         type: 'User',
                         id: 13106037,
                     },

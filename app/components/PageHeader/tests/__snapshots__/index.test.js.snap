@@ -1,23 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PageHeader /> should render expected JSX 1`] = `
-<h1
-  className="mt-3 pb-2"
-  style={
-    Object {
-      "borderBottom": "1px solid #CCC",
-      "paddingBottom": "8px",
-    }
-  }
->
+<PageHeader__H1>
   Foobar
-</h1>
+</PageHeader__H1>
 `;
 
 exports[`<PageHeader /> should render expected JSX 2`] = `
 <h1
-  class="mt-3 pb-2"
-  style="padding-bottom:8px;border-bottom:1px solid #CCC"
+  class="PageHeader__H1-cGQWxJ bjGECH"
 >
   Foobar
 </h1>

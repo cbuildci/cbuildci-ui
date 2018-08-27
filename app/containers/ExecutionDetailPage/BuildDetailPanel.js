@@ -98,6 +98,7 @@ export class BuildDetailPanel extends React.Component {
         const { tab } = this.state;
 
         const buildState = execution.state.builds[buildKey];
+        const codeBuild = buildState.codeBuild;
         const logLines = [];
 
         if (tab === TAB_LOGS) {
@@ -137,7 +138,7 @@ export class BuildDetailPanel extends React.Component {
                     </TabButton>
                 </PanelTabs>
 
-                {tab === TAB_LOGS && !!buildState.codeBuild && (
+                {tab === TAB_LOGS && !!codeBuild && (
                     <React.Fragment>
                         <div className="mb-2">
                             Showing last 50 lines - <a href="#">View All</a>
@@ -151,7 +152,8 @@ export class BuildDetailPanel extends React.Component {
                 {tab === TAB_PHASES && (
                     <div className="table-responsive-md">
                         <PhasesTable
-                            phases={buildState.codeBuild && buildState.codeBuild.phases}
+                            currentPhase={codeBuild && codeBuild.currentPhase}
+                            phases={codeBuild && codeBuild.phases}
                         />
                     </div>
                 )}

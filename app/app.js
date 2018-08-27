@@ -6,7 +6,7 @@
  */
 
 // Needed for redux-saga es6 generator support
-import 'babel-polyfill';
+// import 'babel-polyfill';
 
 // Import all the third party stuff
 import React from 'react';
@@ -24,8 +24,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 import { WindowHeightProvider } from 'contexts/WindowHeight';
 
 // Load the favicon and the .htaccess file
-import '!file-loader?name=[name].[ext]!./images/favicon.ico';
-import 'file-loader?name=[name].[ext]!./.htaccess'; // eslint-disable-line import/extensions
+// import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 
 import configureStore from './configureStore';
 

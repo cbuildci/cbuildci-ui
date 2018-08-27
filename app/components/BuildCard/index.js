@@ -90,6 +90,7 @@ function BuildCard({
     waitingForDeps,
     startTime,
     endTime,
+    currentPhase,
     phases,
 }) {
     const phaseStatusesMap = {};
@@ -103,7 +104,11 @@ function BuildCard({
     if (phases) {
         for (const phase of phases) {
             phaseStatusesMap[phase.phaseType] =
-                phase.phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus;
+                phase.phaseType === 'COMPLETED'
+                    ? 'SUCCEEDED'
+                    : phase.phaseStatus
+                        ? phase.phaseStatus
+                        : currentPhase && phase.phaseType === currentPhase ? 'IN_PROGRESS' : phase.phaseStatus;
         }
     }
 
@@ -213,6 +218,7 @@ BuildCard.propTypes = {
         PropTypes.string,
         PropTypes.instanceOf(Date),
     ]),
+    currentPhase: PropTypes.string,
     phases: PropTypes.arrayOf(PropTypes.object),
 };
 

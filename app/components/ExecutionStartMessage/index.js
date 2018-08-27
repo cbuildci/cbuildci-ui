@@ -96,16 +96,10 @@ ExecutionStartMessage.propTypes = {
         PropTypes.string,
         PropTypes.instanceOf(Date),
     ]).isRequired,
-    conclusionTime: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string,
-        PropTypes.instanceOf(Date),
-    ]),
     event: PropTypes.object,
 };
 
 ExecutionStartMessage.defaultProps = {
-    conclusionTime: null,
     event: null,
 };
 

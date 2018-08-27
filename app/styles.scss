@@ -73,4 +73,14 @@ body {
     .flex-column-sm {
         flex-direction: column !important;
     }
+
+    .flex-wrap-sm {
+        flex-wrap: wrap;
+    }
+}
+
+@include media-breakpoint-only(xs) {
+    .flex-wrap-xs {
+        flex-wrap: wrap;
+    }
 }

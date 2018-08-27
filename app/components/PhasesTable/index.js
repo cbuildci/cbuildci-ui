@@ -10,7 +10,7 @@ import TimeDuration from 'components/TimeDuration';
 import PhaseStatus from '../PhaseStatus';
 import { PHASE_TYPES } from '../../utils/constants';
 
-function PhasesTable({ phases }) {
+function PhasesTable({ currentPhase, phases }) {
     const phaseMap = {};
 
     if (phases) {
@@ -31,11 +31,24 @@ function PhasesTable({ phases }) {
             <tbody>
                 {PHASE_TYPES.map((phaseType) => {
                     const phase = phaseMap[phaseType];
+                    let phaseStatus = null;
+
+                    if (phase) {
+                        phaseStatus = phase.phaseStatus;
+
+                        if (phase.phaseType === 'COMPLETED') {
+                            phaseStatus = 'SUCCEEDED';
+                        }
+                        else if (!phaseStatus && phase.phaseType === currentPhase) {
+                            phaseStatus = 'IN_PROGRESS';
+                        }
+                    }
+
                     return (
                         <React.Fragment key={phaseType}>
                             <tr>
                                 <th>{phaseType}</th>
-                                <td>{phase ? <PhaseStatus status={phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus}/> : '-'}</td>
+                                <td>{phase ? <PhaseStatus status={phaseStatus}/> : '-'}</td>
                                 <td>{phase && typeof phase.durationInSeconds === 'number' ? <TimeDuration seconds={phase.durationInSeconds}/> : '-'}</td>
                             </tr>
                             {phase && phase.contexts && phase.contexts.length > 0 && (
@@ -56,10 +69,12 @@ function PhasesTable({ phases }) {
 }
 
 PhasesTable.propTypes = {
+    currentPhase: PropTypes.string,
     phases: PropTypes.arrayOf(PropTypes.object),
 };
 
 PhasesTable.defaultProps = {
+    currentPhase: null,
     phases: null,
 };
 

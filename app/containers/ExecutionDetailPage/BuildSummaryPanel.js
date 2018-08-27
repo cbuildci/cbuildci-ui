@@ -67,7 +67,11 @@ function BuildSummaryPanel({
     if (buildState.codeBuild && buildState.codeBuild.phases) {
         for (const phase of buildState.codeBuild.phases) {
             phaseStatusesMap[phase.phaseType] =
-                phase.phaseType === 'COMPLETED' ? 'SUCCEEDED' : phase.phaseStatus;
+                phase.phaseType === 'COMPLETED'
+                    ? 'SUCCEEDED'
+                    : phase.phaseStatus
+                        ? phase.phaseStatus
+                        : phase.phaseType === currentPhase ? 'IN_PROGRESS' : phase.phaseStatus;
         }
     }
 

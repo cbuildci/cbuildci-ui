@@ -3,6 +3,7 @@
  * This script will extract the internationalization messages from all components
    and package them in the translation json files in the translations file.
  */
+const path = require('path');
 const fs = require('fs');
 const nodeGlob = require('glob');
 const transform = require('babel-core').transform;
@@ -10,9 +11,9 @@ const transform = require('babel-core').transform;
 const animateProgress = require('./helpers/progress');
 const addCheckmark = require('./helpers/checkmark');
 
-const pkg = require('../../package.json');
-const presets = pkg.babel.presets;
-const plugins = pkg.babel.plugins || [];
+const babelrc = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../package.json')));
+const presets = babelrc.presets;
+const plugins = babelrc.plugins || [];
 
 const i18n = require('../../app/i18n');
 
@@ -21,7 +22,8 @@ const DEFAULT_LOCALE = i18n.DEFAULT_LOCALE;
 require('shelljs/global');
 
 // Glob to match all js files except test files
-const FILES_TO_PARSE = 'app/**/!(*.test).js';
+// const FILES_TO_PARSE = 'app/**/!(*.test).js';
+const FILES_TO_PARSE = 'app/**/messages.js';
 const locales = i18n.appLocales;
 
 const newLine = () => process.stdout.write('\n');

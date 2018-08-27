@@ -15,9 +15,31 @@ function ExecutionsBreadcrumb({
     executionNum,
     buildKey,
 }) {
+    let repoHtml = null;
     let commitHtml = null;
     let executionNumHtml = null;
     let buildKeyHtml = null;
+
+    if (repo != null) {
+        if (commit == null) {
+            repoHtml = (
+                <li className="breadcrumb-item">
+                    <i className="fab fa-github fa-fw mr-1"/>
+                    {owner}/{repo}
+                </li>
+            );
+        }
+        else {
+            repoHtml = (
+                <li className="breadcrumb-item">
+                    <Link to={`/repo/${owner}/${repo}`}>
+                        <i className="fab fa-github fa-fw mr-1"/>
+                        {owner}/{repo}
+                    </Link>
+                </li>
+            );
+        }
+    }
 
     if (commit != null) {
         if (executionNum == null) {
@@ -75,12 +97,7 @@ function ExecutionsBreadcrumb({
                 <li className="breadcrumb-item"><a href="#">
                     <FormattedMessage {...messages.executionsLink}/>
                 </a></li>
-                <li className="breadcrumb-item">
-                    <Link to={`/repo/${owner}/${repo}`}>
-                        <i className="fab fa-github fa-fw mr-1"/>
-                        {owner}/{repo}
-                    </Link>
-                </li>
+                {repoHtml}
                 {commitHtml}
                 {executionNumHtml}
                 {buildKeyHtml}

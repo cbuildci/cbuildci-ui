@@ -44,6 +44,7 @@ function BuildsPanel({
                                 waitingForDeps={buildState.waitingForDeps}
                                 startTime={buildState.codeBuild && buildState.codeBuild.startTime}
                                 endTime={buildState.codeBuild && buildState.codeBuild.endTime}
+                                currentPhase={buildState.codeBuild && buildState.codeBuild.currentPhase}
                                 phases={buildState.codeBuild && buildState.codeBuild.phases}
                             />
                         ))}

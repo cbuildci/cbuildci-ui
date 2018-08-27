@@ -128,10 +128,4 @@ export const TabButton = styled(TabButtonComponent)`
     `}
 `;
 
-export const TabLabel = styled.label`
-    ${Tab} {
-        pointer-events: none;
-    }
-`;
-
 export default Panel;

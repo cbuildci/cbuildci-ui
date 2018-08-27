@@ -72,7 +72,6 @@ exports[`<ExecutionStopMessage/> should render expected JSX when user requests s
       "stopUserHtml": <a
         href="https://git.com/foo"
       >
-        @
         foo
       </a>,
     }
@@ -99,7 +98,7 @@ exports[`<ExecutionStopMessage/> should render expected JSX when user requests s
   <a
     href="https://git.com/foo"
   >
-    @foo
+    foo
   </a>
    
 </span>
@@ -140,7 +139,6 @@ exports[`<ExecutionStopMessage/> should render expected JSX when user requests s
       "stopUserHtml": <a
         href="https://git.com/foo"
       >
-        @
         foo
       </a>,
     }
@@ -167,7 +165,7 @@ exports[`<ExecutionStopMessage/> should render expected JSX when user requests s
   <a
     href="https://git.com/foo"
   >
-    @foo
+    foo
   </a>
    and took 
   <strong>

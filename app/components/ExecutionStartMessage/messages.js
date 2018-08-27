@@ -22,7 +22,7 @@ export default defineMessages({
             synchronize {{actionHtml} to}
             other {{actionHtml}}
         }
-        {pullRequestLinkHtml}`,
+        {pullRequestLinkHtml} by {usernameHtml}`,
     },
     startedForPullRequest_action: {
         id: 'app.components.ExecutionStartMessage.startedForPullRequest_action',

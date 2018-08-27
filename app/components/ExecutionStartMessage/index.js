@@ -47,6 +47,11 @@ function ExecutionStartMessage({
                 </strong>
             );
 
+            values.username = event.sender.login;
+            values.usernameHtml = (
+                <a href={`https://${githubHost}/${event.sender.login}`}>{event.sender.login}</a>
+            );
+
             values.pullRequestLinkHtml = (
                 <a href={`https://${githubHost}/${owner}/${repo}/pull/${event.pull_request.number}`}>
                     <FormattedMessage

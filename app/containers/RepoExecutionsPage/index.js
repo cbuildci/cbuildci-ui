@@ -17,6 +17,7 @@ import LoadingIndicator from 'components/LoadingIndicator';
 import ExecutionStatus, { getStatusColor } from 'components/ExecutionStatus';
 import ExecutionStartMessage from 'components/ExecutionStartMessage';
 import ExecutionStopMessage from 'components/ExecutionStopMessage';
+import CommitMeta from 'components/CommitMeta';
 
 import reducer, { injectReducer } from './reducer';
 import saga, { injectSaga } from './saga';
@@ -101,6 +102,15 @@ export class RepoExecutionsPage extends React.Component {
                                 <div>
                                     <ExecutionStatus status={execution.conclusion || execution.status}/>
                                 </div>
+                                {execution.meta.commit && (
+                                    <div>
+                                        <CommitMeta
+                                            githubHost={githubHost}
+                                            message={execution.meta.commit.message}
+                                            author={execution.meta.commit.author}
+                                        />
+                                    </div>
+                                )}
                                 <div className="d-flex align-items-baseline">
                                     {/* <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                                     <ExecutionStartMessage

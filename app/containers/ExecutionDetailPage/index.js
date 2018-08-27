@@ -150,6 +150,8 @@ export class ExecutionDetailPage extends React.Component {
                         owner={owner}
                         repo={repo}
                         commit={commit}
+                        author={execution.meta.commit.author}
+                        commitMessage={execution.meta.commit.message}
                         status={execution.status}
                         createTime={execution.createTime}
                         executionEvent={execution.meta.event}

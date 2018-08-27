@@ -8,10 +8,11 @@ import { FormattedMessage } from 'react-intl';
 import messages from './messages';
 
 import ErrorBoundary from 'components/ErrorBoundary';
+import { Panel, PanelHeaderMini } from 'components/Panel';
 import ExecutionStatus, { getStatusColor } from 'components/ExecutionStatus';
 import ExecutionStartMessage from 'components/ExecutionStartMessage';
 import ExecutionStopMessage from 'components/ExecutionStopMessage';
-import { Panel, PanelHeaderMini } from 'components/Panel';
+import CommitMeta from 'components/CommitMeta';
 
 const lineRenderError = <span><em>(Render Error)</em></span>;
 
@@ -20,6 +21,8 @@ function ExecutionSummaryPanel({
     owner,
     repo,
     commit,
+    author,
+    commitMessage,
     status,
     createTime,
     executionEvent,
@@ -39,6 +42,22 @@ function ExecutionSummaryPanel({
                     <ErrorBoundary errorMessage={lineRenderError}>
                         <ExecutionStatus status={conclusion || status}/>
                     </ErrorBoundary>
+                </div>
+
+                <div className="d-flex flex-wrap-sm mt-1 mb-1">
+                    <div className="d-flex flex-wrap-xs">
+                        <div className="d-flex mr-2 flex-shrink-0">
+                            <CommitMeta
+                                githubHost={githubHost}
+                                message={commitMessage}
+                                author={author}
+                            />
+                        </div>
+
+                        <div className="mr-2 text-nowrap text-muted" style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            – {commitMessage.substr(0, 100)}{commitMessage.length > 100 ? '…' : ''}
+                        </div>
+                    </div>
                 </div>
 
                 <div className="d-inline-flex flex-wrap">
@@ -108,6 +127,8 @@ ExecutionSummaryPanel.propTypes = {
     owner: PropTypes.string.isRequired,
     repo: PropTypes.string.isRequired,
     commit: PropTypes.string.isRequired,
+    author: PropTypes.object.isRequired,
+    commitMessage: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     createTime: PropTypes.oneOfType([
         PropTypes.number,

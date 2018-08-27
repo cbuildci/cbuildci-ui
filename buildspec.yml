@@ -1,0 +1,23 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - npm install --cache-min=9999
+      - mkdir artifacts
+  pre_build:
+    commands:
+      - npm run -s lint
+      - npm run -s test
+  build:
+    commands:
+      - npm run -s build:ci
+  post_build:
+    commands:
+      - mv build artifacts
+cache:
+  paths:
+    - '/root/.npm/**/*'
+    - 'node_modules/**/*'
+artifacts:
+  files: '**/*'
+  base-directory: artifacts

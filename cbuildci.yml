@@ -1,0 +1,6 @@
+version: 1
+
+builds:
+  build:
+    timeoutInMinutes: 5
+    image: 'aws/codebuild/nodejs:8.11.0'

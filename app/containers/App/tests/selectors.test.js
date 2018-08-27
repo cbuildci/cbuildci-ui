@@ -1,13 +1,33 @@
 import { fromJS } from 'immutable';
 
-import {
+import * as selectors from '../selectors';
+
+describe('exports', () => {
+    it('should have the expected exports', () => {
+        expect(Object.keys(selectors).sort())
+            .toEqual([
+                'selectApp',
+                'selectRoute',
+                'selectLoggingIn',
+                'selectLoginUrl',
+                'selectLoginError',
+                'selectIsLoggedIn',
+                'selectGithubHost',
+                'selectLocation',
+            ].sort());
+    });
+});
+
+const {
     selectApp,
-    makeSelectCurrentUser,
-    makeSelectLoading,
-    makeSelectError,
-    makeSelectRepos,
-    makeSelectLocation,
-} from '../selectors';
+    selectRoute,
+    selectLoggingIn,
+    selectLoginUrl,
+    selectLoginError,
+    selectIsLoggedIn,
+    selectGithubHost,
+    selectLocation,
+} = selectors;
 
 describe('selectApp', () => {
     it('should select the app state', () => {
@@ -19,71 +39,98 @@ describe('selectApp', () => {
     });
 });
 
-describe('makeSelectCurrentUser', () => {
-    const currentUserSelector = makeSelectCurrentUser();
-    it('should select the current user', () => {
-        const username = 'mxstbr';
-        const mockedState = fromJS({
+describe('selectLoggingIn', () => {
+    it('should select if user is logging in', () => {
+        const mockedStateA = fromJS({
             app: {
-                currentUser: username,
+                loggingIn: true,
             },
         });
-        expect(currentUserSelector(mockedState)).toEqual(username);
+        expect(selectLoggingIn(mockedStateA)).toEqual(true);
+
+        const mockedStateB = fromJS({
+            app: {
+                loggingIn: false,
+            },
+        });
+        expect(selectLoggingIn(mockedStateB)).toEqual(false);
     });
 });
 
-describe('makeSelectLoading', () => {
-    const loadingSelector = makeSelectLoading();
-    it('should select the loading', () => {
-        const loading = false;
+describe('selectLoginUrl', () => {
+    it('should select login URL', () => {
         const mockedState = fromJS({
             app: {
-                loading,
+                loginUrl: 'http://foobar/',
             },
         });
-        expect(loadingSelector(mockedState)).toEqual(loading);
+        expect(selectLoginUrl(mockedState)).toEqual('http://foobar/');
     });
 });
 
-describe('makeSelectError', () => {
-    const errorSelector = makeSelectError();
-    it('should select the error', () => {
-        const error = 404;
+describe('selectLoginError', () => {
+    it('should select login error', () => {
+        const err = new Error();
         const mockedState = fromJS({
             app: {
-                error,
+                loginError: err,
             },
         });
-        expect(errorSelector(mockedState)).toEqual(error);
+        expect(selectLoginError(mockedState)).toEqual(err);
     });
 });
 
-describe('makeSelectRepos', () => {
-    const reposSelector = makeSelectRepos();
-    it('should select the repos', () => {
-        const repositories = fromJS([]);
+describe('selectIsLoggedIn', () => {
+    it('should select if user is logged in', () => {
+        const mockedStateA = fromJS({
+            app: {
+                isLoggedIn: true,
+            },
+        });
+        expect(selectIsLoggedIn(mockedStateA)).toEqual(true);
+
+        const mockedStateB = fromJS({
+            app: {
+                isLoggedIn: false,
+            },
+        });
+        expect(selectIsLoggedIn(mockedStateB)).toEqual(false);
+    });
+});
+
+describe('selectGithubHost', () => {
+    it('should select Github host', () => {
         const mockedState = fromJS({
             app: {
-                userData: {
-                    repositories,
+                githubHost: 'foobar.github.com',
+            },
+        });
+        expect(selectGithubHost(mockedState)).toEqual('foobar.github.com');
+    });
+});
+
+describe('selectRoute', () => {
+    it('should select the route state', () => {
+        const routeState = fromJS({});
+        const mockedState = fromJS({
+            route: routeState,
+        });
+        expect(selectRoute(mockedState)).toEqual(routeState);
+    });
+});
+
+describe('selectLocation', () => {
+    it('should select route location', () => {
+        const mockedState = fromJS({
+            route: {
+                location: {
+                    path: '/foo/bar',
                 },
             },
         });
-        expect(reposSelector(mockedState)).toEqual(repositories);
-    });
-});
 
-describe('makeSelectLocation', () => {
-    const locationStateSelector = makeSelectLocation();
-    it('should select the location', () => {
-        const route = fromJS({
-            location: { pathname: '/foo' },
+        expect(selectLocation(mockedState)).toEqual({
+            path: '/foo/bar',
         });
-        const mockedState = fromJS({
-            route,
-        });
-        expect(locationStateSelector(mockedState)).toEqual(
-            route.get('location').toJS(),
-        );
     });
 });

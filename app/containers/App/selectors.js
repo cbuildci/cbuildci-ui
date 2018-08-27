@@ -39,6 +39,7 @@ const selectLocation = createSelector(
 
 export {
     selectApp,
+    selectRoute,
     selectLoggingIn,
     selectLoginUrl,
     selectLoginError,

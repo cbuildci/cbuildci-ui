@@ -21,6 +21,7 @@
         "preinstall": "npm run npmcheckversion",
         "prebuild": "npm run build:clean",
         "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --color -p --progress --hide-modules --display-optimization-bailout",
+        "build:ci": "cross-env NODE_ENV=production webpack --config webpack.config.js -p --hide-modules --display-optimization-bailout",
         "build:clean": "rimraf ./build",
         "start": "cross-env NODE_ENV=development WEBPACK_SERVE=1 webpack-serve --port 3000 --hmr",
         "start:production": "npm run test && npm run build && npm run start:prod",

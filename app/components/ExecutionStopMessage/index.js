@@ -38,7 +38,7 @@ function ExecutionStopMessage({
 
         values.stopUserHtml = (
             <a href={`https://${githubHost}/${stopUser}`}>
-                @{stopUser}
+                {stopUser}
             </a>
         );
     }

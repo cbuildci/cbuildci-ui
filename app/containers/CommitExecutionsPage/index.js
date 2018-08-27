@@ -103,7 +103,7 @@ export class CommitExecutionsPage extends React.Component {
                                     <ExecutionStatus status={execution.conclusion || execution.status}/>
                                 </div>
                                 <div className="d-flex align-items-baseline">
-                                    <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/>
+                                    {/* <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                                     <ExecutionStartMessage
                                         githubHost={githubHost}
                                         createTime={execution.createTime}

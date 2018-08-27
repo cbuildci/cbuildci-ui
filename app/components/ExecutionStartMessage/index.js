@@ -64,7 +64,7 @@ function ExecutionStartMessage({
 
             values.username = event.sender.login;
             values.usernameHtml = (
-                <a href={`https://${githubHost}/${event.sender.login}`}>@{event.sender.login}</a>
+                <a href={`https://${githubHost}/${event.sender.login}`}>{event.sender.login}</a>
             );
 
             values.identifier = event.requested_action.identifier;

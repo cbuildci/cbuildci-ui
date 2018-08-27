@@ -34,7 +34,7 @@ function BuildSummary({
             {codeBuild && (
                 <div className="mb-1">
                     <ErrorBoundary errorMessage={() => <span>Error</span>}>
-                        <i className="far fa-clock fa-fw text-muted mr-1"/>
+                        {/* <i className="far fa-clock fa-fw text-muted mr-1"/> */}
                         <FormattedMessage
                             {...messages.timingMessage}
                             values={{

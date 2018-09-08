@@ -15,6 +15,21 @@ export default createSelector(
  * Other specific selectors
  */
 
+export const selectOwner = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('owner'),
+);
+
+export const selectRepo = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('repo'),
+);
+
+export const selectCommit = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('commit'),
+);
+
 export const selectIsLoading = createSelector(
     selectDomain,
     (domainState) => domainState.get('isLoading'),

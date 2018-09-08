@@ -3,12 +3,18 @@
  */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 import messages from './messages';
+
+import {
+    selectGithubUrl,
+    selectUserName,
+    selectUserLogin,
+} from 'containers/App/selectors';
 
 const DropdownBG = styled.div`
     position: fixed;
@@ -53,7 +59,16 @@ export class TopNav extends React.PureComponent {
     }
 
     render() {
-        const { showNavi, showUserDropdown } = this.state;
+        const {
+            githubUrl,
+            userName,
+            userLogin,
+        } = this.props;
+
+        const {
+            showNavi,
+            showUserDropdown,
+        } = this.state;
 
         return (
             <React.Fragment>
@@ -94,27 +109,30 @@ export class TopNav extends React.PureComponent {
 
                             <div className="mr-md-auto"/>
 
-                            <div className="nav-item dropdown">
-                                <a
-                                    className="nav-link dropdown-toggle"
-                                    href="#"
-                                    onClick={this.handleToggleUserDropdown}
-                                    style={{ paddingTop: '5px', paddingBottom: '5px' }}
-                                >
-                                    <img src="https://github.com/amekkawi.png" width="30" height="30" style={{ borderRadius: '4px' }}/>
-                                </a>
+                            {userName && (
+                                <div className="nav-item dropdown">
+                                    <a
+                                        className="nav-link dropdown-toggle"
+                                        href="#"
+                                        onClick={this.handleToggleUserDropdown}
+                                        style={{ paddingTop: '5px', paddingBottom: '5px' }}
+                                    >
+                                        <img src={`${githubUrl}/${userLogin}.png?size=90`} width="30" height="30" style={{ borderRadius: '4px' }}/>
+                                    </a>
 
-                                {showUserDropdown && (
-                                    <div className="dropdown-menu dropdown-menu-right mt-0 show" aria-labelledby="navbarDropdown">
-                                        <a className="dropdown-item" href={''}>
-                                            <span className="text-muted"><FormattedMessage {...messages.loggedInAs}/></span><br/>
-                                            <strong>amekkawi</strong>
-                                        </a>
-                                        <div className="dropdown-divider"/>
-                                        <a className="dropdown-item" href="#" onClick={this.handleLogOut}>Log Out</a>
-                                    </div>
-                                )}
-                            </div>
+                                    {showUserDropdown && (
+                                        <div className="dropdown-menu dropdown-menu-right mt-0 show" aria-labelledby="navbarDropdown">
+                                            <a className="dropdown-item" href={`${githubUrl}/${userLogin}`}>
+                                                <span className="text-muted"><FormattedMessage {...messages.loggedInAs}/></span><br/>
+                                                <strong>{userName}</strong><br/>
+                                                <span>{userLogin}</span>
+                                            </a>
+                                            <div className="dropdown-divider"/>
+                                            <a className="dropdown-item" href="#" onClick={this.handleLogOut}>Log Out</a>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
                 </nav>
@@ -126,16 +144,23 @@ export class TopNav extends React.PureComponent {
     }
 }
 
-TopNav.propTypes = {};
-TopNav.defaultProps = {};
+TopNav.propTypes = {
+    githubUrl: PropTypes.string,
+    userName: PropTypes.string,
+    userLogin: PropTypes.string,
+};
 
-function mapStateToProps(/* state, ownProps */) {
+TopNav.defaultProps = {
+    githubUrl: null,
+    userName: null,
+    userLogin: null,
+};
+
+function mapStateToProps(state) {
     return {
-        // Route params
-        // myparam: ownProps.match.params.myparam,
-
-        // Store values
-        // topnav: selectTopNav,
+        githubUrl: selectGithubUrl(state),
+        userName: selectUserName(state),
+        userLogin: selectUserLogin(state),
     };
 }
 

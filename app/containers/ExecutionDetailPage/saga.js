@@ -1,7 +1,10 @@
-import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import createInjector from 'utils/injectSaga';
 import { delay, raceCancel } from '../../utils/saga-util';
-import { requestJson } from 'utils/request';
+
+import {
+    endpointRequest,
+} from 'containers/App/saga';
 
 import {
     EXECUTION_OPENED,
@@ -11,18 +14,6 @@ import {
     FETCH_EXECUTION_REQUEST,
     FETCH_BUILD_LOGS_REQUEST,
 } from './constants';
-
-import {
-    LOGIN_SUCCESS,
-} from 'containers/App/constants';
-
-import {
-    loginRequest,
-} from 'containers/App/actions';
-
-import {
-    selectLoggingIn,
-} from 'containers/App/selectors';
 
 import selectDomain, {
     selectExecution,
@@ -41,12 +32,6 @@ import {
 export function* fetchingExecution({
     accessKey = null,
 }) {
-    // Check if a login is in process.
-    const isLoggingIn = yield select(selectLoggingIn);
-    if (isLoggingIn) {
-        yield take(LOGIN_SUCCESS);
-    }
-
     try {
         const {
             owner,
@@ -66,8 +51,9 @@ export function* fetchingExecution({
         }
 
         const execution = yield call(
-            requestJson,
-            `/api/v1/repo/${owner}/${repo}/commit/${commit}/exec/${executionNum}`,
+            endpointRequest,
+            'getExecutionUrl',
+            { owner, repo, commit, executionNum },
             { headers }
         );
 
@@ -92,25 +78,9 @@ export function* fetchingExecution({
     }
     catch (err) {
         if (err.isJson && err.body) {
-            if (err.status === 403 && err.body.authRedirectUrl) {
-                // Start a login request.
-                yield put(loginRequest(err.body.authRedirectUrl));
-
-                // Wait for the login to succeed or the
-                const loginSuccessResult = yield take(LOGIN_SUCCESS);
-
-                if (loginSuccessResult) {
-                    // Try the fetch again...
-                    yield call(fetchExecution({
-                        accessKey,
-                    }));
-                }
-            }
-            else {
-                yield put(fetchExecutionFailure(
-                    err.body,
-                ));
-            }
+            yield put(fetchExecutionFailure(
+                err.body,
+            ));
         }
         else {
             yield put(fetchExecutionFailure(
@@ -125,12 +95,6 @@ export function* fetchingExecution({
 export function* fetchingBuildLogs({
     accessKey = null,
 }) {
-    // Check if a login is in process.
-    const isLoggingIn = yield select(selectLoggingIn);
-    if (isLoggingIn) {
-        yield take(LOGIN_SUCCESS);
-    }
-
     try {
         const execution = yield select(selectExecution);
         if (!execution) {
@@ -145,7 +109,6 @@ export function* fetchingBuildLogs({
             return;
         }
 
-        let accessKey;
         if (buildState.codeBuild) {
             const headers = {};
 
@@ -154,8 +117,9 @@ export function* fetchingBuildLogs({
             }
 
             const response = yield call(
-                requestJson,
-                `/api/v1/repo/${owner}/${repo}/commit/${commit}/exec/${executionNum}/build/${buildKey}/logs`,
+                endpointRequest,
+                'getExecutionBuildLogsUrl',
+                { owner, repo, commit, executionNum, buildKey }, // limit, nextToken
                 { headers }
             );
 
@@ -185,25 +149,9 @@ export function* fetchingBuildLogs({
     }
     catch (err) {
         if (err.isJson && err.body) {
-            if (err.status === 403 && err.body.authRedirectUrl) {
-                // Start a login request.
-                yield put(loginRequest(err.body.authRedirectUrl));
-
-                // Wait for the login to succeed or the
-                const loginSuccessResult = yield take(LOGIN_SUCCESS);
-
-                if (loginSuccessResult) {
-                    // Try the fetch again...
-                    yield call(fetchBuildLogs({
-                        accessKey,
-                    }));
-                }
-            }
-            else {
-                yield put(fetchBuildLogsFailure(
-                    err.body,
-                ));
-            }
+            yield put(fetchBuildLogsFailure(
+                err.body,
+            ));
         }
         else {
             yield put(fetchBuildLogsFailure(

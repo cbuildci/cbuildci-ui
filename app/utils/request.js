@@ -20,6 +20,42 @@ export async function getBody(response) {
         : response.text();
 }
 
+export function buildApiUrl(url, params) {
+    let [
+        path,
+        query,
+    ] = url.split('?');
+
+    path = path.replace(/{(\w+)}/g, (match, key) => {
+        return params[key] == null
+            ? String(params[key])
+            : encodeURIComponent(params[key]);
+    });
+
+    query = (query || '').split('&')
+        .map((part) => {
+            const match = part.match(/^([\w_]+)={(\w+)}$/);
+
+            // Keep the part as-is if it doesn't contain a param to replace.
+            if (!match) {
+                return part;
+            }
+
+            const value = params[match[2]];
+
+            // Skip the part if the param value is undefined.
+            if (value === undefined) {
+                return null;
+            }
+
+            return `${match[1]}=${encodeURIComponent(value)}`;
+        })
+        .filter((v) => v !== null)
+        .join('&');
+
+    return `${path}${query ? `?${query}` : ''}`;
+}
+
 /**
  *
  * @param {string} url

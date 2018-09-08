@@ -16,8 +16,14 @@ import { ConnectedRouter } from 'connected-react-router/immutable';
 import createHistory from 'history/createBrowserHistory';
 // import 'sanitize.css/sanitize.css';
 
-// Import root app
+// Import root app and constants
 import App from 'containers/App';
+import {
+    WINDOW_BLUR,
+    WINDOW_FOCUS,
+    WINDOW_VISIBLE,
+    WINDOW_HIDDEN,
+} from 'containers/App/constants';
 
 // Import providers
 import LanguageProvider from 'containers/LanguageProvider';
@@ -49,6 +55,23 @@ history.listen((location, action) => {
 });
 
 const store = configureStore(initialState, history);
+
+// Dispatch events on window focus/visibility events.
+window.addEventListener('blur', () => {
+    store.dispatch({ type: WINDOW_BLUR });
+});
+window.addEventListener('focus', () => {
+    store.dispatch({ type: WINDOW_FOCUS });
+});
+window.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        store.dispatch({ type: WINDOW_VISIBLE });
+    }
+    if (document.visibilityState === 'hidden') {
+        store.dispatch({ type: WINDOW_HIDDEN });
+    }
+});
+
 const MOUNT_NODE = document.getElementById('app');
 
 const render = (messages) => {

@@ -7,18 +7,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
+import { buildApiUrl } from '../../utils/request';
+
 import messages from './messages';
 
 import {
-    selectLoggingIn,
-    selectLoginUrl,
+    selectGithubHost,
+    selectIsLoginRequired,
+    selectEndpoints,
 } from './selectors';
 
 export class LoginModal extends React.Component {
 
     static propTypes = {
-        loginUrl: PropTypes.string.isRequired,
         githubHost: PropTypes.string.isRequired,
+        loginUrl: PropTypes.string.isRequired,
     };
 
     constructor(props) {
@@ -81,7 +84,7 @@ export class LoginModal extends React.Component {
                                 />
                             </div>
                             <div className="modal-footer">
-                                <a href={`${loginUrl}?returnTo=${encodeURIComponent(window.location.href)}`} className="btn btn-success" ref={this.buttonRef}>
+                                <a href={buildApiUrl(loginUrl, { url: window.location.href })} className="btn btn-success" ref={this.buttonRef}>
                                     <FormattedMessage
                                         {...messages.loginModalButton}
                                         values={{
@@ -99,23 +102,24 @@ export class LoginModal extends React.Component {
     }
 }
 
-function LoginModalContaner({ loggingIn, ...props }) {
-    return loggingIn
-        ? <LoginModal {...props} githubHost="github.com" />
+function LoginModalContaner({ isLoggingIn, ...props }) {
+    return isLoggingIn
+        ? <LoginModal {...props} />
         : null;
 }
 
 LoginModalContaner.propTypes = {
-    loggingIn: PropTypes.bool,
+    isLoggingIn: PropTypes.bool,
 };
 
 LoginModalContaner.defaultProps = {
-    loggingIn: false,
+    isLoggingIn: false,
 };
 
 const mapStateToProps = createStructuredSelector({
-    loggingIn: selectLoggingIn,
-    loginUrl: selectLoginUrl,
+    githubHost: selectGithubHost,
+    isLoggingIn: selectIsLoginRequired,
+    loginUrl: (state) => selectEndpoints(state).authRedirectUrl,
 });
 
 export default connect(

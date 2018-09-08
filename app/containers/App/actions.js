@@ -3,27 +3,46 @@
  */
 
 import {
-    LOGIN_REQUEST,
-    LOGIN_SUCCESS,
-    LOGIN_FAILURE,
+    STATE_RESTORE,
+    STATE_REQUEST,
+    STATE_SUCCESS,
+    STATE_FAILURE,
 } from './constants';
 
-export function loginRequest(loginUrl) {
+export function stateRestore(state) {
     return {
-        type: LOGIN_REQUEST,
-        loginUrl,
+        type: STATE_RESTORE,
+        state,
     };
 }
 
-export function fetchExecutionSuccess() {
+export function stateRequest(resetUser) {
     return {
-        type: LOGIN_SUCCESS,
+        type: STATE_REQUEST,
+        resetUser,
     };
 }
 
-export function fetchExecutionFailure(error) {
+export function stateSuccess(
+    githubUrl,
+    githubHost,
+    userLogin,
+    userName,
+    endpoints,
+) {
     return {
-        type: LOGIN_FAILURE,
+        type: STATE_SUCCESS,
+        githubUrl,
+        githubHost,
+        userLogin,
+        userName,
+        endpoints,
+    };
+}
+
+export function stateFailure(error) {
+    return {
+        type: STATE_FAILURE,
         error,
     };
 }

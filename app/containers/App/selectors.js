@@ -2,48 +2,84 @@
  * The app state selectors
  */
 
-import { createSelector } from 'reselect';
+import {
+    createSelector,
+    createStructuredSelector,
+} from 'reselect';
 
-const selectApp = (state) => state.get('app');
-const selectRoute = (state) => state.get('route');
+export const selectApp = (state) => state.get('app');
+export const selectRoute = (state) => state.get('route');
 
-const selectLoggingIn = createSelector(
+export const selectHasRestoredState = createSelector(
     selectApp,
-    (appState) => appState.get('loggingIn'),
+    (appState) => appState.get('hasRestoredState'),
 );
 
-const selectLoginUrl = createSelector(
+export const selectHasFetchedState = createSelector(
     selectApp,
-    (appState) => appState.get('loginUrl'),
+    (appState) => appState.get('hasFetchedState'),
 );
 
-const selectLoginError = createSelector(
+export const selectIsFetchingState = createSelector(
     selectApp,
-    (appState) => appState.get('loginError'),
+    (appState) => appState.get('isFetchingState'),
 );
 
-const selectIsLoggedIn = createSelector(
+export const selectStateError = createSelector(
     selectApp,
-    (appState) => appState.get('isLoggedIn'),
+    (appState) => appState.get('stateError'),
 );
 
-const selectGithubHost = createSelector(
+export const selectGithubUrl = createSelector(
     selectApp,
-    (routeState) => routeState.get('githubHost')
+    (appState) => appState.get('githubUrl')
 );
 
-const selectLocation = createSelector(
+export const selectGithubHost = createSelector(
+    selectApp,
+    (appState) => appState.get('githubHost')
+);
+
+export const selectUserName = createSelector(
+    selectApp,
+    (appState) => appState.get('userName'),
+);
+
+export const selectUserLogin = createSelector(
+    selectApp,
+    (appState) => appState.get('userLogin'),
+);
+
+export const selectEndpoints = createSelector(
+    selectApp,
+    (appState) => appState.get('endpoints') || {},
+);
+
+export const selectIsUserLoggedIn = createSelector(
+    selectUserLogin,
+    (userLogin) => userLogin != null,
+);
+
+export const selectIsLoginRequired = createSelector(
+    selectHasFetchedState,
+    selectUserLogin,
+    (hasFetchedState, userLogin) => hasFetchedState && userLogin == null,
+);
+
+export const selectHasLoadedState = createSelector(
+    selectGithubUrl,
+    (githubUrl) => !!githubUrl,
+);
+
+export const selectRestoreState = createStructuredSelector({
+    githubUrl: selectGithubUrl,
+    githubHost: selectGithubHost,
+    endpoints: selectEndpoints,
+    userName: selectUserName,
+    userLogin: selectUserLogin,
+});
+
+export const selectLocation = createSelector(
     selectRoute,
     (routeState) => routeState.get('location').toJS()
 );
-
-export {
-    selectApp,
-    selectRoute,
-    selectLoggingIn,
-    selectLoginUrl,
-    selectLoginError,
-    selectIsLoggedIn,
-    selectGithubHost,
-    selectLocation,
-};

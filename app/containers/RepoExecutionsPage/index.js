@@ -38,7 +38,6 @@ import {
     pageClosed,
 } from './actions';
 
-/* eslint-disable react/prefer-stateless-function */
 export class RepoExecutionsPage extends React.Component {
 
     componentDidMount() {

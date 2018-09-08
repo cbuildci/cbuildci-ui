@@ -8,12 +8,16 @@
 
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { compose } from 'redux';
 import { hot } from 'react-hot-loader';
 import { Switch, Route } from 'react-router-dom';
 
 import { ErrorContextProvider } from 'components/ErrorBoundary';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import TopNav from 'containers/TopNav';
+
+import reducer, { injectReducer } from './reducer';
+import saga, { injectSaga } from './saga';
 
 // Pages
 import RepoExecutionsPage from 'containers/RepoExecutionsPage/Loadable';
@@ -109,4 +113,11 @@ export function App() {
     );
 }
 
-export default hot(module)(App);
+const withReducer = injectReducer('app', reducer);
+const withSaga = injectSaga('app', saga);
+
+export default compose(
+    withReducer,
+    withSaga,
+    hot(module)
+)(App);

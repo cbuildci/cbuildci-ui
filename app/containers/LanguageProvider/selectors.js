@@ -7,16 +7,14 @@ import { initialState } from './reducer';
  * @param {object} state
  * @returns {object}
  */
-const selectLanguage = (state) => state.get('language', initialState);
+export const selectLanguage = (state) => state.get('language', initialState);
 
 /**
  * Select the language locale.
  *
  * @returns {string}
  */
-const makeSelectLocale = () => createSelector(
+export const selectLocale = createSelector(
     selectLanguage,
     (languageState) => languageState.get('locale')
 );
-
-export { selectLanguage, makeSelectLocale };

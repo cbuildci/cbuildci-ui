@@ -1,6 +1,5 @@
 import { call, put, select, take, takeLatest, race, throttle } from 'redux-saga/effects';
 import createInjector from 'utils/injectSaga';
-import { delay } from '../../utils/saga-util';
 import { requestJson, buildApiUrl } from 'utils/request';
 
 import {
@@ -26,6 +25,7 @@ import {
     selectIsFetchingState,
     selectIsUserLoggedIn,
     selectIsLoginRequired,
+    selectStateError,
 } from './selectors';
 
 function* init() {
@@ -50,8 +50,6 @@ function* init() {
 
 function* fetchState() {
     try {
-        yield delay(500); // TODO: Remove
-
         const { app, user, endpoints } = yield call(
             requestJson,
             '/api/v1',
@@ -100,8 +98,12 @@ function* checkForLoginSuccess() {
 export function* waitForLogin() {
     while (!(yield select(selectIsUserLoggedIn))) {
 
+        const isFetchingState = yield select(selectIsFetchingState);
+        const isLoginRequired = yield select(selectIsLoginRequired);
+        const stateError = yield select(selectStateError);
+
         // Request state if not already requesting it.
-        if (!(yield select(selectIsFetchingState)) && !(yield select(selectIsLoginRequired))) {
+        if (!isFetchingState && !isLoginRequired && !stateError) {
             yield put(stateRequest());
         }
 

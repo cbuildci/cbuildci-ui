@@ -25,6 +25,7 @@ import CommitExecutionsPage from 'containers/CommitExecutionsPage/Loadable';
 import ExecutionDetailPage from 'containers/ExecutionDetailPage/Loadable';
 
 import LoginModal from './LoginModal';
+import StateErrorModal from './StateErrorModal';
 
 const onError = (err, info) => {
     // TODO: How to better handle this?
@@ -108,6 +109,7 @@ export function App() {
                     </Switch>
                 </div>
                 <LoginModal/>
+                <StateErrorModal/>
             </div>
         </ErrorContextProvider>
     );

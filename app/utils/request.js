@@ -84,13 +84,25 @@ export async function requestJson(url, options = {}) {
     }
 
     if (response.ok) {
-        return response.json();
+        try {
+            return await response.json();
+        }
+        catch (err) {
+            err.message = `Invalid JSON: ${err.message}`;
+            throw err;
+        }
     }
 
     const error = new Error(response.statusText);
     error.status = response.status;
     error.isJson = true;
-    error.body = await response.json();
+
+    try {
+        error.body = await response.json();
+    }
+    catch (err) {
+        error.message = `Invalid JSON: ${err.message}`;
+    }
 
     Object.defineProperty(error, 'getResponse', {
         enumerable: false,

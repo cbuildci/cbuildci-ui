@@ -67,7 +67,7 @@ function ExecutionSummaryPanel({
                     <span className="mr-2">
                         <a href={`https://${githubHost}/${owner}/${repo}/commit/${commit}`}>
                             <i className="fas fa-code-branch fa-fw text-muted mr-1"/>
-                            {commit.substr(0, 10)}
+                            <code>{commit.substr(0, 10)}</code>
                         </a>
                     </span>
                 </div>

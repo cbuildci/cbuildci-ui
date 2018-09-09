@@ -76,7 +76,7 @@ export class CommitExecutionsPage extends React.Component {
                 <PageHeader>
                     <FormattedMessage
                         {...messages.header}
-                        values={{ commit: commit.substr(0, 10) }}
+                        values={{ commit: (<code>{commit.substr(0, 10)}</code>) }}
                     />
                 </PageHeader>
 

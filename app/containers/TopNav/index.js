@@ -8,12 +8,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import { buildApiUrl } from '../../utils/request';
 import messages from './messages';
 
 import {
     selectGithubUrl,
     selectUserName,
     selectUserLogin,
+    selectEndpoints,
 } from 'containers/App/selectors';
 
 const DropdownBG = styled.div`
@@ -55,7 +57,8 @@ export class TopNav extends React.PureComponent {
 
     handleLogOut(evt) {
         evt.preventDefault();
-        window.location = `/api/v1/auth/logout?redirect=${encodeURIComponent(`${window.location.origin}/app`)}`;
+        const { logoutUrl } = this.props;
+        window.location = buildApiUrl(logoutUrl, { url: `${window.location.origin}/app` });
     }
 
     render() {
@@ -109,7 +112,7 @@ export class TopNav extends React.PureComponent {
 
                             <div className="mr-md-auto"/>
 
-                            {userName && (
+                            {userLogin && (
                                 <div className="nav-item dropdown">
                                     <a
                                         className="nav-link dropdown-toggle"
@@ -146,12 +149,14 @@ export class TopNav extends React.PureComponent {
 
 TopNav.propTypes = {
     githubUrl: PropTypes.string,
+    logoutUrl: PropTypes.string,
     userName: PropTypes.string,
     userLogin: PropTypes.string,
 };
 
 TopNav.defaultProps = {
     githubUrl: null,
+    logoutUrl: null,
     userName: null,
     userLogin: null,
 };
@@ -159,6 +164,7 @@ TopNav.defaultProps = {
 function mapStateToProps(state) {
     return {
         githubUrl: selectGithubUrl(state),
+        logoutUrl: selectEndpoints(state).logoutUrl,
         userName: selectUserName(state),
         userLogin: selectUserLogin(state),
     };

@@ -8,7 +8,6 @@ import {
 } from 'reselect';
 
 export const selectApp = (state) => state.get('app');
-export const selectRoute = (state) => state.get('route');
 
 export const selectHasRestoredState = createSelector(
     selectApp,
@@ -66,11 +65,6 @@ export const selectIsLoginRequired = createSelector(
     (hasFetchedState, userLogin) => hasFetchedState && userLogin == null,
 );
 
-export const selectHasLoadedState = createSelector(
-    selectGithubUrl,
-    (githubUrl) => !!githubUrl,
-);
-
 export const selectRestoreState = createStructuredSelector({
     githubUrl: selectGithubUrl,
     githubHost: selectGithubHost,
@@ -78,6 +72,8 @@ export const selectRestoreState = createStructuredSelector({
     userName: selectUserName,
     userLogin: selectUserLogin,
 });
+
+export const selectRoute = (state) => state.get('route');
 
 export const selectLocation = createSelector(
     selectRoute,

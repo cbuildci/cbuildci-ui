@@ -1,43 +1,75 @@
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from '../constants';
+import {
+    STATE_RESTORE,
+    STATE_REQUEST,
+    STATE_SUCCESS,
+    STATE_FAILURE,
+} from '../constants';
 
-import { loadRepos, reposLoaded, repoLoadingError } from '../actions';
+import {
+    stateRestore,
+    stateRequest,
+    stateSuccess,
+    stateFailure,
+} from '../actions';
 
-describe('App Actions', () => {
-    describe('loadRepos', () => {
-        it('should return the correct type', () => {
-            const expectedResult = {
-                type: LOAD_REPOS,
-            };
-
-            expect(loadRepos()).toEqual(expectedResult);
+describe('App container actions', () => {
+    describe('stateRestore', () => {
+        it('should return the correct type and props', () => {
+            expect(stateRestore({
+                foobar: true,
+            })).toEqual({
+                type: STATE_RESTORE,
+                state: {
+                    foobar: true,
+                },
+            });
         });
     });
 
-    describe('reposLoaded', () => {
-        it('should return the correct type and the passed repos', () => {
-            const fixture = ['Test'];
-            const username = 'test';
-            const expectedResult = {
-                type: LOAD_REPOS_SUCCESS,
-                repos: fixture,
-                username,
-            };
+    describe('stateRequest', () => {
+        it('should return the correct type and props', () => {
+            expect(stateRequest()).toEqual({
+                type: STATE_REQUEST,
+                resetUser: false,
+            });
 
-            expect(reposLoaded(fixture, username)).toEqual(expectedResult);
+            expect(stateRequest(true)).toEqual({
+                type: STATE_REQUEST,
+                resetUser: true,
+            });
         });
     });
 
-    describe('repoLoadingError', () => {
-        it('should return the correct type and the error', () => {
-            const fixture = {
-                msg: 'Something went wrong!',
-            };
-            const expectedResult = {
-                type: LOAD_REPOS_ERROR,
-                error: fixture,
-            };
+    describe('stateSuccess', () => {
+        it('should return the correct type and props', () => {
+            expect(stateSuccess(
+                'gurl',
+                'ghost',
+                'ulogin',
+                'uname',
+                {
+                    foo: 'bar',
+                },
+            )).toEqual({
+                type: STATE_SUCCESS,
+                githubUrl: 'gurl',
+                githubHost: 'ghost',
+                userLogin: 'ulogin',
+                userName: 'uname',
+                endpoints: {
+                    foo: 'bar',
+                },
+            });
+        });
+    });
 
-            expect(repoLoadingError(fixture)).toEqual(expectedResult);
+    describe('stateFailure', () => {
+        it('should return the correct type and error', () => {
+            const err = new Error();
+            expect(stateFailure(err)).toEqual({
+                type: STATE_FAILURE,
+                error: err,
+            });
         });
     });
 });

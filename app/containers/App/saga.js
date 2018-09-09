@@ -1,6 +1,7 @@
 import { call, put, select, take, takeLatest, race, throttle } from 'redux-saga/effects';
 import createInjector from 'utils/injectSaga';
 import { requestJson, buildApiUrl } from 'utils/request';
+import { delay } from '../../utils/saga-util';
 
 import {
     WINDOW_VISIBLE,
@@ -28,7 +29,18 @@ import {
     selectStateError,
 } from './selectors';
 
-function* init() {
+export function getStoredSessionState() {
+    return JSON.parse(sessionStorage.getItem(SESSION_STORAGE_KEY) || '{}');
+}
+
+export function setStoredSessionState(state) {
+    sessionStorage.setItem(
+        SESSION_STORAGE_KEY,
+        JSON.stringify(state),
+    );
+}
+
+export function* init() {
     // Skip init if already restored state.
     if (yield select(selectHasRestoredState)) {
         return;
@@ -36,7 +48,7 @@ function* init() {
 
     try {
         yield put(stateRestore(
-            JSON.parse(sessionStorage.getItem(SESSION_STORAGE_KEY) || '{}'),
+            yield call(getStoredSessionState),
         ));
     }
     catch (err) {
@@ -48,7 +60,7 @@ function* init() {
     yield put(stateRequest());
 }
 
-function* fetchState() {
+export function* fetchState() {
     try {
         const { app, user, endpoints } = yield call(
             requestJson,
@@ -79,34 +91,30 @@ function* fetchState() {
     }
 }
 
-function* saveStateToSession() {
-    const state = yield select(selectRestoreState);
-
+export function* saveStateToSession() {
     // Persist the state on success.
-    sessionStorage.setItem(
-        SESSION_STORAGE_KEY,
-        JSON.stringify(state),
+    yield call(
+        setStoredSessionState,
+        yield select(selectRestoreState),
     );
 }
 
-function* checkForLoginSuccess() {
-    if (!(yield select(selectIsFetchingState)) && (yield select(selectIsLoginRequired))) {
-        yield put(stateRequest());
+export function* checkForLoginSuccess() {
+    const isFetchingState = yield select(selectIsFetchingState);
+    if (isFetchingState) {
+        return;
     }
+
+    const isLoginRequired = yield select(selectIsLoginRequired);
+    if (!isLoginRequired) {
+        return;
+    }
+
+    yield put(stateRequest());
 }
 
 export function* waitForLogin() {
     while (!(yield select(selectIsUserLoggedIn))) {
-
-        const isFetchingState = yield select(selectIsFetchingState);
-        const isLoginRequired = yield select(selectIsLoginRequired);
-        const stateError = yield select(selectStateError);
-
-        // Request state if not already requesting it.
-        if (!isFetchingState && !isLoginRequired && !stateError) {
-            yield put(stateRequest());
-        }
-
         yield race({
             restore: take(STATE_RESTORE),
             success: take(STATE_SUCCESS),
@@ -114,8 +122,39 @@ export function* waitForLogin() {
     }
 }
 
+/**
+ * Fetch the state if needed.
+ */
+export function* requestStateIfNeeded() {
+    // Skip if already logged in.
+    if (yield select(selectIsUserLoggedIn)) {
+        return;
+    }
+
+    // Skip if already fetching state.
+    if (yield select(selectIsFetchingState)) {
+        return;
+    }
+
+    // Skip if showing the login modal.
+    if (yield select(selectIsLoginRequired)) {
+        return;
+    }
+
+    // Skip if showing a state fetch error.
+    if (yield select(selectStateError)) {
+        return;
+    }
+
+    yield put(stateRequest());
+}
+
 export function* endpointRequest(endpoint, params, ...args) {
+    let attempt = 0;
     while (true) {
+        attempt++;
+
+        yield call(requestStateIfNeeded);
         yield call(waitForLogin);
 
         const endpoints = yield select(selectEndpoints);
@@ -125,7 +164,12 @@ export function* endpointRequest(endpoint, params, ...args) {
             return yield call(requestJson, url, ...args);
         }
         catch (err) {
-            if (err.isJson && err.status === 403 && err.body && err.body.authRedirectUrl) {
+            // Allow up to 10 attempts if the response indicates the user needs to login.
+            if (attempt <= 10 && err.isJson && err.status === 403 && err.body && err.body.authRedirectUrl) {
+
+                // Add a small delay
+                yield delay(100 * attempt);
+
                 yield put(stateRequest(true));
             }
             else {
@@ -155,5 +199,5 @@ export default function* defaultSaga() {
         WINDOW_FOCUS,
     ], checkForLoginSuccess);
 
-    yield* init();
+    yield call(init);
 }

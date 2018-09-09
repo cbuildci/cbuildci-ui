@@ -16,7 +16,7 @@ export function stateRestore(state) {
     };
 }
 
-export function stateRequest(resetUser) {
+export function stateRequest(resetUser = false) {
     return {
         type: STATE_REQUEST,
         resetUser,

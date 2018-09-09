@@ -15,7 +15,7 @@ function CommitMeta({
             {author.login && (
                 <span className="mr-1" style={{ lineHeight: '22px' }}>
                     <img
-                        src={`https://github.com/${author.login}.png`}
+                        src={`https://github.com/${author.login}.png?size=60`}
                         width="20"
                         height="20"
                         style={{ marginTop: '-2px', borderRadius: '4px' }}

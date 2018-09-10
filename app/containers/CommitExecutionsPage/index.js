@@ -91,6 +91,12 @@ export class CommitExecutionsPage extends React.Component {
                     </Panel>
                 )}
 
+                {executions && !executions.length && (
+                    <Panel>
+                        <div>No executions found for the repo/commit.</div>
+                    </Panel>
+                )}
+
                 {executions && executions.map((execution) => (
                     <Panel bandColor={getStatusColor(execution.conclusion || execution.status)} key={execution.executionNum}>
                         <div className="d-flex flex-column-sm">

@@ -9,6 +9,8 @@ import { Helmet } from 'react-helmet';
 import { compose, bindActionCreators } from 'redux';
 import { Switch, Route } from 'react-router-dom';
 
+import ErrorBoundary from 'components/ErrorBoundary';
+import { panelErrorMessage } from 'components/RenderErrorPanel';
 import { WindowHeightConsumer } from 'contexts/WindowHeight';
 import { Panel, PanelHeader, PanelHeaderMini } from 'components/Panel';
 import LoadingIndicator from 'components/LoadingIndicator';
@@ -59,11 +61,13 @@ function BuildDetail({ execution, buildKey }) {
             <WindowHeightConsumer>
                 {(height) => (
                     <div style={{ minHeight: `${Math.max(height - 30, 0)}px` }}>
-                        <BuildDetailPanel
-                            key={buildKey}
-                            execution={execution}
-                            buildKey={buildKey}
-                        />
+                        <ErrorBoundary errorMessage={panelErrorMessage}>
+                            <BuildDetailPanel
+                                key={buildKey}
+                                execution={execution}
+                                buildKey={buildKey}
+                            />
+                        </ErrorBoundary>
                     </div>
                 )}
             </WindowHeightConsumer>
@@ -145,21 +149,23 @@ export class ExecutionDetailPage extends React.Component {
                 )}
 
                 {execution && (
-                    <ExecutionSummaryPanel
-                        githubHost={githubHost}
-                        owner={owner}
-                        repo={repo}
-                        commit={commit}
-                        author={execution.meta.commit.author}
-                        commitMessage={execution.meta.commit.message}
-                        status={execution.status}
-                        createTime={execution.createTime}
-                        executionEvent={execution.meta.event}
-                        conclusion={execution.conclusion}
-                        conclusionTime={execution.conclusionTime}
-                        stopUser={execution.meta.stop && execution.meta.stop.user}
-                        stopRequestTime={execution.meta.stop && execution.meta.stop.requestTime}
-                    />
+                    <ErrorBoundary errorMessage={panelErrorMessage}>
+                        <ExecutionSummaryPanel
+                            githubHost={githubHost}
+                            owner={owner}
+                            repo={repo}
+                            commit={commit}
+                            author={execution.meta.commit.author}
+                            commitMessage={execution.meta.commit.message}
+                            status={execution.status}
+                            createTime={execution.createTime}
+                            executionEvent={execution.meta.event}
+                            conclusion={execution.conclusion}
+                            conclusionTime={execution.conclusionTime}
+                            stopUser={execution.meta.stop && execution.meta.stop.user}
+                            stopRequestTime={execution.meta.stop && execution.meta.stop.requestTime}
+                        />
+                    </ErrorBoundary>
                 )}
 
                 {execution && (
@@ -167,19 +173,23 @@ export class ExecutionDetailPage extends React.Component {
                         <Route
                             path={`${url}/build/:buildKey`}
                             render={({ match }) => (
-                                <BuildDetail
-                                    execution={execution}
-                                    buildKey={match.params.buildKey}
-                                />
+                                <ErrorBoundary errorMessage={panelErrorMessage}>
+                                    <BuildDetail
+                                        execution={execution}
+                                        buildKey={match.params.buildKey}
+                                    />
+                                </ErrorBoundary>
                             )}
                         />
 
                         <Route
                             path=""
                             render={() => (
-                                <BuildsPanel
-                                    execution={execution}
-                                />
+                                <ErrorBoundary errorMessage={panelErrorMessage}>
+                                    <BuildsPanel
+                                        execution={execution}
+                                    />
+                                </ErrorBoundary>
                             )}
                         />
                     </Switch>

@@ -73,7 +73,6 @@ function ExecutionSummaryPanel({
                 </div>
 
                 <div className="d-flex align-items-baseline mt-1 mb-1">
-                    {/* <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                     <ErrorBoundary errorMessage={lineRenderError}>
                         <ExecutionStartMessage
                             createTime={createTime}
@@ -87,7 +86,6 @@ function ExecutionSummaryPanel({
 
                 {(conclusionTime != null || stopRequestTime != null) && (
                     <div className="d-flex align-items-baseline mt-1 mb-1">
-                        {/* <i className="fas fa-stop-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                         <ErrorBoundary errorMessage={lineRenderError}>
                             <ExecutionStopMessage
                                 githubHost={githubHost}

@@ -95,13 +95,13 @@ function BuildParamsTable({
                     <td>{buildParams.timeoutInMinutes}</td>
                 </tr>
                 {/* <tr>
-                                    <th>Stop If</th>
-                                    <td>
-                                        <ul className="mb-0 pl-4">
-                                            <li>Not Branch Head</li>
-                                        </ul>
-                                    </td>
-                                </tr> */}
+                    <th>Stop If</th>
+                    <td>
+                        <ul className="mb-0 pl-4">
+                            <li>Not Branch Head</li>
+                        </ul>
+                    </td>
+                </tr> */}
                 <tr>
                     <th>Depends On</th>
                     <td>
@@ -118,9 +118,9 @@ function BuildParamsTable({
                     </td>
                 </tr>
                 {/* <tr>
-                                    <th>Branches</th>
-                                    <td><em className="text-muted">N/A</em></td>
-                                </tr> */}
+                    <th>Branches</th>
+                    <td><em className="text-muted">N/A</em></td>
+                </tr> */}
                 <tr>
                     <th>Source S3 Bucket</th>
                     <td>{buildParams.sourceS3Bucket}</td>

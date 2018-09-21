@@ -117,7 +117,6 @@ export class RepoExecutionsPage extends React.Component {
                                     </div>
                                 )}
                                 <div className="d-flex align-items-baseline">
-                                    {/* <i className="fas fa-play-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                                     <ExecutionStartMessage
                                         githubHost={githubHost}
                                         createTime={execution.createTime}
@@ -128,7 +127,6 @@ export class RepoExecutionsPage extends React.Component {
                                 </div>
                                 {(execution.conclusionTime != null || execution.meta.stop) && (
                                     <div className="d-flex align-items-baseline">
-                                        {/* <i className="fas fa-stop-circle fa-fw text-muted mr-1 flex-shrink-0"/> */}
                                         <ExecutionStopMessage
                                             githubHost={githubHost}
                                             createTime={execution.createTime}

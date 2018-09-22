@@ -158,6 +158,10 @@ export function* endpointRequest(endpoint, params, ...args) {
         yield call(waitForLogin);
 
         const endpoints = yield select(selectEndpoints);
+        if (!endpoints[endpoint]) {
+            throw new Error(`Endpoint URL does not exist: ${endpoint}`);
+        }
+
         const url = buildApiUrl(endpoints[endpoint], params);
 
         try {

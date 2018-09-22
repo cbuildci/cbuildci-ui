@@ -16,6 +16,30 @@ import CommitMeta from 'components/CommitMeta';
 
 const lineRenderError = <span><em>(Render Error)</em></span>;
 
+function getActionIcon(action) {
+    if (action === 'stop') {
+        return 'fas fa-stop-circle';
+    }
+    else if (action === 'rerun') {
+        return 'fas fa-redo-alt';
+    }
+    else {
+        return null;
+    }
+}
+
+function getActionButtonStyle(action) {
+    if (action === 'stop') {
+        return 'btn-outline-danger';
+    }
+    else if (action === 'rerun') {
+        return 'btn-outline-primary';
+    }
+    else {
+        return 'btn-outline-secondary';
+    }
+}
+
 function ExecutionSummaryPanel({
     githubHost,
     owner,
@@ -30,6 +54,10 @@ function ExecutionSummaryPanel({
     conclusionTime,
     stopUser,
     stopRequestTime,
+    actions,
+    actionRequested,
+    actionError,
+    onActionRequest,
 }) {
     return (
         <Panel bandColor={getStatusColor(conclusion || status)}>
@@ -98,19 +126,32 @@ function ExecutionSummaryPanel({
                     </div>
                 )}
 
-                <div className="mt-2 mb-1 btn-toolbar" role="toolbar" aria-label="Actions to take on the execution">
-                    {!conclusion && !stopRequestTime && (
-                        <div className="btn-group mr-2">
-                            <button type="button" className="btn btn-outline-danger btn-sm"><i className="fas fa-stop-circle"/> Stop
-                            </button>
-                        </div>
-                    )}
-                    {!!conclusion && (
-                        <div className="btn-group mr-2">
-                            <button type="button" className="btn btn-outline-primary btn-sm"><i className="fas fa-redo-alt"/> Re-Run</button>
-                        </div>
-                    )}
-                </div>
+                {actions.length > 0 && (
+                    <div className="mt-2 mb-1 btn-toolbar" role="toolbar" aria-label="Actions to take on the execution">
+                        {actions.map((action) => {
+                            const icon = getActionIcon(action);
+                            const buttonStyle = getActionButtonStyle(action);
+                            return (
+                                <div key={action} className="btn-group mr-2">
+                                    <button
+                                        onClick={actionRequested ? null : () => onActionRequest(action)}
+                                        className={`btn ${buttonStyle} btn-sm`}
+                                        disabled={!!actionRequested}>
+                                        {icon && <i className={`${icon} mr-1`}/>}
+                                        <FormattedMessage {...messages.actionButton} values={{ action }}/>
+                                    </button>
+                                </div>
+                            );
+                        })}
+                    </div>
+                )}
+
+                {actionError && (
+                    <div className="alert alert-danger mt-2 mb-0">
+                        <div><strong>Failed to request action:</strong></div>
+                        <div><code>{actionError.message}</code></div>
+                    </div>
+                )}
             </ErrorBoundary>
         </Panel>
     );
@@ -136,12 +177,22 @@ ExecutionSummaryPanel.propTypes = {
         PropTypes.string,
         PropTypes.instanceOf(Date),
     ]),
+    actions: PropTypes.arrayOf(PropTypes.string).isRequired,
+    actionRequested: PropTypes.string,
+    actionError: PropTypes.object,
     stopUser: PropTypes.string,
     stopRequestTime: PropTypes.oneOfType([
         PropTypes.number,
         PropTypes.string,
         PropTypes.instanceOf(Date),
     ]),
+
+    onActionRequest: PropTypes.func.isRequired,
+};
+
+ExecutionSummaryPanel.defaultProps = {
+    actionRequested: null,
+    actionError: null,
 };
 
 export default ExecutionSummaryPanel;

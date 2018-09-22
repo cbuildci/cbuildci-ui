@@ -5,6 +5,9 @@
 import {
     EXECUTION_OPENED,
     EXECUTION_CLOSED,
+    ACTION_REQUEST,
+    ACTION_SUCCESS,
+    ACTION_FAILURE,
     BUILD_OPENED,
     BUILD_CLOSED,
     FETCH_EXECUTION_FAILURE,
@@ -74,6 +77,29 @@ export function fetchExecutionFailure(
 ) {
     return {
         type: FETCH_EXECUTION_FAILURE,
+        error,
+    };
+}
+
+export function actionRequest(actionRequested) {
+    return {
+        type: ACTION_REQUEST,
+        actionRequested,
+    };
+}
+
+export function actionSuccess(actionRequested, execution) {
+    return {
+        type: ACTION_SUCCESS,
+        actionRequested,
+        execution,
+    };
+}
+
+export function actionFailure(actionRequested, error) {
+    return {
+        type: ACTION_FAILURE,
+        actionRequested,
         error,
     };
 }

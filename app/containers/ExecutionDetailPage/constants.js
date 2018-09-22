@@ -4,6 +4,9 @@
 
 export const EXECUTION_OPENED = 'container/ExecutionDetailPage/EXECUTION_OPENED';
 export const EXECUTION_CLOSED = 'container/ExecutionDetailPage/EXECUTION_CLOSED';
+export const ACTION_REQUEST = 'container/ExecutionDetailPage/ACTION_REQUEST';
+export const ACTION_SUCCESS = 'container/ExecutionDetailPage/ACTION_SUCCESS';
+export const ACTION_FAILURE = 'container/ExecutionDetailPage/ACTION_FAILURE';
 export const BUILD_OPENED = 'container/ExecutionDetailPage/BUILD_OPENED';
 export const BUILD_CLOSED = 'container/ExecutionDetailPage/BUILD_CLOSED';
 export const FETCH_EXECUTION_REQUEST = 'container/ExecutionDetailPage/FETCH_EXECUTION_REQUEST';

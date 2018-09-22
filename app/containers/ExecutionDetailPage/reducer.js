@@ -15,6 +15,9 @@ import {
     FETCH_EXECUTION_REQUEST,
     FETCH_EXECUTION_SUCCESS,
     FETCH_EXECUTION_FAILURE,
+    ACTION_REQUEST,
+    ACTION_SUCCESS,
+    ACTION_FAILURE,
     FETCH_BUILD_LOGS_REQUEST,
     FETCH_BUILD_LOGS_SUCCESS,
     FETCH_BUILD_LOGS_FAILURE,
@@ -37,6 +40,9 @@ const initial = {
     isLoading: false,
     loadError: null,
     execution: null,
+
+    actionRequested: null,
+    actionError: null,
 
     ...initialBuild,
 };
@@ -78,6 +84,32 @@ function executionDetailPageReducer(state = initialState, action) {
             return state
                 .set('isLoading', false)
                 .set('loadError', action.error);
+
+        case ACTION_REQUEST:
+            return state
+                .set('actionRequested', action.actionRequested)
+                .set('actionError', null);
+
+        case ACTION_SUCCESS:
+            state = state
+                .set('actionRequested', null)
+                .set('actionError', null);
+
+            if (action.execution) {
+                const execution = state.get('execution');
+
+                // Set the execution data if it is newer than what we have.
+                if (execution && execution.updates < action.execution.updates) {
+                    state = state.set('execution', action.execution);
+                }
+            }
+
+            return state;
+
+        case ACTION_FAILURE:
+            return state
+                .set('actionRequested', null)
+                .set('actionError', action.error);
 
         case BUILD_CLOSED:
             return state

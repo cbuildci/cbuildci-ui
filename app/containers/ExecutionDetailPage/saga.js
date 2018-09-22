@@ -1,5 +1,6 @@
-import { call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest, takeEvery } from 'redux-saga/effects';
 import createInjector from 'utils/injectSaga';
+import { push as pushLocation } from 'connected-react-router/immutable';
 import { delay, raceCancel } from '../../utils/saga-util';
 
 import {
@@ -9,6 +10,7 @@ import {
 import {
     EXECUTION_OPENED,
     EXECUTION_CLOSED,
+    ACTION_REQUEST,
     BUILD_OPENED,
     BUILD_CLOSED,
     FETCH_EXECUTION_REQUEST,
@@ -24,6 +26,8 @@ import {
     fetchExecution,
     fetchExecutionSuccess,
     fetchExecutionFailure,
+    actionSuccess,
+    actionFailure,
     fetchBuildLogs,
     fetchBuildLogsSuccess,
     fetchBuildLogsFailure,
@@ -86,6 +90,62 @@ export function* fetchingExecution({
             yield put(fetchExecutionFailure(
                 {
                     message: err.message,
+                },
+            ));
+        }
+    }
+}
+
+export function* sendActionRequested({
+    actionRequested,
+}) {
+    try {
+        const execution = yield select(selectExecution);
+        if (!execution) {
+            return;
+        }
+
+        const { owner, repo, commit, executionNum } = execution;
+
+        const response = yield call(
+            endpointRequest,
+            'executionActionUrl',
+            { owner, repo, commit, executionNum, actionRequested },
+            {
+                method: 'POST',
+            }
+        );
+
+        yield put(actionSuccess(
+            actionRequested,
+            response.execution || null,
+        ));
+
+        // Redirect to the new execution, if re-run action.
+        if (actionRequested === 'rerun') {
+            const { owner, repo, commit, executionNum } = response;
+            yield put(pushLocation(`/repo/${owner}/${repo}/commit/${commit}/exec/${executionNum}`));
+        }
+
+        // Otherwise, fetch the execution to get the new list of actions,
+        // if the response did not include new execution data.
+        else if (!response.execution) {
+            yield put(fetchExecution());
+        }
+    }
+    catch (err) {
+        if (err.isJson && err.body) {
+            yield put(actionFailure(
+                actionRequested,
+                err.body,
+            ));
+        }
+        else {
+            yield put(actionFailure(
+                actionRequested,
+                {
+                    message: err.message,
+                    stack: err.stack,
                 },
             ));
         }
@@ -195,6 +255,14 @@ export default function* defaultSaga() {
             EXECUTION_CLOSED,
             BUILD_CLOSED,
             FETCH_BUILD_LOGS_REQUEST,
+        ]),
+    );
+
+    yield takeEvery(
+        ACTION_REQUEST,
+        raceCancel(sendActionRequested, [
+            EXECUTION_OPENED,
+            EXECUTION_CLOSED,
         ]),
     );
 }

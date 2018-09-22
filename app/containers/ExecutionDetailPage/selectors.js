@@ -30,6 +30,16 @@ export const selectExecution = createSelector(
     (domainState) => domainState.get('execution'),
 );
 
+export const selectActionRequested = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('actionRequested'),
+);
+
+export const selectActionError = createSelector(
+    selectDomain,
+    (domainState) => domainState.get('actionError'),
+);
+
 export const selectBuildKey = createSelector(
     selectDomain,
     (domainState) => domainState.get('buildKey'),

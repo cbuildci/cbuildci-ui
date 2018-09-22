@@ -24,6 +24,8 @@ import {
     selectIsLoading,
     selectExecution,
     selectLoadError,
+    selectActionRequested,
+    selectActionError,
 } from './selectors';
 import {
     selectGithubHost,
@@ -33,6 +35,7 @@ import saga, { injectSaga } from './saga';
 import {
     executionOpened,
     executionClosed,
+    actionRequest,
 } from './actions';
 
 function BuildDetail({ execution, buildKey }) {
@@ -101,6 +104,9 @@ export class ExecutionDetailPage extends React.Component {
             isLoading,
             loadError,
             execution,
+            actionRequested,
+            actionError,
+            onActionRequest,
         } = this.props;
 
         return (
@@ -162,8 +168,12 @@ export class ExecutionDetailPage extends React.Component {
                             executionEvent={execution.meta.event}
                             conclusion={execution.conclusion}
                             conclusionTime={execution.conclusionTime}
+                            actions={execution.actions || []}
+                            actionRequested={actionRequested}
+                            actionError={actionError}
                             stopUser={execution.meta.stop && execution.meta.stop.user}
                             stopRequestTime={execution.meta.stop && execution.meta.stop.requestTime}
+                            onActionRequest={onActionRequest}
                         />
                     </ErrorBoundary>
                 )}
@@ -213,12 +223,18 @@ ExecutionDetailPage.propTypes = {
 
     onOpen: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
+
+    actionRequested: PropTypes.string,
+    actionError: PropTypes.object,
+    onActionRequest: PropTypes.func.isRequired,
 };
 
 ExecutionDetailPage.defaultProps = {
     isLoading: false,
     execution: null,
     loadError: null,
+    actionRequested: null,
+    actionError: null,
 };
 
 function mapStateToProps(state) {
@@ -228,6 +244,8 @@ function mapStateToProps(state) {
         execution: selectExecution(state),
         loadError: selectLoadError(state),
         githubHost: selectGithubHost(state),
+        actionRequested: selectActionRequested(state),
+        actionError: selectActionError(state),
     };
 }
 
@@ -239,6 +257,7 @@ const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators({
         ownProps.executionNum,
     ),
     onClose: executionClosed,
+    onActionRequest: actionRequest,
 }, dispatch);
 
 const withConnect = connect(

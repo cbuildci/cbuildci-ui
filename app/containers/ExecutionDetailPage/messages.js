@@ -25,4 +25,20 @@ export default defineMessages({
         id: 'app.containers.ExecutionDetailPage.viewDetailButton',
         defaultMessage: 'View Detail',
     },
+    actionButton: {
+        id: 'app.containers.ExecutionDetailPage.actionButton',
+        defaultMessage: `{action, select,
+            stop {Stop}
+            rerun {Re-Run}
+            other {{action}}
+        }`,
+    },
+    actionButtonTooltip: {
+        id: 'app.containers.ExecutionDetailPage.actionButtonTooltip',
+        defaultMessage: `{action, select,
+            stop {Stop the execution.}
+            rerun {Re-run the execution.}
+            other {Run action "{action}" for the execution.}
+        }`,
+    },
 });

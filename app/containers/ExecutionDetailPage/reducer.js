@@ -55,16 +55,24 @@ function executionDetailPageReducer(state = initialState, action) {
                 .set('commit', action.commit)
                 .set('executionNum', action.executionNum);
 
-        case FETCH_EXECUTION_REQUEST: {
+        case FETCH_EXECUTION_REQUEST:
             return state
                 .set('isLoading', true)
                 .set('loadError', null);
-        }
 
-        case FETCH_EXECUTION_SUCCESS:
-            return state
-                .set('isLoading', false)
-                .set('execution', action.execution);
+        case FETCH_EXECUTION_SUCCESS: {
+            state = state
+                .set('isLoading', false);
+
+            const execution = state.get('execution');
+
+            // Set the execution data if it is newer than what we have.
+            if (!execution || execution.updates < action.execution.updates) {
+                state = state.set('execution', action.execution);
+            }
+
+            return state;
+        }
 
         case FETCH_EXECUTION_FAILURE:
             return state

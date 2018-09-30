@@ -3,7 +3,7 @@
  */
 
 import { fromJS } from 'immutable';
-import { LOCATION_CHANGE } from 'connected-react-router';
+import { LOCATION_CHANGE } from 'connected-react-router/immutable';
 import { routeReducer } from '../reducers';
 
 describe('route reducer', () => {

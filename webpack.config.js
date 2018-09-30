@@ -1,11 +1,15 @@
+const webpack = require('webpack');
 const path = require('path');
 const { HashedModuleIdsPlugin } = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const SriPlugin = require('webpack-subresource-integrity');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const useDll = !isProduction && process.env.DLL !== '0';
 const isServe = !!process.env.WEBPACK_SERVE;
+const useBundleAnalizer = !!process.env.BUNDLE_ANALYZER;
 
 module.exports = {
     mode: isProduction
@@ -176,7 +180,12 @@ module.exports = {
     },
 
     plugins: [
-        !!process.env.BUNDLE_ANALYZER && new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)(),
+        useBundleAnalizer && new (require('webpack-bundle-analyzer').BundleAnalyzerPlugin)(),
+
+        useDll && new webpack.DllReferencePlugin({
+            context: __dirname,
+            manifest: path.join(__dirname, 'node_modules/.dlls/dllDeps-manifest.json'),
+        }),
 
         new SriPlugin({
             hashFuncNames: ['sha256', 'sha384'],
@@ -215,6 +224,11 @@ module.exports = {
                 failOnError: false, // show a warning when there is a circular dependency
             }),
         ]),
+
+        useDll && new AddAssetHtmlPlugin({
+            filepath: path.join(__dirname, 'node_modules/.dlls/dllDeps.dll.js'),
+            includeSourcemap: false,
+        }),
     ].filter(Boolean),
 };
 

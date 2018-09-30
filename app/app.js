@@ -39,7 +39,7 @@ import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
 import './styles.scss';
-import './fontawesome.scss';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './global-styles';
 
 // Create redux store with history

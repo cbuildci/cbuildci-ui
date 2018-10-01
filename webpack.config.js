@@ -70,12 +70,18 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /node_modules|packages/,
-                use: 'babel-loader',
+                use: 'babel-loader?cacheDirectory',
             },
             {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
+                    {
+                        loader: 'cache-loader',
+                        options: {
+                            cacheDirectory: path.join(__dirname, 'node_modules/.cache/cache-loader-scss'),
+                        },
+                    },
                     {
                         loader: 'css-loader',
                         options: {
